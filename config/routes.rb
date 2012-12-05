@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 VandpibeCafe::Application.routes.draw do
   ActiveAdmin.routes(self)
 
@@ -14,7 +16,7 @@ VandpibeCafe::Application.routes.draw do
   resources :locations, :only => [:create, :destroy]
 
   match '/get_json' => "main#get_json", :via => :get
-  match '/sp%C3%B8rgsm%C3%A5l' => "questions#index", :as => 'questions', :via => :get
+  match '/spørgsmål' => "questions#index", :as => 'questions', :via => :get
   match '/sp%C3%B8rgsm%C3%A5l' => "questions#create", :as => 'questions', :via => :post
 
   match '/sp%C3%B8rgsm%C3%A5l/:id/update' => "questions#update",  :as => 'update_question', :via => :put
