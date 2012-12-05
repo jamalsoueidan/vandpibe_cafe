@@ -1,0 +1,51 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.total-comments {
+	border:1px solid #999;
+	padding-top:12px;
+	background-color:#E9E9E9;
+	color:#505050;
+	height:70px;
+	text-align:center;
+	margin-left:8px;
+}
+
+#questions {
+	li { list-style:none;}
+	h4 {
+		margin:0px 0px 10px 0px;
+		padding:0px;
+	}
+}
+
+ul.tabs-questions-content {
+	li {
+		padding: 10px 20px 10px 0px;
+	}
+	
+	ul#question_comments {
+		li {
+			padding:0px;
+		}
+	}
+}
+
+.tabs.vertical li a.new_question:hover {
+	background-color:#2284A1;
+	color:white;
+}
+.tabs.vertical li a.new_question {
+	background-color:#2BA6CB;
+	color:white;
+}
+
+
+.tabs.vertical li a:hover {
+	background-color:#D0D0D0;
+}
+
+.graypage {
+	backgroundcolor:#E8E8E8;
+}

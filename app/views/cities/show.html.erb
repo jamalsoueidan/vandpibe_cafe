@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="twelve columns">
+		<ul class="breadcrumbs">
+			<li><a href="/">Start side</a></li>
+			<li class="current"><a href="#"><%=@city.name%></a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">        
+    <div class="nine columns push-three">
+		<ul class="block-grid three-up mobile-one-up">
+      		<%=render :partial => '/locations/div_location', :collection => @city.locations, :as => :location %>
+		</ul>
+    </div>
+
+    <div class="three columns pull-nine">        
+      <ul class="vertical tabs">
+		<%=render @cities%>
+      </ul>
+    </div>    
+</div>
