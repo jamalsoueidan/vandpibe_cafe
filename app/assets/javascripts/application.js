@@ -41,14 +41,34 @@ function init_map(city_id, location_id) {
 		};
 
 		Google.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+		Google.infoWindow = new google.maps.InfoWindow();
 		
-		$.each(data, function(key, location) {
-			marker = new google.maps.Marker({
+		$.each(data, function(key, location) {			
+			var marker = new google.maps.Marker({
+				location: location,
 				position: new google.maps.LatLng(location['latitude'], location['longitude']),
 				map: Google.map,
 				title: location['name'],
 				icon: new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + location['id'] + '|' + location['city']['color'], new google.maps.Size(28, 48))
 			});
+			
+			if (data.length > 1) {
+				google.maps.event.addListener(marker, 'click', function(event) {
+					Google.infoWindow.setContent('<div id="content">'+
+					            '<div id="siteNotice">'+
+					            '</div>'+
+					            '<h1 id="firstHeading" class="firstHeading">' + marker.location['name'] + '</h1>'+
+					            '<div id="bodyContent">'+
+					            '<p>' + marker.location['description'] + '</p>'+
+					            '<p><a href="/' + marker.location['city']['name'] + '/' + marker.location['name']+ '">Vis mere info</a></p>'+
+					            '</div>'+
+					            '</div>')
+					Google.infoWindow.open(Google.map, marker);
+				});
+			}	
 	  	});
+	
+		google.maps.event.addListener(Google.map, 'zoom_changed', function() {
+		});
 	});
 }

@@ -1,5 +1,0 @@
-$('#location_comment_<%=@comment.id%>').next().remove()
-$('#location_comment_<%=@comment.id%>').remove();
-<% if !has_rated?(@location.comment_ids) %>
-$('#ratings').attr('class', 'show')
-<% end %>

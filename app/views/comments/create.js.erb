@@ -1,3 +1,0 @@
-$('#<%=@html_tag%>_comments').append("<%= escape_javascript(render(:partial => @partial + "/comment", :locals => {:comment => @comment}))%>" )
-$('textarea').val('')
-$('#<%=@html_tag%>_comments li:last').effect('highlight', {}, 3000);

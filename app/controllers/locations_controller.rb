@@ -1,9 +1,15 @@
 # -*- encoding : utf-8 -*-
 class LocationsController < ApplicationController
+  def toplist
+    @locations = Location.best_rating
+  end
+  
   def show    
     name = params[:name].downcase
     name.utf8! if not Location.exists?(:name => name)
+    p name
     @location = Location.includes(:city, :comments => [:user, :ratings], :tobaccos => :brand).find_by_name(name)
+    p @location
     @city = @location.city    
     
     @comment_ids = @location.comment_ids
@@ -13,10 +19,6 @@ class LocationsController < ApplicationController
     @user_rate[:waterpipe] = Rating.average_by_key('rate_waterpipe', @comment_ids, 'Comment')
     @user_rate[:furniture] = Rating.average_by_key('rate_furniture', @comment_ids, 'Comment')
     @user_rate[:mood] = Rating.average_by_key('rate_mood', @comment_ids, 'Comment')
-    
-    content_for(:title, @location.name.big + " Vandpibe Cafe")
-    content_for(:meta_title, @location.name.big + " Vandpibe Cafe")
-    content_for(:meta_description, @location.name.big + " er en Vandpibe Cafe, som ligger i " + @location.city.name.big + ". Alt hvad du vil vide om Cafeen, har vi på www.vandpibecafe.dk")
   end
 
   def destroy

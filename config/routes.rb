@@ -8,6 +8,7 @@ VandpibeCafe::Application.routes.draw do
   match '/login' => 'main#login', :via => :get, :as => 'login'
   match '/kontakt' => 'main#contact', :via => [:get, :post], :as => 'contact'
   
+  match 'toplist' => "locations#toplist", :via => :get, :as => 'toplist'
   resources :comments, :only => [:create, :new, :destroy]
   resources :ratings, :only => [:create, :new]
   resources :users

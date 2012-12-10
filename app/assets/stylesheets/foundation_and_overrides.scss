@@ -243,9 +243,9 @@
 // https://github.com/scottkellum/modular-scale by scottkellum
 @import 'foundation';
 
-body {
+/*body {
 	background: #14012C url('/assets/bg.jpg') fixed top center no-repeat;
-}
+}*/
 
 .serve {
 	background-color:#F2F2F2;
@@ -279,4 +279,22 @@ div.select, div.boolean {
 
 .top-bar ul > li:not(.name).active {
 	background: #4D4D4D;
+}
+
+@media only screen and (max-width: 1441px) and (min-width: 768px) {
+	.login {
+		text-align:right;
+		margin-bottom:20px;
+	}
+	.navigation {
+		line-height:95px;
+	}
+}
+
+.margin-bottom-fifthteen {
+	margin-bottom:15px;
+}
+
+#map img, #map object, #map embed {
+  max-width: none;
 }
