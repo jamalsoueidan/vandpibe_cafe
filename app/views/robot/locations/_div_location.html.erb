@@ -1,0 +1,10 @@
+<li class="<%=location.name%>" id="<%=location.name%>_vandpibe_cafe">
+	<% if location.uploads.empty? %>
+		<%= link_to raw('<img src="/assets/thumb.gif" width="300" height="300">'), city_location_path(@city.name, location.name.parameterize) %>
+	<% else %>
+	<%= link_to(image_tag(location.uploads.first.avatar.url(:medium)), city_location_path(@city.name, location.name.parameterize)) %>
+	<% end%>
+	<div class="panel">
+		<h2><%= link_to location.name.big + " Vandpibe Cafe", city_location_path(@city.name, location.name.parameterize), :alt => location.name.big + " Vandpibe Cafe" %></h2>
+	</div>
+</li>

@@ -1,0 +1,20 @@
+<% if @spacer && @location.comments.length > 1 %>
+	<%= render 'spacer_template'%>
+<% end %>
+
+<li id="comment_<%=comment.id%>">
+	<div class="row">
+		<div class="four columns">
+			<% if comment.anonymous? %>
+				Anonym bruger<br />
+			<% else %>
+			<%= link_to image_tag(comment.user.avatar_url), user_path(comment.user), :class => "remove-right-border left-border" %><br />
+			<%= link_to comment.user.nickname, user_path(comment.user), :class => "remove-right-border left-border" %><br />
+			<% end %>
+			<%=comment.created_at.strftime('%d %b %y')%><br /><br />
+		</div>
+		<div class="eight columns">
+			<p><%=simple_format(comment.body)%></p>
+		</div>
+	</div>
+</li>

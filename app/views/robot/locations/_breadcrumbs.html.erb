@@ -1,0 +1,5 @@
+<ul class="breadcrumbs">
+	<li><a href="/">Start side</a></li>
+	<li><%= link_to @city.name.big, city_path(@city.name), :title => "Vandpibe Cafe " + @city.name, :alt => "Vandpibe Cafe " + @city.name %></li>
+	<li class="current"><%= link_to @location.name.big, "#" %></li>
+</ul>

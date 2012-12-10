@@ -1,0 +1,6 @@
+$('#location_comments').append("<%= escape_javascript(render(:partial => "/locations/comment", :locals => {:comment => @comment}))%>" )
+$('textarea').val('')
+$('#location_comments li:last').effect('highlight', {}, 3000);
+<% if has_rated?(@location.comment_ids) %>
+$('#ratings').hide();
+<% end %>

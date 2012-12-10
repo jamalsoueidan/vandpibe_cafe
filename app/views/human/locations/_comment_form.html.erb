@@ -1,0 +1,35 @@
+<%= simple_form_for Comment.new, :url => locations_path, :remote => true, :html => {:id => 'location_new_comment'} do |f| %>
+	<h4 class="no-top-margin">Fortæl om din oplevelse</h4>
+	<p>Når du beskriver, så bør dine beskrivelser fokusere på at formidle dine erfaringer og oplevelser til andre brugere. </p>
+	
+	<%= f.input :body, :label => 'Beskrivelse' %>
+	<%= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }%>
+	
+	<div id="ratings"<% if has_rated?(@location.comment_ids) %> class="hide"<% end %>>
+		<div class="input select"><strong>Før musen over stjernerne - og klik for at bedømme. Du kan kun bedømme cafeen engang.</strong><br /></div> 
+		<div class="input select"><label>Hvor god var deres service?</label>
+			<span class="star" data-id="comment_rate_service" hint="Dårlig, Under middle, Middle, Rimelig, God"></span><span id="hint_comment_rate_service"></span>
+		</div>
+	
+		<div class="input select"><label>Hvordan var vandpibe cafens indretning?</label>
+			<span class="star" data-id="comment_rate_furniture" hint="Dårlig, Under middle, Middle, Rimelig, God"></span><span id="hint_comment_rate_furniture"></span>
+		</div>
+	
+		<div class="input select"><label>Hvordan var vandpiben og tobakken?</label>
+			<span class="star" data-id="comment_rate_waterpipe" hint="Dårlig, Under middle, Middle, Rimelig, God"></span><span id="hint_comment_rate_waterpipe"></span>
+		</div>
+		
+		<div class="input select"><label>Hvordan var stemning?</label>
+			<span class="star" data-id="comment_rate_mood" hint="Dårlig, Under middle, Middle, Rimelig, God"></span><span id="hint_comment_rate_mood"></span>
+		</div>
+		
+	<%= f.input :rate_service, :as => :hidden %>
+	<%= f.input :rate_waterpipe, :as => :hidden %>
+	<%= f.input :rate_furniture, :as => :hidden %>
+	<%= f.input :rate_mood, :as => :hidden %>
+	</div>
+	
+	<%= f.input :anonymous, :inline_label => ' Afkryds boksen hvis du gerne vil være anonym?' %>
+
+	<%= f.button :submit, :value => "Send kommentar", :class => "button" %>
+<% end %>

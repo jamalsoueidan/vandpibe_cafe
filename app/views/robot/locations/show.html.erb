@@ -1,0 +1,41 @@
+<%#= render :partial => 'breadcrumbs'%>
+
+<% content_for(:title, @location.name.big + " Vandpibe Cafe") %>
+<% content_for(:meta_title, @location.name.big + " Vandpibe Cafe") %>
+<% content_for(:meta_description, @location.name.big + " Vandpibe Cafe ligger i " + @location.city.name.big + ". Alt hvad du vil vide om Cafeen, har vi på www.vandpibecafe.dk") %>
+<h1><%=@location.name.big%> Vandpibe Cafe</h2>
+<p class="subheader"><%= @location.description%></p>
+
+<div class="serve">
+	<h3>Vandpibe Tobak:</h3>
+	<%= render :partial => 'tobacco', :collection => @location.tobaccos, :as => :tobacco %>
+</div>
+
+<div class="panel">
+	<h3>Adresse:</h3>
+	<p><%=@location.name.big%><br />
+	<%=@location.address%><br />
+	<%=@location.post%></p>
+	<a class="button" href="http://maps.google.com?q=<%=@location.address%>,<%=@location.post%>">Vis på kort</a>
+</div>
+		
+<div class="row">
+	<div class="twelve columns">
+		<% if !@location.uploads.empty?%>
+		<ul class="block-grid three-up mobile-one-up" data-clearing>
+			<%= render(:partial => 'upload', :collection => @location.uploads, :as => :upload)%>
+		</ul>
+		<% end %>
+	</div>
+</div>
+
+<h3>Brugeranmeldelser (<%=@location.comments.length%>)</h3>
+
+<ul id="comments">
+	<%=render :partial => 'comment', :collection => @location.comments.includes(:user), :spacer_template => 'spacer_template'%>
+</ul>
+
+
+<div class="panel graypage">
+	<strong>Du bedes <a href="/auth/facebook">logged ind</a> hvis du vil anmelde den her cafe</strong>
+</div>

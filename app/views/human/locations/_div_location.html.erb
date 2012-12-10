@@ -1,0 +1,11 @@
+<li class="<%=location.name%>" id="<%=location.name%>">
+	<% if location.uploads.empty? %>
+		<%= link_to raw('<img src="/assets/thumb.gif" width="300" height="300">'), city_location_path(@city.name, location.name.parameterize) %>
+	<% else %>
+	<%= link_to(image_tag(location.uploads.first.avatar.url(:medium)), city_location_path(@city.name, location.name.parameterize)) %>
+	<% end%>
+	<div class="panel">
+		<h5><%= link_to location.name.big, city_location_path(@city.name, location.name.parameterize), :alt => 'nice' %></h5>
+		<h6 class="subheader"><%= location.city.name.big%></h6>
+	</div>
+</li>

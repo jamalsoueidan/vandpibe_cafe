@@ -1,0 +1,64 @@
+<% if @spacer && @location.comments.length > 1 %>
+	<%= render 'spacer_template'%>
+<% end %>
+
+<li id="location_comment_<%=comment.id%>">
+	<div class="row">
+		<div class="four columns">
+			<% if comment.anonymous? %>
+				Anonym bruger<br />
+			<% else %>
+			<%= link_to image_tag(comment.user.avatar_url), user_path(comment.user), :class => "remove-right-border left-border" %><br />
+			<%= link_to comment.user.nickname, user_path(comment.user), :class => "remove-right-border left-border" %><br />
+			<% end %>
+			<%=comment.created_at.strftime('%d %b %y')%><br /><br />
+			
+			<% if comment.ratings.length > 0 %>
+			<strong>Bedømmelse:</strong><br />
+			<% end %>
+			
+			<% if not comment.ratings.by(:rate_waterpipe).nil? %>
+			<%= javascript_tag do %>
+			$(function() {
+				$('#comment_rate_waterpipe_<%=comment.id%>').raty({score : <%= comment.ratings.by(:rate_waterpipe).rating_value %>, readOnly: true});
+			});
+			<% end %>
+			Vandpibe: <span id="comment_rate_waterpipe_<%=comment.id%>"></span><br />
+			<% end %>
+			
+			<% if not comment.ratings.by(:rate_mood).nil? %>
+			<%= javascript_tag do %>
+			$(function() {
+				$('#comment_rate_mood_<%=comment.id%>').raty({score : <%= comment.ratings.by(:rate_mood).rating_value %>, readOnly: true});
+			});
+			<% end %>
+			Stemning: <span id="comment_rate_mood_<%=comment.id%>"></span><br />
+			<% end %>
+			
+			<% if not comment.ratings.by(:rate_service).nil? %>
+			<%= javascript_tag do %>
+			$(function() {
+				$('#comment_rate_service_<%=comment.id%>').raty({score : <%= comment.ratings.by(:rate_service).rating_value %>, readOnly: true});
+			});
+			<% end %>
+			Service: <span id="comment_rate_service_<%=comment.id%>"></span><br />
+			<% end %>
+			
+			<% if not comment.ratings.by(:rate_furniture).nil? %>
+			<%= javascript_tag do %>
+			$(function() {
+				$('#comment_rate_furniture_<%=comment.id%>').raty({score : <%= comment.ratings.by(:rate_furniture).rating_value %>, readOnly: true});
+			});
+			<% end %>
+			Indretning: <span id="comment_rate_furniture_<%=comment.id%>"></span><br />
+			<% end %>
+		</div>
+		<div class="eight columns">
+			<%=simple_format(comment.body)%>
+			
+			<% if is_owner?(comment) %>
+				<div class="options"><%= link_to "Fjern", location_path(@location, :comment_id => comment.id), :method => :delete, :confirm => 'Er du sikker du vil slette din anmeldelse?', :remote => true %></div>
+			<% end %>
+		</div>
+	</div>
+</li>
