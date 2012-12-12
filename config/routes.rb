@@ -2,9 +2,10 @@
 VandpibeCafe::Application.routes.draw do
   ActiveAdmin.routes(self)
 
+  match '/auth-js' => 'main#auth_js', :via => :get, :as => 'authjs'
   match '/sitemap.xml' => 'main#sitemap', :format => :xml
   match '/auth/:provider/callback' => 'main#auth'
-  match '/logaf' => 'main#logout', :via => :get, :as => 'logout'
+  match '/logout' => 'main#logout', :via => :get, :as => 'logout'
   match '/login' => 'main#login', :via => :get, :as => 'login'
   match '/kontakt' => 'main#contact', :via => [:get, :post], :as => 'contact'
   
@@ -33,7 +34,7 @@ VandpibeCafe::Application.routes.draw do
   match '/:name' => "cities#show", :as => 'city'
   match '/:city_name/:name' => "locations#show", :as => 'city_location'
   
-  root :to => 'main#index'
+  root :to => 'cities#index'
 
   # See how all your routes lay out with "rake routes"
   # This is a legacy wild controller route that's not recommended for RESTful applications.

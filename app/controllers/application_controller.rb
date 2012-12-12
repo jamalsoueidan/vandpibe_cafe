@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :set_view_path
   
   def set_view_path
-    prepend_view_path 'app/views/human/'
+    if robot?
+      prepend_view_path 'app/views/robot/'
+    else
+      prepend_view_path 'app/views/human/'
+    end
   end
   
   def robot?
@@ -35,9 +39,17 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       redirect_to login_path
     end
+    true
   end
   
+  def authenticate_admin!
+    unless logged_in? && current_user.is_admin?
+      redirect_to login_path
+    end
+  end
+
   def is_owner?(object)
     logged_in? && object.user_id == current_user.id
   end
+
 end

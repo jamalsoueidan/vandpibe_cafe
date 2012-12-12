@@ -2,7 +2,7 @@ class TestMailer < ActionMailer::Base
   default from: "jamal@soueidan.com"
   
   def step2(email)
-    mail(:to => email, :subject => "Step 2")
+    mail(:to => email, :subject => "Toyota - step 2")
   end
   
   def step3(email)

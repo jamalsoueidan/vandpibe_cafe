@@ -2,7 +2,8 @@ class MainController < ApplicationController
   
   before_filter :set_cities, :only => :index
   
-  def index
+  def auth_js
+    render :layout => false
   end
   
   def get_json
@@ -48,11 +49,10 @@ class MainController < ApplicationController
   end
   
   def login
-    
   end
   
   def logout
     session[:user_id] = nil
-    redirect_to "/"
+    redirect_to root_path
   end
 end

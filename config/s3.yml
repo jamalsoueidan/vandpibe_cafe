@@ -1,0 +1,15 @@
+development:
+  bucket: assets.vandpibecafe.dk
+  access_key_id: AKIAIIF57DM36GVXQVNA
+  secret_access_key: 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
+  s3_endpoint: 's3-eu-west-1.amazonaws.com'
+test:
+  bucket: assets.vandpibecafe.dk
+  access_key_id: AKIAIIF57DM36GVXQVNA
+  secret_access_key: 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
+  s3_endpoint: 's3-eu-west-1.amazonaws.com'
+production:
+  bucket: assets.vandpibecafe.dk
+  access_key_id: AKIAIIF57DM36GVXQVNA
+  secret_access_key: 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
+  s3_endpoint: 's3-eu-west-1.amazonaws.com'

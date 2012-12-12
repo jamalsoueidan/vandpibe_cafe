@@ -7,6 +7,17 @@ class User < ActiveRecord::Base
   end
   
   has_many :comments
+
+  ADMIN = 2
+  MODERATOR = 1
+  
+  def is_admin?
+    status == ADMIN
+  end
+  
+  def is_moderator?
+    status >= MODERATOR
+  end
   
   def self.omniauth(auth)
     user = User.new

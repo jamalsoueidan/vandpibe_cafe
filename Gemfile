@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'country-select'
 gem 'content_for_in_controllers'
 gem "paperclip", "~> 3.0"
+gem 'aws-sdk'
 gem 'aquarium'
 
 # Gems used only for assets and not required
