@@ -15,4 +15,11 @@ module ApplicationHelper
       
     end
   end
+  
+  def asset_host
+    #asset = Rails.application.config.action_controller.asset_host
+    #if asset.nil?
+      return 'http://assets.vandpibecafe.dk/'
+    #end
+  end
 end
