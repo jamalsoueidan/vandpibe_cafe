@@ -15,7 +15,8 @@ ActiveAdmin.register Upload do
     flash[:notice] = 'Upload was successfully created.'
     @upload = Upload.new(params[:upload])
     if @upload.save
-      redirect_to admin_location_path(:id => @upload.uploadable_id)
+      redirect_to :back
+      #redirect_to admin_location_path(:id => @upload.uploadable_id)
     end
   end
   

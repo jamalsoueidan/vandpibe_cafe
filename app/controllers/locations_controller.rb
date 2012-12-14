@@ -7,7 +7,12 @@ class LocationsController < ApplicationController
   def show    
     name = params[:name].downcase
     name.utf8! if not Location.exists?(:name => name)
-    @location = Location.includes(:city, :comments => [:user, :ratings], :tobaccos => :brand).find_by_name(name)
+    options = {:name => name}
+    if params[:city_name] == 'valby'
+      options[:city_id] = City.select(:id).where(:name => params[:city_name]).first.id
+    end
+
+    @location = Location.includes(:city, :comments => [:user, :ratings], :tobaccos => :brand).where(options).first
     @city = @location.city    
     
     @comment_ids = @location.comment_ids

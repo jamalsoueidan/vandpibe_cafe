@@ -12,7 +12,7 @@ namespace :js do
   def upload(options = {})
     p options[:key]
     o = $bucket.objects[options[:key]]
-    o.write(:file => options[:path])
+    o.write(:file => options[:path], :acl => :public_read)
   end
 
   def list(path)  
