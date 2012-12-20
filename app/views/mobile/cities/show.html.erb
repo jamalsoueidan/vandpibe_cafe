@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="twelve columns">
+		<ul class="breadcrumbs">
+			<li><a href="/">Start side</a></li>
+			<li class="current"><a href="#"><%=@city.name%></a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">        
+    <div class="twelve columns">
+		<% unless @city.locations.empty? %>
+		<ul class="block-grid one-up">
+			<%=render :partial => 'location', :collection => @city.locations.order('name asc'), :as => :location %>
+		</ul>
+		<% else %>
+			<p>Vandpibe Cafe i <%=@city.name.big%> mangler der, hvis du ved der ligger en vandpibe cafe i <%=@city.name.big%> så er du mere end velkommen til at fortælle os via <%= link_to "Kontakt os", contact_path %>.</p>
+		<% end %>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row">    
+	<div class="eight columns push-four">
+		<div class="panel whitepage">
+
+			<h3><%=@question.title%></h3>
+			<p><%=@question.body%></p>
+			<p>oprettet d. <%=@question.created_at.strftime('%d %b %y')%> af <% if @question.anonymous? %>Annonym bruger<% else %><%=link_to @question.user.nickname, user_path(@question.user)%><% end %> i <%=@question.category%></p>
+			
+			<% if is_owner?(@question) %>
+				<div class="options"><%= link_to "Luk spørgsmålet", delete_question_path(@question.id), :method => :delete, :confirm => "Er du sikker?" %> - <%= link_to "Redigere", edit_question_path(@question.id) %></div>
+			<% end %>
+		</div>
+		
+		<dl class="tabs">
+		  <dd class="active"><a href="#">Bruger svar (<%=@question.comments.length%>)</a></dd>
+		</dl>
+		<ul class="tabs-content tabs-questions-content">
+			<li class="active whitepage">
+				<ul id="question_comments">
+					<%=render :partial => 'comment', :collection => @question.comments.includes(:user), :spacer_template => 'spacer_template' %>
+				</ul>
+			</li>
+		</ul>
+		
+		<div class="panel graypage">
+			<% if not logged_in? %>
+				<strong>Du bedes <a href="/login">logge ind</a> hvis du vil kommentarer dette spørgsmål</strong>
+			<% elsif @question.visible?%>
+				<%= simple_form_for Comment.new, :remote => true, :html => {:id => 'question_new_comment'} do |f| %>
+			    	<%= f.input :body, :label => 'Kommentare' %>
+					<%= f.input :table, :as => :hidden, :input_html => {:value => 'question' }%>
+					<%= f.input :table_id, :as => :hidden, :input_html => {:value => @question.id }%>
+					<%= f.input :anonymous, :label => ' Afkryds boksen hvis du gerne vil være anonym?' %>
+					<%= f.button :submit, :value => "Send kommentar", :class => "button" %>
+				<% end %>
+			<% else %>
+				<strong>Spørgsmålet er lukket, så man kan ikke længere kommentarer den.</strong>
+			<% end %>
+		</div>
+    </div>
+    <%= render :partial => 'navigator' %>
+</div>

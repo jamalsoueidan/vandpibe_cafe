@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="twelve columns">
+		<ul class="breadcrumbs">
+		<li><a href="/">Start side</a></li>
+		<li class="current"><%=link_to "Debat", questions_path %></li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">
+	<div class="twelve columns">
+		<ul class="vertical tabs" style="margin-bottom:30px;">
+			<li><%=link_to "Opret et nyt spørgsmål", new_question_path, :class => 'new_question' %></li>
+		</ul>
+	</div>
+</div>
+
+<div class="row">    
+	<div class="twelve columns">
+		<div class="panel whitepage">
+			<h3>Mest diskuterede spørgsmål</h3>
+			<ul id="questions">
+				<%= render @questions %>
+			</ul>
+		
+			<%= will_paginate @questions %>
+		</div>
+	</div>
+</div>
+
+<%= render :partial => 'navigator' %>

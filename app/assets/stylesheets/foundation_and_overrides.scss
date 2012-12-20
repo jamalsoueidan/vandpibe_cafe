@@ -298,3 +298,11 @@ div.select, div.boolean {
 #map img, #map object, #map embed {
   max-width: none;
 }
+
+.tabs.vertical dd, .tabs.vertical li {
+	border-left: 1px solid #e1e1e1;
+}
+
+@media only screen and (max-width: 767px) { 
+
+}

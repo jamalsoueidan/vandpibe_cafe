@@ -1,0 +1,56 @@
+<%= render :partial => 'breadcrumbs'%>
+
+<div class="row">        
+	<div class="eight columns">
+		<div class="panel whitepage" style="margin-bottom:15px;">
+			<h1><%=@location.name.big%></h1>
+			<p class="subheader"><%= simple_format(@location.description)%></p>
+			
+			<ul>
+				<% @location.references.each do |link|%>
+				<li><%=link_to link.name, link.link, :target => '_blank' %></li>
+				<% end %>
+			</ul>
+			
+			<p><%=@location.name.big%><br />
+			<%=@location.address%><br />
+			<%=@location.post%></p>
+			<a class="button" href="http://maps.google.com?q=<%=@location.address%>,<%=@location.post%>" target="_blank">Vis på kort</a>
+		</div>
+		
+		<div class="row">
+			<div class="twelve columns">
+				<% if !@location.uploads.empty?%>
+				<ul class="block-grid four-up mobile-four-up" data-clearing>
+					<%= render(:partial => 'upload', :collection => @location.uploads, :as => :upload)%>
+				</ul>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="panel callout">
+			<%= render :partial => 'site_rating', :locals => {:location => @location }%>
+		</div>
+		
+		<dl class="tabs">
+		  <dd class="active"><a href="#simple1">Brugeranmeldelser (<%=@location.comments.length%>)</a></dd>
+		</dl>
+		<ul class="tabs-content">
+			<li class="active whitepage">
+				<ul id="location_comments">
+					<%=render :partial => 'comment', :collection => @location.comments.includes(:user), :spacer_template => 'spacer_template'%>
+				</ul>
+			</li>
+		</ul>
+		
+		<div class="panel graypage">
+			<% if not logged_in? %>
+				<strong>Du bedes <a href="/login">logge ind</a> hvis du vil anmelde den her cafe</strong>
+			<% else %>
+				<%= render 'comment_form' %>
+			<% end %>
+		</div>
+
+	</div>
+	
+</div>

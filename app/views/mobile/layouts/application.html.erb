@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="da" itemscope itemtype="http://schema.org/Vandpibe">
+<head>
+	<meta charset="utf-8" />
+	<%= render '/layouts/header' %>
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= render '/layouts/google' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="top-bar">
+	<ul>
+		<li class="name"><h1><a href="/">VandpibeCafe.dk</a></h1></li>
+		<li class="toggle-topbar"><a href="#"></a></li>
+	</ul>
+
+	<section>
+        <ul class="right">
+            <li class="divider"></li>
+			<li><%= link_to "Hjem", root_path %></li>
+            <li class="divider"></li>
+			<li><%= link_to "Top 10", toplist_path %></li>
+            <li class="divider"></li>
+			<li><%= link_to "Kontakt os", contact_path %></li>
+			<li class="divider"></li>
+			<% if not logged_in? %>
+			<li><a class="button" href="#">Login</a></li>
+			<% else %>
+			<li><%= link_to current_user.nickname, logout_path, :class => "success button"%></li>
+			<% end %>
+			<li class="divider"></li>
+        </ul>
+	</section>
+</nav>
+
+<%= yield %>
+
+<% if @location %> 
+<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fd994d74ae6bfdc"></script>
+<% end %>
+
+</body>
+</html>

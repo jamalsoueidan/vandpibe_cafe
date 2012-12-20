@@ -1,0 +1,12 @@
+<div class="four columns pull-eight">	
+	<ul class="vertical tabs" style="margin-bottom:30px;">
+		<li><%=link_to "Opret et nyt spørgsmål", new_question_path, :class => 'new_question' %></li>
+  	</ul>
+
+	<ul class="vertical tabs">
+		<%= li_link "Vis nyeste spørgsmål", questions_path %>
+		<%=li_link "Vis mest diskuterede", hot_questions_path %>
+		<%=li_link "Vis active spørgsmål", recent_questions_path %>
+		<%=li_link "Vis ubesvaret spørgsmål", unanswered_questions_path %>
+  	</ul>
+</div>
