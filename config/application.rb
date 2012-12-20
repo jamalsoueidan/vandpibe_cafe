@@ -58,5 +58,15 @@ module VandpibeCafe
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address              => "send.one.com",
+      :port                 => 2525,
+      :domain               => 'soueidan.com',
+      :user_name            => 'jamal@soueidan.com',
+      :password             => 'nice2709',
+      :authentication       => 'plain',
+      :enable_starttls_auto => false  }
   end
 end

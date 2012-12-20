@@ -2,17 +2,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
     
   helper_method :current_user, :logged_in?, :is_owner?, :current_path
-  
   before_filter :set_view_path
   
   def set_view_path
-    #if is_robot?
-    #  prepend_view_path 'app/views/robot/'
-    #elsif is_mobile?
+    if is_robot?
+      prepend_view_path 'app/views/robot/'
+    elsif is_mobile?
       prepend_view_path 'app/views/mobile/'
-    #else
-    #  prepend_view_path 'app/views/web/'
-    #end
+    else
+      prepend_view_path 'app/views/web/'
+    end
   end
   
   def is_robot?

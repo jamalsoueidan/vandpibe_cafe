@@ -35,16 +35,6 @@ VandpibeCafe::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "send.one.com",
-    :port                 => 2525,
-    :domain               => 'soueidan.com',
-    :user_name            => 'jamal@soueidan.com',
-    :password             => 'nice2709',
-    :authentication       => 'plain',
-    :enable_starttls_auto => false  }
-  
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
     
