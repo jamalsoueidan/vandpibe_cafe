@@ -46,3 +46,7 @@ li {
 .text-center {
 	text-align:center;
 }
+
+#copyright { background: #3f3f3f; color: #fff; padding: 11px 0; margin-top:10px; }
+#copyright p, #copyright ul.inline-list { margin-bottom: 0; }
+#copyright a { color: #fff; }

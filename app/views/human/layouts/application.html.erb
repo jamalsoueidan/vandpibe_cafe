@@ -68,11 +68,20 @@
 </div>
 <% end %>
 
-<div class="row margin-bottom-fifthteen">
-	<div class="twelve columns text-center">
-		<hr />
-		
-		<%= link_to "Hjem", root_path %> | <%=link_to "Debat", questions_path %> | <%= link_to "Kontakt os", contact_path %>
+
+<div id="copyright">
+	<div class="row">
+    	<div class="four columns">
+        	<p>Vandpibe Cafe © 2012</p>
+		</div>
+      	<div class="eight columns">
+        	<ul class="inline-list right">
+				<li><%= link_to "Hjem", root_path %></li>
+				<li><%=link_to "Debat", questions_path %></li>
+				<li><%= link_to "Top 10", toplist_path %></li>
+				<li><%= link_to "Kontakt os", contact_path %></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
