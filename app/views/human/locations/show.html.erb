@@ -23,16 +23,6 @@
 			</div>
 		</div>
 		
-		<div class="row">
-			<div class="six columns">
-				<div class="panel callout"><%= render :partial => 'site_rating', :locals => {:location => @location }%></div>
-			</div>
-
-			<div class="six columns">
-				<div class="panel callout"><%= render 'user_rating'%></div>
-			</div>
-		</div>
-		
 		<dl class="tabs">
 		  <dd class="active"><a href="#simple1">Brugeranmeldelser (<%=@location.comments.length%>)</a></dd>
 		</dl>
@@ -54,6 +44,10 @@
 
 	</div>
 	<div class="four columns">
+		<div class="panel callout">
+			<%= render :partial => 'site_rating', :locals => {:location => @location }%>
+		</div>
+		
 		<div class="panel hide-for-small" id="map" style="height:250px;">
 			<%= javascript_tag do %>
 				$(function() {
@@ -61,7 +55,7 @@
 				});
 			<% end %>
 	    </div>
-	
+					
 		<div class="panel">
 			<h3>Adresse:</h3>
 			<p><%=@location.name.big%><br />

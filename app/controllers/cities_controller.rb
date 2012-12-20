@@ -5,8 +5,6 @@ class CitiesController < ApplicationController
   end
   
   def show
-    name = params[:name].downcase
-    name.utf8! if not City.exists?(:name => name)
-    @city = City.find_by_name(name)
+    @city = City.joins(:locations => :uploads).find_by_url(params[:name])
   end
 end

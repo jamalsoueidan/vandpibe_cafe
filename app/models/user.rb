@@ -1,11 +1,6 @@
 class User < ActiveRecord::Base
   has_many :questions
-  has_many :ratings do
-    def has_rated?(options={})
-      self.exists?(options)
-    end
-  end
-  
+  has_many :ratings
   has_many :comments
 
   ADMIN = 2

@@ -7,4 +7,9 @@ class Rating < ActiveRecord::Base
   def self.average_by_key(value, ids, table)
     Rating.average(:rating_value, :conditions => ['rating_key = ? AND rating_id IN (?) AND rating_type = ?', value, ids, table])
   end
+  
+  def has_rated?(user, options={})
+    options['rating.user_id'] = user.id
+    self.exists?(options)
+  end
 end

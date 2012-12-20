@@ -10,7 +10,7 @@ class Location < ActiveRecord::Base
 
   belongs_to :city
   
-  #default_scope :order => "name ASC"
+  RATING_KEYS = [:location_service, :location_waterpipe, :location_furniture, :location_mood]
   
   def self.best_rating
     select('*, round(sum(mood_rating)+sum(service_rating)+sum(waterpipe_rating)+sum(furniture_rating), 3) as total').group('id').order('total desc').includes(:comments).limit(10)
@@ -26,6 +26,14 @@ class Location < ActiveRecord::Base
   
   def description
     return self[:description] unless self[:description] == '' || self[:description].nil?
-    'En lille beskrivelse af vandpibe cafeen vil komme så snart vi har besøgt cafeen.'
+    'Et kort beskriveles af cafeen vil komme på et tidspunkt :-)'
+  end
+  
+  def user_ratings
+    ratings = {}
+    RATING_KEYS.each do |key|
+      ratings[key] = Rating.average_by_key(key.to_s, comment_ids, 'Comment')
+    end
+    return ratings
   end
 end

@@ -30,11 +30,15 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
+    if Rails.env == 'development'
+      return User.first
+    end
+    
     if session[:user_id]
       @current_user ||= User.find(session[:user_id]) if User.exists?(session[:user_id])
     end
   end
-  
+      
   def authorize
     unless logged_in?
       redirect_to login_path
