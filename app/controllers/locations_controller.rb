@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class LocationsController < ApplicationController
   
-  before_filter :authorize
+  before_filter :authorize, :only => [:create, :destroy]
   
   def toplist
     @locations = Location.best_rating
