@@ -5,6 +5,6 @@ class CitiesController < ApplicationController
   end
   
   def show
-    @city = City.joins(:locations => :uploads).find_by_url(params[:name])
+    @city = City.joins(:locations).find_by_url(params[:name])
   end
 end

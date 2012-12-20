@@ -16,7 +16,7 @@
 		<div class="row">
 			<div class="twelve columns">
 				<% if !@location.uploads.empty?%>
-				<ul class="block-grid three-up mobile-one-up" data-clearing>
+				<ul class="block-grid four-up mobile-one-up" data-clearing>
 					<%= render(:partial => 'upload', :collection => @location.uploads, :as => :upload)%>
 				</ul>
 				<% end %>
