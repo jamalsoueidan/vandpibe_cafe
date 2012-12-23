@@ -28,9 +28,16 @@
 	margin-top:0px;
 }
 
+.no-margin-bottom {
+	margin-bottom:0px;
+}
 
 .margin-top-ten {
 	margin-top:10px;
+}
+
+.sixteen-line-height {
+	line-height:20px;
 }
 
 .field_with_errors input, .field_with_errors textarea {

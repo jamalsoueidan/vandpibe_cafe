@@ -1,1 +1,1 @@
-<li><%= link_to city.name.big + " (" + city.locations.length.to_s + ")", city_path(city.name), :title => "Vandpibe Cafe " + city.name, :alt => "Vandpibe Cafe " + city.name %></li>
+<li id="city_<%=city.id%>"><%= link_to city.name.big + " (" + city.locations.size.to_s + ")", city_path(city.name), :title => "Vandpibe Cafe " + city.name, :alt => "Vandpibe Cafe " + city.name %></li>

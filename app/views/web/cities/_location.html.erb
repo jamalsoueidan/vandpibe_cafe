@@ -1,4 +1,4 @@
-<li class="<%=location.name%>" id="<%=location.name%>">
+<li id="location_<%=location.name%>">
 	<% if location.uploads.empty? %>
 		<%= link_to raw('<img src="/assets/thumb.gif" style="width:300px;height:250px;">'), city_location_path(@city.name, location.name.parameterize) %>
 	<% else %>
@@ -6,6 +6,6 @@
 	<% end%>
 	<div class="panel">
 		<h5><%= link_to location.name.big, city_location_path(@city.name, location.name.parameterize), :alt => 'nice' %></h5>
-		<h6 class="subheader"><%= location.city.name.big%></h6>
+		<h6 class="subheader"><%= @city.name.big%></h6>
 	</div>
 </li>

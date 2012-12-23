@@ -1,26 +1,23 @@
 <div class="row">
 	<div class="twelve columns">
-		<ul class="breadcrumbs">
-			<li><a href="/">Start side</a></li>
-			<li class="current"><a href="#"><%=@city.name%></a></li>
-		</ul>
+		<%=breadcrumbs(@city.name => '#')%>
 	</div>
 </div>
 
 <div class="row">        
     <div class="nine columns push-three">
-		<% unless @city.locations.empty? %>
-		<ul class="block-grid three-up mobile-one-up">
-			<%=render :partial => 'location', :collection => @city.locations.order('name asc'), :as => :location %>
-		</ul>
+		<% if @city.locations.nil? %>
+		<p>Vandpibe Cafe i <%=@city.name.big%> mangler der, hvis du ved der ligger en vandpibe cafe i <%=@city.name.big%> så er du mere end velkommen til at fortælle os via <%= link_to "Kontakt os", contact_path %>.</p>
 		<% else %>
-			<p>Vandpibe Cafe i <%=@city.name.big%> mangler der, hvis du ved der ligger en vandpibe cafe i <%=@city.name.big%> så er du mere end velkommen til at fortælle os via <%= link_to "Kontakt os", contact_path %>.</p>
+		<ul class="block-grid three-up mobile-one-up">
+			<%=render :partial => 'location', :collection => @city.locations, :as => :location %>
+		</ul>
 		<% end %>
     </div>
 
     <div class="three columns pull-nine">        
       <ul class="vertical tabs">
-		<%=render @cities.where(:visible => true)%>
+		<%=render @cities %>
       </ul>
     </div>    
 </div>

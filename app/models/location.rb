@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
   has_many :uploads, :as => :uploadable
   has_many :references
 
-  belongs_to :city
+  belongs_to :city, :counter_cache => true
   
   RATING_KEYS = [:location_service, :location_waterpipe, :location_furniture, :location_mood]
   

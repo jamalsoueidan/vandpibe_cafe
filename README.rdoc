@@ -3,6 +3,6 @@ VandpibeCafe
 * not need to login to comment (annynom)
 * show login popup like autobutler.dk 
 * let owner send klage
-* show location so it's easily to write comment
+* redesign location so it's easily to write comment
 * opdatere mobil app så den viser total anderledes
 * popup like messenger about other waterpipe nearby

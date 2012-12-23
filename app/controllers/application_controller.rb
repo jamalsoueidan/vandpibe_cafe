@@ -25,11 +25,7 @@ class ApplicationController < ActionController::Base
   def current_path
     request.path
   end
-  
-  def set_cities 
-    @cities = City.order('name')
-  end
-  
+
   def logged_in?
     !current_user.nil?
   end

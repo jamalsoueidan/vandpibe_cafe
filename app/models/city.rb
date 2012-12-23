@@ -1,6 +1,9 @@
 class City < ActiveRecord::Base
   attr_accessible :name, :latitude, :longitude, :visible, :color, :meta_title, :meta_description, :meta_keywords
-  has_many :locations do
+  
+  default_scope :order => 'name asc'
+  
+  has_many :locations, :order => 'name asc' do
     def include_all
       self.includes(:city, :comments => [:user, :ratings], :tobaccos => :brand)
     end
