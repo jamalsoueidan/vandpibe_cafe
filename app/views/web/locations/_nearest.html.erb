@@ -1,0 +1,29 @@
+<div id="notify" style="position:absolute;z-index:100;background-color:#FFF;padding:10px;" class="panel">
+	<div style="position:absolute;top:4px;right:5px;color:#FF0040;cursor:pointer;">
+		<%= image_tag('close.png', :width => 35, :height => 35, :onclick => "$('#notify').hide();")%>
+	</div>
+	
+	<h4>Vandpibe i nærheden</h4>
+	<% if location.uploads.empty? %>
+		<%= link_to raw('<img src="/assets/thumb.gif" style="width:300px;height:250px;">'), city_location_path(@city.name, location.name.parameterize) %>
+	<% else %>
+		<%= link_to(image_tag(asset_host + location.uploads.first.avatar.path(:medium), :style => 'width:300px;height:250px;'), city_location_path(@city.name, location.name.parameterize)) %>
+	<% end%>
+	
+		<h5><%= link_to location.name.big, city_location_path(@city.name, location.name.parameterize), :alt => 'nice' %></h5>
+		<h6 class="subheader"><%= @city.name.big%></h6>
+	
+	<%= javascript_tag do %>
+		$(function() {
+			
+			$('#notify').css('top', $(window).height() - 350).css('right', -320);
+			$("#notify").delay(2500).animate({right:10}, 1500);
+			
+			$(window).scroll(function () {
+				if ($(window).scrollTop() > 0 && ($(window).scrollTop() + $(window).height()) < $(document).height() ) {
+					$('#notify').css('top', ($(window).height() + $(window).scrollTop()) - 350)
+				}
+			});
+		})
+	<% end %>
+</div>
