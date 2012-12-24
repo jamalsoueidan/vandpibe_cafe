@@ -2,28 +2,28 @@
  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
 <url>
-	<loc>http://www.vandpibecafe.dk/</loc>
+	<loc>http://m.vandpibecafe.dk/</loc>
 	<mobile:mobile/>
 </url>
 <%- @cities.each do |city| %>
 <url>
-	<loc>http://www.vandpibecafe.dk<%=city_path(city.name)%></loc>
+	<loc>http://m.vandpibecafe.dk<%=city_path(city.name)%></loc>
 	<mobile:mobile/>
 </url>
 <%- city.locations.each do |location|%>
 <url>
-	<loc>http://www.vandpibecafe.dk<%=city_location_path(city.name, location.name)%></loc>
+	<loc>http://m.vandpibecafe.dk<%=city_location_path(city.name, location.name)%></loc>
 	<mobile:mobile/>
 </url>
 <%- end %>
 <%- end %>
 <url>
-	<loc>http://www.vandpibecafe.dk<%=questions_path%></loc>
+	<loc>http://m.vandpibecafe.dk<%=questions_path%></loc>
 	<mobile:mobile/>
 </url>
 <%- @questions.each do |question| %>
 <url>
-	<loc>http://www.vandpibecafe.dk<%=question_path(question.id, question.title.parameterize)%></loc>
+	<loc>http://m.vandpibecafe.dk<%=question_path(question.id, question.title.parameterize)%></loc>
 	<mobile:mobile/>
 </url>
 <%- end %>

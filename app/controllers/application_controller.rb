@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       prepend_view_path 'app/views/mobile/'
     else
       if is_mobile?
-        if request.subdomain.empty?
+        if request.subdomain != 'm'
           redirect_to MOBILE 
         end
         prepend_view_path 'app/views/mobile/'
