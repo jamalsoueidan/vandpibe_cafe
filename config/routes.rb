@@ -14,7 +14,11 @@ VandpibeCafe::Application.routes.draw do
   resources :ratings, :only => [:create, :new]
   resources :users
   
-  resources :locations, :only => [:create, :destroy]
+  resources :locations, :only => [:create, :destroy] do
+    collection do
+      match 'random'
+    end
+  end
 
   match '/get_json' => "main#get_json", :via => :get
   match '/debat' => "questions#index", :as => 'questions', :via => :get

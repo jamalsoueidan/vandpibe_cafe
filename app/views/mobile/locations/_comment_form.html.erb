@@ -3,7 +3,6 @@
 	
 	<%= f.input :body, :label => 'Beskrivelse', :input_html => {:rows => 6} %>
 	<%= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }%>
-	<%= f.input :anonymous, :label => ' Afkryds boksen hvis du vil være anonym?' %>
 
 	<%= f.button :submit, :value => "Send kommentar", :class => "button" %>
 <% end %>

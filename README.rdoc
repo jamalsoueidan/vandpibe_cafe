@@ -1,8 +1,7 @@
 VandpibeCafe
 
-* not need to login to comment (annynom)
 * show login popup like autobutler.dk 
 * let owner send klage
 * redesign location so it's easily to write comment
-* opdatere mobil app så den viser total anderledes
 * popup like messenger about other waterpipe nearby
+* update comment box like http://davidwalsh.name/mysql-random

@@ -5,6 +5,20 @@ class User < ActiveRecord::Base
 
   ADMIN = 2
   MODERATOR = 1
+    
+  def self.annonym
+    if !User.exists?(:nickname => 'anonym')
+      user = User.new
+      user.nickname = 'Anonym'
+      user.fullname = 'Anonym'
+      user.email = 'anonym@soueidan.com'
+      user.avatar_url = 'http://assets.vandpibecafe.dk/assets/anonym.gif'
+      user.save
+      return user
+    else
+      User.find_by_nickname('anonym')
+    end
+  end
   
   def is_admin?
     status == ADMIN

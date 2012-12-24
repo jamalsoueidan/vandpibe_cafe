@@ -11,14 +11,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="row">
-	<div class="twelve columns" style="text-align:center">
-
-	</div>
-</div>
-
-<div class="row" style="margin-bottom:10px">
+	
+<div class="row" style="margin-bottom:10px;">
 	<div class="four columns">
 		<%= link_to(image_tag('logo3.png'), '/', :alt => 'Vandpibe Cafe')%>
 	</div>
@@ -69,7 +63,7 @@
 <% end %>
 
 
-<div id="copyright">
+<footer>
 	<div class="row">
     	<div class="four columns">
         	<p>Vandpibe Cafe © 2012</p>
@@ -83,13 +77,7 @@
 			</ul>
 		</div>
 	</div>
-</div>
-
-
-<% if @location %> 
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fd994d74ae6bfdc"></script>
-<% end %>
+</footer>
 
 </body>
 </html>

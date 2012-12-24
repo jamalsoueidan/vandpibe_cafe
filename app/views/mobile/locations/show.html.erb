@@ -44,11 +44,7 @@
 		</ul>
 		
 		<div class="panel graypage">
-			<% if not logged_in? %>
-				<strong>Du bedes <a href="/login">logge ind</a> hvis du vil anmelde den her cafe</strong>
-			<% else %>
-				<%= render 'comment_form' %>
-			<% end %>
+			<%= render 'comment_form' %>
 		</div>
 
 	</div>

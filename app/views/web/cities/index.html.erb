@@ -1,10 +1,12 @@
 <div class="row">
-    <div class="eight columns push-four hide-for-small" id="map" style="height:495px;">
+    <div class="eight columns push-four hide-for-small">
+		<div id="map" style="height:496px;">
 		<%= javascript_tag do %>
 			$(function() {
 				init_map(0, 0)
 			});
 		<% end %>
+		</div>
     </div>
 
     <div class="four columns pull-eight">
@@ -14,8 +16,26 @@
     </div>
 </div>
 
+<hr />
+
+<div class="row">
+	<div class="twelve columns">
+		<h1 style="text-align:center">Fire tilfældig Vandpibe Cafeer!</h1>
+	</div>
+</div>
+
+<div id="slider" class="row" style="margin-top:20px;">
+	<%=javascript_tag do %>
+		$(function() {
+			$.get('<%=random_locations_path%>', function(response) {
+				$('#slider').html(response);
+			});
+		})
+	<% end %>
+</div>
+
 <div class="row">
 	<div class="twelve columns text-center">
-		<h4><small>Hos Vandpibe Cafe kan du se oversigt over alle Vandpibe Cafeer i hele Danmark. Du kan også gå ind på Debat sektion og være med til at hjælpe andre eller stille et spørgsmål omkring Vandpibe Tobak, Vandpibe Shop, Vandpibe Tilbehør eller andet. Vi har besøgt de fleste Vandpibe Cafeer i Danmrk og derfor har vi lavet en liste af de bedste Vandpibe Steder. </small></h5>
+		<h4><small>Hos Vandpibe Cafe kan du se oversigt over alle Vandpibe Cafeer i hele Danmark. Du kan også gå ind på Debat sektion og være med til at hjælpe andre eller stille et spørgsmål omkring Vandpibe Tobak, Vandpibe Shop, Vandpibe Tilbehør eller andet. Vi har besøgt de fleste Vandpibe Cafeer i Danmrk og derfor har vi lavet en liste over de bedste Vandpibe Steder. </small></h5>
 	</div>
 </div>
