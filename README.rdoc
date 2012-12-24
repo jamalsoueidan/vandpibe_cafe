@@ -1,7 +1,8 @@
 VandpibeCafe
 
+* correct title and link, when embedding link on the facebook
 * show login popup like autobutler.dk 
 * let owner send klage
 * redesign location so it's easily to write comment
-* popup like messenger about other waterpipe nearby
 * update comment box like http://davidwalsh.name/mysql-random
+* create vote on every city on the top

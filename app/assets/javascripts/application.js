@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
-//= require_tree .
+//= require "foundation/jquery.reveal"
+//= require "foundation/app"
+//= require_directory .
 
 Google = {};
 

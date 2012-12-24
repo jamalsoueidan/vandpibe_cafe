@@ -146,4 +146,11 @@ ActiveAdmin.setup do |config|
   #
   # Set the CSV builder separator (default is ",")
   # config.csv_column_separator = ','
+  
+  #http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/#.UNi7ionjlA8
+  config.clear_stylesheets!
+  config.register_stylesheet 'admin/active_admin.css'
+
+  config.clear_javascripts!
+  config.register_javascript 'admin/active_admin.js'
 end

@@ -1,7 +1,6 @@
 namespace :amazon do  
   
   task :upload_assets => [:environment, :connect] do 
-    connect
     list(File.join(Rails.root, 'public', 'assets'))
   end
   

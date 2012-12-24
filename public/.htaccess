@@ -1,0 +1,16 @@
+# http://travisonrails.com/2009/10/02/rails-subdomain-caching
+# Check for subdomain cached index
+RewriteCond %{HTTP_HOST} !^www\.vandpibe\.dk
+RewriteCond %{HTTP_HOST} ^([^.]+)\.vandpibe\.dk
+RewriteRule ^/$ /cache/%1/index.html [QSA]
+ 
+# Check for subdomain cached page
+RewriteCond %{HTTP_HOST} !^www\.vandpibe\.dk
+RewriteCond %{HTTP_HOST} ^([^.]+)\.vandpibe\.dk
+RewriteRule ^([^.]+)$ /cache/%1/$1.html [QSA]
+ 
+# Check for regular non-subdomain index
+RewriteRule ^/$ /cache/web/index.html [QSA] 
+ 
+# Check for regular non-subdomain page
+RewriteRule ^([^.]+)$ /cache/web/$1.html [QSA]

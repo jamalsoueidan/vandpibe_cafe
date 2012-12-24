@@ -3,14 +3,31 @@ class ApplicationController < ActionController::Base
     
   helper_method :current_user, :logged_in?, :is_owner?, :current_path
   before_filter :set_view_path
+    
+  MOBILE = 'http://m.' + ActionMailer::Base.default_url_options[:host]
   
+  before_filter :update_cache_location
+
+  def update_cache_location
+    if request.subdomain.empty?
+      ActionController::Base.page_cache_directory = "#{Rails.root}/public/cache/web"
+    else
+      ActionController::Base.page_cache_directory = "#{Rails.root}/public/cache/mobile"
+    end
+  end
+    
   def set_view_path
-    if is_robot?
-      prepend_view_path 'app/views/robot/'
-    elsif is_mobile?
+    if request.subdomain == 'm'
       prepend_view_path 'app/views/mobile/'
     else
-      prepend_view_path 'app/views/web/'
+      if is_mobile?
+        if request.subdomain.empty?
+          redirect_to MOBILE 
+        end
+        prepend_view_path 'app/views/mobile/'
+      else
+        prepend_view_path 'app/views/web/'
+      end
     end
   end
   
@@ -53,4 +70,10 @@ class ApplicationController < ActionController::Base
     logged_in? && object.user_id == current_user.id
   end
 
+  # http://mrdanadams.com/2011/exclude-active-admin-js-css-rails/#.UNi7ionjlA8
+  def register_default_assets
+    register_stylesheet 'active_admin.css'
+    register_javascript 'active_admin.js'
+  end
+  
 end

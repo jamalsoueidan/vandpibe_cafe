@@ -1,6 +1,8 @@
 class CitiesController < ApplicationController
   before_filter :set_cities
   
+  caches_page :index, :show
+  
   def index  
 
   end

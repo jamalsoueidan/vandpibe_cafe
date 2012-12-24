@@ -1,3 +1,7 @@
+<% content_for(:title, 'Vandpibe Cafe ' + @city.name.big) %>
+<% content_for(:meta_title, 'Vandpibe Cafe ' + @city.name.big) %>
+<% content_for(:meta_description, "Oversigt over alle Vandpibe Cafeer i " + @city.name.big + ". Info omkring Åbningstider, Tobak, Vandpibe, Bedste Cafe, osv.") %>
+
 <div class="row">
 	<div class="twelve columns">
 		<%=breadcrumbs(@city.name => '#')%>

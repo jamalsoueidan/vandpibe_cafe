@@ -1,39 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+<?xml version="1.0" encoding="UTF-8" ?>
+ <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
 <url>
 	<loc>http://www.vandpibecafe.dk/</loc>
-	<changefreq>monthly</changefreq>
-	<priority>0.5</priority>
+	<mobile:mobile/>
 </url>
 <%- @cities.each do |city| %>
 <url>
 	<loc>http://www.vandpibecafe.dk<%=city_path(city.name)%></loc>
-	<changefreq>monthly</changefreq>
-	<priority>0.8</priority>
+	<mobile:mobile/>
 </url>
 <%- city.locations.each do |location|%>
 <url>
 	<loc>http://www.vandpibecafe.dk<%=city_location_path(city.name, location.name)%></loc>
-	<changefreq>daily</changefreq>
-	<priority>1</priority>
+	<mobile:mobile/>
 </url>
 <%- end %>
 <%- end %>
 <url>
 	<loc>http://www.vandpibecafe.dk<%=questions_path%></loc>
-	<changefreq>daily</changefreq>
-	<priority>0.5</priority>
+	<mobile:mobile/>
 </url>
 <%- @questions.each do |question| %>
 <url>
 	<loc>http://www.vandpibecafe.dk<%=question_path(question.id, question.title.parameterize)%></loc>
-	<changefreq>daily</changefreq>
-	<priority>1</priority>
+	<mobile:mobile/>
 </url>
 <%- end %>
 </urlset>
