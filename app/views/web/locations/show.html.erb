@@ -6,23 +6,23 @@
 
 <% if @nearest && @nearest.id != @location.id %>
 	<%= render :partial => 'nearest', :locals => {:location => @nearest}%>
-<%end %>
+<% end %>
 
-<div class="row">        
+<div class="row">
 	<div class="eight columns">
 		<div class="panel whitepage" style="margin-bottom:15px;">
 			<h1><%=@location.name.big%></h1>
-			<p class="subheader"><%= simple_format(@location.description)%></p>
-			
+			<h2 class="subheader"><%= simple_format(@location.description)%></h2>
+
 			<ul>
 				<%= render(:partial => 'reference', :collection => @location.references, :as => :reference)%>
 			</ul>
-			
+
 			<ul class="block-grid six-up" data-clearing>
 				<%= render(:partial => 'upload', :collection => @location.uploads, :as => :upload)%>
 			</ul>
 		</div>
-		
+
 		<ul class="tabs">
 		  <li class="active"><a href="#simple1">Brugeranmeldelser (<%=@location.comments.length%>)</a></li>
 		</ul>
@@ -30,7 +30,7 @@
 		<ul id="location_comments" class="no-margin-bottom">
 			<%=render :partial => 'comment', :collection => @location.comments.includes(:user), :spacer_template => 'spacer_template'%>
 		</ul>
-		
+
 		<div class="panel graypage">
 			<%= render 'comment_form' %>
 		</div>
@@ -44,7 +44,7 @@
 				});
 			<% end %>
 	    </div>
-					
+
 		<div class="panel">
 			<h3>Adresse:</h3>
 			<p><%=@location.name.big%><br />
@@ -52,16 +52,16 @@
 			<%=@location.post%></p>
 			<a class="button" href="http://maps.google.com?q=<%=@location.address%>,<%=@location.post%>" target="_blank">Vis på kort</a>
 		</div>
-		
+
 		<div class="panel callout">
 			<%= render :partial => 'site_rating', :locals => {:location => @location }%>
 		</div>
-		
+
 		<div class="panel sixteen-line-height">
 			<h3>Vandpibe Tobak:</h3>
 			<%= render :partial => 'tobacco', :collection => @location.tobaccos, :as => :tobacco %>
 		</div>
-		
+
 		<br />
 	</div>
 </div>

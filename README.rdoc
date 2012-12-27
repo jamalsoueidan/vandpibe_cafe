@@ -1,8 +1,13 @@
 VandpibeCafe
 
 * correct title and link, when embedding link on the facebook
-* show login popup like autobutler.dk 
+* show login popup like autobutler.dk
 * let owner send klage
 * redesign location so it's easily to write comment
 * update comment box like http://davidwalsh.name/mysql-random
 * create vote on every city on the top
+* use bold on keywords
+* sort toplist on best waterpipe, social etc.
+* use correct h1, h2, h3 etc.
+
+http://menucard.dk/restauranter/la-grotte-vandpibe-cafe

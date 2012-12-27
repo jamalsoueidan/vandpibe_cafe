@@ -1,13 +1,13 @@
 <% @locations.each do |location|%>
 <div class="three columns">
+	<div class="panel" style="padding:5px">
 	<% if location.uploads.empty? %>
-		<%= link_to raw('<img src="/assets/thumb.gif" style="width:305px;height:250px;">'), city_location_path(location.city.name, location.name.parameterize) %>
+		<%= link_to raw('<img src="/assets/thumb.gif" style="width:305px;height:200px;">'), city_location_path(location.city.name, location.name.parameterize) %>
 	<% else %>
-	<%= link_to(image_tag(asset_host + location.uploads.first.avatar.path(:medium), :style => 'width:305px;height:250px;'), city_location_path(location.city.name, location.name.parameterize)) %>
+	<%= link_to(image_tag(asset_host + location.uploads.first.avatar.path(:medium), :style => 'width:305px;height:200px;'), city_location_path(location.city.name, location.name.parameterize)) %>
 	<% end%>
-	<div class="panel">
-		<h5><%= link_to location.name.big, city_location_path(location.city.name, location.name.parameterize), :alt => 'nice' %></h5>
-		<h6 class="subheader"><%= location.city.name.big%></h6>
+		<h5 style="padding:0px;margin:0px;"><%= link_to location.name.big, city_location_path(location.city.name, location.name.parameterize), :alt => 'nice' %></h5>
+		<h6 class="subheader" style="padding:0px;margin:0px;"><%= location.city.name.big%></h6>
 	</div>
 </div>
 <% end %>

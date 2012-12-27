@@ -2,6 +2,8 @@ class MainController < ApplicationController
   
   before_filter :set_cities, :only => :index
   
+  caches_page :sitemap
+  
   def auth_js
     render :layout => false
   end

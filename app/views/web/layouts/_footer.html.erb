@@ -1,0 +1,42 @@
+<footer>
+  <div class="row content">
+    <div class="three columns">
+      <h5>Århus</h5>
+        <ul class="locations">
+        <%- City.find_by_url('aarhus').locations.limit(5).each do |location|%>
+          <li class="location"><%= link_to location.name.big, city_location_path('århus', location.name.parameterize) %></li>
+        <%- end %>
+      </ul>
+    </div>
+    <div class="three columns">
+      <h5>København</h5>
+        <ul class="locations">
+        <%- City.find_by_url('københavn').locations.limit(5).each do |location|%>
+          <li class="location"><%= link_to location.name.big, city_location_path('københavn', location.name.parameterize) %></li>
+        <%- end %>
+      </ul>
+    </div>
+    <div class="three columns">
+      <h5>Frederiksberg</h5>
+        <ul class="locations">
+        <%- City.find_by_url('frederiksberg').locations.limit(5).each do |location|%>
+          <li class="location"><%= link_to location.name.big, city_location_path('frederiksberg', location.name.parameterize) %></li>
+        <%- end %>
+      </ul>
+    </div>
+    <div class="three columns">
+      <h5>Valby</h5>
+        <ul class="locations">
+        <%- City.find_by_url('valby').locations.limit(5).each do |location|%>
+          <li class="location"><%= link_to location.name.big, city_location_path('valby', location.name.parameterize) %></li>
+        <%- end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row bottom">
+    <div class="twelve columns text-center">
+      Copyright 2012 - 2013 VandpibeCafe
+    </div>
+  </div>
+</footer>

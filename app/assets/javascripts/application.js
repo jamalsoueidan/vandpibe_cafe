@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require "foundation/jquery.reveal"
-//= require "foundation/app"
+//= require "foundation"
 //= require_directory .
 
 Google = {};
@@ -28,13 +27,13 @@ function init_map(city_id, location_id) {
 		latitude = 56.34
 		longitude = 11.3
 		zoom = 7
-		
+
 		if (data.length == 1) {
 			latitude = data[0]['latitude']
 			longitude = data[0]['longitude']
 			zoom = 17
 		}
-		
+
 		var mapOptions = {
 			center: new google.maps.LatLng(latitude, longitude),
 			zoom: zoom,
@@ -43,8 +42,8 @@ function init_map(city_id, location_id) {
 
 		Google.map = new google.maps.Map(document.getElementById("map"), mapOptions);
 		Google.infoWindow = new google.maps.InfoWindow();
-		
-		$.each(data, function(key, location) {			
+
+		$.each(data, function(key, location) {
 			var marker = new google.maps.Marker({
 				location: location,
 				position: new google.maps.LatLng(location['latitude'], location['longitude']),
@@ -52,7 +51,7 @@ function init_map(city_id, location_id) {
 				title: location['name'],
 				icon: new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + location['id'] + '|' + location['city']['color'], new google.maps.Size(28, 48))
 			});
-			
+
 			if (data.length > 1) {
 				google.maps.event.addListener(marker, 'click', function(event) {
 					Google.infoWindow.setContent('<div id="content">'+
@@ -66,10 +65,16 @@ function init_map(city_id, location_id) {
 					            '</div>')
 					Google.infoWindow.open(Google.map, marker);
 				});
-			}	
+			}
 	  	});
-	
+
 		google.maps.event.addListener(Google.map, 'zoom_changed', function() {
 		});
 	});
 }
+
+$(function() {
+  $('.notify').each(function() {
+    console.log(this);
+  });
+});

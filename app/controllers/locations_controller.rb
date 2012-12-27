@@ -3,6 +3,8 @@ class LocationsController < ApplicationController
   
   before_filter :authorize, :only => [:destroy]
   
+  caches_page :toplist
+    
   def toplist
     @locations = Location.best_rating
   end
@@ -10,6 +12,9 @@ class LocationsController < ApplicationController
   def show    
     @city = City.find_by_url(params[:city_name])
     @location = @city.locations.include_all.find_by_url(params[:name])
+    if @location.nil?
+      redirect_to root_path
+    end      
     @user_rate = @location.user_ratings
     @nearest = Location.where(:city_id => @city.id).order('RAND()').first
   end

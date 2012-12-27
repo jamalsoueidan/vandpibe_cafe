@@ -71,8 +71,25 @@ li {
 }
 
 footer {
-	margin-top:30px;
+	margin-top:20px;
 	background-color:#000;
+	color:#666;
+	padding:20px;
+	font-weight:bold;
+}
+
+footer h5 {
 	color:#FFF;
-	padding-top:10px;
+}
+
+footer a:link, footer a:visited {
+	color:#666;
+}
+
+footer a:hover {
+	color:#FFF;
+}
+
+footer .content {
+	margin-bottom:20px;
 }
