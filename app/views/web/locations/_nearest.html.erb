@@ -13,3 +13,10 @@
     <h5><%= link_to location.name.big, city_location_path(@city.name, location.name.parameterize), :alt => 'nice' %></h5>
     <h6 class="subheader"><%= @city.name.big%></h6>
 </div>
+
+
+<%= javascript_tag do %>
+  $(function() {
+    $('.notify').notify({animateTimer: 3000});
+  });
+<% end %>

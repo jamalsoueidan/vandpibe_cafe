@@ -7,7 +7,7 @@ VandpibeCafe
 * update comment box like http://davidwalsh.name/mysql-random
 * create vote on every city on the top
 * use bold on keywords
-* sort toplist on best waterpipe, social etc.
 * use correct h1, h2, h3 etc.
+* get mail when someone submit any comment or debat
 
 http://menucard.dk/restauranter/la-grotte-vandpibe-cafe

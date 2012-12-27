@@ -1,21 +1,21 @@
 # -*- encoding : utf-8 -*-
 class LocationsController < ApplicationController
-  
+
   before_filter :authorize, :only => [:destroy]
-  
+
   caches_page :toplist
-    
+
   def toplist
-    @locations = Location.best_rating
+    @locations = Location.best_rating(params[:order])
   end
 
-  def show    
+  def show
     @city = City.find_by_url(params[:city_name])
     @location = @city.locations.include_all.find_by_url(params[:name])
-    if @location.nil?
-      redirect_to root_path
-    end      
-    @user_rate = @location.user_ratings
+    #if @location.user_ratings
+    #  redirect_to root_path
+    #end
+    #@user_rate = @location.user_ratings
     @nearest = Location.where(:city_id => @city.id).order('RAND()').first
   end
 
@@ -33,12 +33,12 @@ class LocationsController < ApplicationController
       end
     end
   end
-  
+
   def random
     @locations = Location.order('RAND()').limit(4)
     render :layout => false
   end
-  
+
   def create
     @spacer = true
     @location = Location.includes(:comments).find(params[:comment][:table_id])
