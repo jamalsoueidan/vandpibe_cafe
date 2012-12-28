@@ -1,0 +1,19 @@
+<nav class="top-bar">
+  <ul>
+    <li class="name">
+      <h1>
+        <a href="#">
+          Vandpibe Cafe
+        </a>
+      </h1>
+    </li>
+    <li class="toggle-topbar"><a href="#"></a></li>
+  </ul>
+  <ul>
+    <li><%= link_to("Hjem", '/')%></li>
+    <li><%= link_to("Debat", questions_path)%></li>
+    <li><%= link_to("Topliste", toplist_path)%></li>
+  </ul>
+</nav>
+
+<%= link_to(image_tag('logo3.png'), '/', :alt => 'Vandpibe Cafe')%>
