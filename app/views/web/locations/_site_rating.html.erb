@@ -1,4 +1,4 @@
-<h5>Vores bedømmelse:</h5>
+<h5>Bedømmelse:</h5>
 <%= javascript_tag do %>
 $(function() {
 	$('#site_rate_waterpipe_<%=location.id%>').raty({half : true, precision  : true, score : parseFloat(<%=location.waterpipe_rating%>), readOnly: true});

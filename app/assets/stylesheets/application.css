@@ -13,6 +13,37 @@
  *= require_directory .
  */
 
+ .black-background { background-color: #000; }
+.grey-background { background-color: #e9e9e9;}
+.blue-background {background-color: #3085d6}
+.text-left {text-align: left;}
+.text-right {text-align: right;}
+.text-center {text-align: center;}
+.font-size20 {font-size: 1.2em;}
+
+.display-block {display: block;}
+
+.padding-bottom30 {padding-bottom: 30px;}
+.padding-bottom10 {padding-bottom: 10px;}
+.padding-bottom5 {padding-bottom: 5px;}
+
+.padding-top5 {padding-top: 5px;}
+.padding-top20 {padding-top: 20px;}
+.padding-top10 {padding-top: 10px;}
+
+.strong {
+	font-weight: bold;
+}
+
+.margin-top10 {margin-top:10px;}
+
+.margin-bottom30 {margin-bottom: 30px;}
+.margin-bottom20 {margin-bottom: 20px;}
+.margin-bottom15 {margin-bottom: 15px;}
+.margin-bottom10 {margin-bottom: 10px;}
+.margin-bottom5 {margin-bottom: 5px;}
+
+
 #comments li {
 	margin:0px;
 	padding:0px;

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   before_filter :update_cache_location
 
   def update_cache_location
-    if request.subdomain.empty?
+    if request.subdomain.empty? || request.subdomain == 'www'
       ActionController::Base.page_cache_directory = "#{Rails.root}/public/cache/web"
     else
       ActionController::Base.page_cache_directory = "#{Rails.root}/public/cache/mobile"
