@@ -23,12 +23,17 @@
 			</ul>
 		</div>
 
-		<ul class="tabs">
-		  <li class="active"><a href="#simple1">Brugeranmeldelser (<%=@location.comments.length%>)</a></li>
-		</ul>
-
-		<ul id="location_comments" class="no-margin-bottom">
-			<%=render :partial => 'comment', :collection => @location.comments.includes(:user), :spacer_template => 'spacer_template'%>
+		<ul class="tabs-content">
+			<li class="active">
+		  		<dl class="tabs contained">
+		    		<dd class="active"><a href="#location_comments">Brugeranmeldelser (<%=@location.comments.length%>)</a></dd>
+		  		</dl>
+		  	
+		  	<ul class="tabs-content contained">
+		    	<li class="active" id="location_comments"> 
+		      	<%=render :partial => 'comment', :collection => @location.comments.includes(:user), :spacer_template => 'spacer_template'%>
+		    	</li>
+		    </ul>
 		</ul>
 
 		<div class="panel graypage">

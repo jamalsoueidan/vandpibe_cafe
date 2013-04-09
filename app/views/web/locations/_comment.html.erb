@@ -2,24 +2,14 @@
 	<%= render 'spacer_template'%>
 <% end %>
 
-<li id="location_comment_<%=comment.id%>" style="padding:10px;">
-	<div class="row">
-		<div class="four columns">
-			<% if comment.anonymous? %>
-				Anonym bruger<br />
-			<% else %>
-				<%= link_to image_tag(comment.user.avatar_url), user_path(comment.user), :class => "remove-right-border left-border" %><br />
-				<%= link_to comment.user.nickname, user_path(comment.user), :class => "remove-right-border left-border" %><br />
-			<% end %>
-			
-			<%=comment.created_at.strftime('%d %b %y')%><br /><br />
-		</div>
-		<div class="eight columns">
-			<%=simple_format(comment.body)%>
-			
-			<% if is_owner?(comment) %>
-				<div class="options"><%= link_to "Fjern", location_path(@location, :comment_id => comment.id), :method => :delete, :confirm => 'Er du sikker du vil slette din anmeldelse?', :remote => true %></div>
-			<% end %>
-		</div>
+<div class="row" id="location_comment_<%=comment.id%>">
+	<div class="twelve columns">
+		<%=simple_format(comment.body)%>
+
+		<i>Skrevet den <%=l comment.created_at%></i>
+		
+		<% if is_owner?(comment) %>
+			<div class="options"><%= link_to "Fjern", location_path(@location, :comment_id => comment.id), :method => :delete, :confirm => 'Er du sikker du vil slette din anmeldelse?', :remote => true %></div>
+		<% end %>
 	</div>
-</li>
+</div>
