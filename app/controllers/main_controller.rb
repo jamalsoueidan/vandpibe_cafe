@@ -33,7 +33,7 @@ class MainController < ApplicationController
     end
     
     session[:user_id] = user.id
-    
+    flash[:notice] = "Du er nu logget paa :)"
     #flash[:notice] = "Authentication successful"
     if session[:return_to].nil?
       redirect_to "/" #render :xml => request.env["omniauth.auth"].to_xml

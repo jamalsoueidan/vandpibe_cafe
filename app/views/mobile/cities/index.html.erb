@@ -1,11 +1,13 @@
-<div class="row">
-  <div class="eight columns">
-    <h5 class="subheader">Hos Vandpibe Cafe kan du se oversigt over alle Vandpibe Cafeer i hele Danmark. Du kan også gå ind på Debat sektion og være med til at hjælpe andre eller stille et spørgsmål omkring Vandpibe Tobak, Vandpibe Shop, Vandpibe Tilbehør eller andet. Vi har besøgt de fleste Vandpibe Cafeer i Danmrk og derfor har vi lavet en liste over de bedste Vandpibe Steder.</h5>
-  </div>
-  <div class="four columns">
-    <h4>Oversigt</h4>
-    <ul class="vertical tabs">
-      <%=render @cities%>
-    </ul>
+ <div class="row">
+  <div class="twelve columns">
+    <h3 class="text-center margin-bottom20">Hvor leder du efter en <strong>Vandpibe Cafe?</strong></h3>
+    <%=render :partial => 'city_tags', :collection => @cities, :as => :city %>
   </div>
 </div>
+
+
+<div class="row">
+  <div class="twelve columns text-center">
+    <h4 class="subheader"><small>På <strong>Vandpibe Cafe</strong> får du et oversigt over alle <strong>Vandpibe Cafeer</strong> i Danmark. Du kan deltag i debat omkring <strong>Vandpibe Tobak</strong>, <strong>Vandpibe Salg</strong>, <strong>Vandpibe Tilbehør</strong> eller andet. Vi er begyndt at sælge <strong>Vandpibe Slanger</strong>. Kontakt os for at hør nærmere. </small></h3>
+  </div>
+ </div>

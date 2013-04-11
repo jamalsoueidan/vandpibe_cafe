@@ -3,7 +3,7 @@
 <div class="row">        
 	<div class="eight columns">
 		<div class="panel whitepage" style="margin-bottom:15px;">
-			<h1><%=@location.name.big%></h1>
+			<h1><%=@location.name.big%> <% if not @location.visible? %><small class="red-color">[CAFEEN ER LUKKET]</small><% end %></h1>
 			<p class="subheader"><%= simple_format(@location.description)%></p>
 			
 			<ul>
@@ -32,20 +32,24 @@
 			<%= render :partial => 'site_rating', :locals => {:location => @location }%>
 		</div>
 		
-		<dl class="tabs">
-		  <dd class="active"><a href="#simple1">Brugeranmeldelser (<%=@location.comments.length%>)</a></dd>
-		</dl>
 		<ul class="tabs-content">
-			<li class="active whitepage">
-				<ul id="location_comments">
-					<%=render :partial => 'comment', :collection => @location.comments.includes(:user), :spacer_template => 'spacer_template'%>
-				</ul>
-			</li>
+			<li class="active">
+		  		<dl class="tabs contained">
+		    		<dd class="active"><a href="#location_comments">Brugeranmeldelser (<%=@location.comments.length%>)</a></dd>
+		  		</dl>
+		  	
+		  	<ul class="tabs-content contained">
+		    	<li class="active" id="location_comments"> 
+		      	<%=render :partial => 'comment', :collection => @location.comments.includes(:user), :spacer_template => 'spacer_template'%>
+		    	</li>
+		    </ul>
 		</ul>
 		
+		<% if @location.visible? %>
 		<div class="panel graypage">
 			<%= render 'comment_form' %>
 		</div>
+		<% end %>
 
 	</div>
 	

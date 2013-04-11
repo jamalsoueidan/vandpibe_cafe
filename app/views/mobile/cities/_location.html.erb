@@ -8,7 +8,7 @@
 			<% end%>
 	    </div>
 	    <div class="nine mobile-three columns">
-			<h5 class="no-top-margin"><%= link_to location.name.big, city_location_path(@city.name, location.name.parameterize), :alt => 'nice' %></h5>
+			<h5 class="no-top-margin"><%= link_to location.name.big, city_location_path(@city.name, location.name.parameterize) %> <% if not location.visible? %><small class="red-color">[CAFEEN LUKKET]</small><% end %></h5>
 			<h6 class="subheader"><%= location.city.name.big%></h6>
 	    </div>
 	</div>

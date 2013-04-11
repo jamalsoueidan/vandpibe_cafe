@@ -18,15 +18,25 @@
 
 <%= render '/layouts/navbar' %>
 
+<% if flash[:notice]%>
+<div class="row">
+  <div class="twelve columns">
+    <div class="alert-box success">
+      <%= flash[:notice]%>
+        <a href="" class="close">&times;</a>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
 <div class="row">
   <div class="twelve columns">
     <%= yield %>
   </div>
 </div>
 
-<footer>
-    Copyright 2012-2013 VandpibeCafe.dk
-</footer>
+<%= render '/layouts/footer' %>
 
 </body>
 </html>
