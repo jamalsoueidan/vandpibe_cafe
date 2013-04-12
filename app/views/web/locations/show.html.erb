@@ -56,7 +56,8 @@
 			<h3>Adresse:</h3>
 			<p><%=@location.name.big%><br />
 			<%=@location.address%><br />
-			<%=@location.post%></p>
+			<%=@location.post%><br />
+			<%=@location.city.country.name%></p>
 			<a class="button" href="http://maps.google.com?q=<%=@location.address%>,<%=@location.post%>" target="_blank">Vis på kort</a>
 		</div>
 
