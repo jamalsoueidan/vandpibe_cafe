@@ -1,6 +1,8 @@
 class City < ActiveRecord::Base
-  attr_accessible :name, :latitude, :longitude, :visible, :color, :meta_title, :meta_description, :meta_keywords
+  attr_accessible :name, :latitude, :longitude, :visible, :color, :meta_title, :meta_description, :meta_keywords, :country_id
 
+  belongs_to :country 
+  
   default_scope :order => 'name asc'
 
   has_many :locations, :order => 'name asc' do

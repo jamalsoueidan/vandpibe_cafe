@@ -26,7 +26,7 @@ function init_map(city_id, location_id) {
 
 		latitude = 56.34
 		longitude = 11.3
-		zoom = 7
+		zoom = 6
 
 		if (data.length == 1) {
 			latitude = data[0]['latitude']

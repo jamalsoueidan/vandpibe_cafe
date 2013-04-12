@@ -20,6 +20,6 @@ class CitiesController < ApplicationController
 
   private
     def set_cities
-      @cities = City.where(:visible => true)
+      @countries = Country.includes(:cities)
     end
 end
