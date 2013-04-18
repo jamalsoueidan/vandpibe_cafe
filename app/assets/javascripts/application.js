@@ -44,12 +44,6 @@ function init_map(options) {
 		longitude = options['longitude'];
 		zoom = options['zoom'];
 
-		if (data.length == 1 && options['city_id'] == undefined) {
-			latitude = data[0]['latitude']
-			longitude = data[0]['longitude']
-			zoom = 17
-		}
-
 		var mapOptions = {
 			center: new google.maps.LatLng(latitude, longitude),
 			zoom: zoom,

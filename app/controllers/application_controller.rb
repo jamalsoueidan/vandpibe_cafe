@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_view_path
+    session[:return_to] = request.fullpath if request.fullpath.index('auth').nil?
+
     if request.subdomain == 'm'
       prepend_view_path 'app/views/mobile/'
     else
