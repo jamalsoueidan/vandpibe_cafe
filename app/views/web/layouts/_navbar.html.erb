@@ -1,23 +1,37 @@
-<div class="row" style="margin-bottom:10px;">
-  <div class="four columns">
-    <%= link_to(image_tag('logo3.png'), '/', :alt => 'Vandpibe Cafe')%>
+<div id="dropdown-1" class="dropdown dropdown-tip">
+      <ul class="dropdown-menu">
+          <li><%= link_to "Log af", logout_path %></li>
+      </ul>
   </div>
-  <div class="eight columns navigation">
-    <div class="login">
-      <%= javascript_tag :login do %>
-        $(function() {
-          $.get('<%=authjs_path%>', function(data) {
-            $('.login').html(data)
-          });
-        })
-      <% end %>
-    </div>
 
-    <ul class="block-grid two-up mobile-one-up">
-      <li><%= link_to(image_tag('debat.png'), questions_path, :alt => 'Vandpibe Cafe Forum')%></li>
-      <li><%= link_to(image_tag('top10.png'), toplist_path, :alt => 'Bedste Vandpibe Cafeer')%></li>
-      <li><%= link_to(image_tag('contact.png'), "https://www.facebook.com/vandpibecafe.dk", :alt => 'Kontakt os på facebook', :target => '_blank')%></li>
-      <li><%= link_to(image_tag('teledoktor.png'), "https://www.facebook.com/TeleDoktor?fref=ts", :alt => 'TeleDoktor', :target => '_blank')%></li>
-    </ul>
+  <div id="dropdown-1" class="dropdown dropdown-tip">
+      <div class="dropdown-panel">
+        You can put whatever HTML you want in a panel!
+      </div>
   </div>
+
+<div class="container padding-top10">
+  <div class="row">
+    <div class="three columns">
+      <%= link_to(image_tag('logo4.png'), '/', :alt => 'Vandpibe Cafe')%>
+    </div>
+    <div class="nine columns navigation">
+      <ul class="block-grid four-up" style="padding-top:17px;">
+        <li><%= link_to(image_tag('debat.png'), questions_path, :alt => 'Vandpibe Cafe Forum')%></li>
+        <li><%= link_to(image_tag('top10.png'), toplist_path, :alt => 'Bedste Vandpibe Cafeer')%></li>
+        <li><%= link_to(image_tag('contact.png'), "https://www.facebook.com/vandpibecafe.dk", :alt => 'Kontakt os på facebook', :target => '_blank')%></li>
+        <li class="login"></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr style="margin:15px 0px 0px 0px;"/>
 </div>
+
+<%= javascript_tag :login do %>
+$(function() {
+  $.get('<%=authjs_path%>', function(data) {
+    $('.login').html(data)
+  });
+})
+<% end %>

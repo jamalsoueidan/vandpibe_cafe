@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="da" itemscope itemtype="http://schema.org/Vandpibe">
 <head>
 	<meta charset="utf-8" />
@@ -14,8 +14,6 @@
 
 <%= render 'layouts/navbar' %>
 
-<hr />
-
 <% if flash[:notice]%>
 <div class="row">
   <div class="twelve columns">
@@ -27,11 +25,13 @@
 </div>
 <% end %>
 
-
-<%= yield %>
+<div class="container shadow">
+  <%= yield %>
+</div>
 
 <%= render 'layouts/welcome' %>
 <%= render 'layouts/footer' %>
 
 </body>
 </html>
+

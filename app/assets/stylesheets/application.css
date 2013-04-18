@@ -8,13 +8,13 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require foundation_and_overrides
  *= require_directory .
+  *= require_self
  */
 
- .black-background { background-color: #000; }
-.grey-background { background-color: #e9e9e9;}
+.black-background { background-color: #000; }
+.grey-background { background-color: #f2f2f2;}
 .blue-background {background-color: #3085d6}
 .text-left {text-align: left;}
 .text-right {text-align: right;}

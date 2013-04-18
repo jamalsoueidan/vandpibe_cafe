@@ -1,18 +1,18 @@
-<div class="row">
-    <div class="twelve columns text-center margin-bottom20">
-    	<h1>Hvor leder du efter en <strong>Vandpibe Cafe?</strong></h1>
-    	<% @countries.each do |c| %>
-			<h4><%=c.name%></h4>
-			<%=render :partial => 'city_tags', :collection => c.cities, :as => :city %>
-		<% end %>
-    </div>
-</div>
+<div class="container grey-background">
+	<div class="row">
+	    <div class="twelve columns text-center margin-bottom20">
+	    	<h3>Hvor leder du efter en <strong>Vandpibe Cafe?</strong></h3>
+	    	<% @countries.each do |c| %>
+				<h5><%=c.name%></h5>
+				<%=render :partial => 'city_tags', :collection => c.cities, :as => :city %>
+			<% end %>
+	    </div>
+	</div>
 
-<div class="row">
-    <div class="twelve columns"><div id="map" style="height:496px;"></div></div>
+	<hr style="margin:0px;"/>
+	<div id="map" style="height:496px;"></div>
+	<hr style="margin:0px 0px 15px 0px;"/>
 </div>
-
-<hr />
 
 <div class="row">
 	<div class="twelve columns">
@@ -38,6 +38,6 @@
 
 <%= javascript_tag do %>
 	$(function() {
-		init_map(0, 0)
+		init_map()
 	});
 <% end %>

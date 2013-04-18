@@ -19,16 +19,32 @@ Google = {};
 
 $.fn.raty.defaults.path = '/assets/';
 
-function init_map(city_id, location_id) {
-	$.getJSON("/get_json.json?city_id=" + city_id + "&location_id=" + location_id, function(data) {
+String.prototype.all_capitalize = function(){
+    return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase();
+    } );
+};
+
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+
+function init_map(options) {
+	if(options == undefined) options = {};
+
+	if (!options['latitude']) options['latitude'] = 56.34;
+	if (!options['longitude']) options['longitude'] = 11.3;
+	if (!options['zoom']) options['zoom'] = 6;
+
+	$.getJSON("/get_json.json?city_id=" + options['city_id'] + "&location_id=" + options['location_id'], function(data) {
 
 		if ( $('#map').length == 0 ) return
 
-		latitude = 56.34
-		longitude = 11.3
-		zoom = 6
+		latitude = options['latitude'];
+		longitude = options['longitude'];
+		zoom = options['zoom'];
 
-		if (data.length == 1) {
+		if (data.length == 1 && options['city_id'] == undefined) {
 			latitude = data[0]['latitude']
 			longitude = data[0]['longitude']
 			zoom = 17
@@ -49,20 +65,13 @@ function init_map(city_id, location_id) {
 				position: new google.maps.LatLng(location['latitude'], location['longitude']),
 				map: Google.map,
 				title: location['name'],
-				icon: new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + location['id'] + '|' + location['city']['color'], new google.maps.Size(28, 48))
+				icon: '/assets/map-marker-3-32.png'
+				//icon: new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + location['id'] + '|' + location['city']['color'], new google.maps.Size(28, 48))
 			});
 
 			if (data.length > 1) {
 				google.maps.event.addListener(marker, 'click', function(event) {
-					Google.infoWindow.setContent('<div id="content">'+
-					            '<div id="siteNotice">'+
-					            '</div>'+
-					            '<h1 id="firstHeading" class="firstHeading">' + marker.location['name'] + '</h1>'+
-					            '<div id="bodyContent">'+
-					            '<p>' + marker.location['description'] + '</p>'+
-					            '<p><a href="/' + marker.location['city']['name'] + '/' + marker.location['name']+ '">Vis mere info</a></p>'+
-					            '</div>'+
-					            '</div>')
+					Google.infoWindow.setContent('<h5>' + marker.location['name'].all_capitalize() + '</h5><p style="padding:0;margin:0px;">' + marker.location['description'].capitalize() + '</p><p><a href="/' + marker.location['city']['name'] + '/' + marker.location['name']+ '">Vis mere info</a></p>');
 					Google.infoWindow.open(Google.map, marker);
 				});
 			}

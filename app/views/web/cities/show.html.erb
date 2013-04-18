@@ -3,10 +3,22 @@
 <% content_for(:meta_description, "Oversigt over alle Vandpibe Cafeer i " + @city.name.big + ". Info omkring Åbningstider, Tobak, Vandpibe, Bedste Cafe, osv.") %>
 
 <div class="row">
-	<div class="twelve columns">
+	<div class="twelve columns padding-top10">
 		<%=breadcrumbs(@city.name => '#')%>
 	</div>
 </div>
+
+<hr style="margin:0px;"/>
+<div id="map" style="height:300px;"></div>
+<hr style="margin:0px 0px 15px 0px;"/>
+
+<%= javascript_tag do %>
+	$(function() {
+		init_map({city_id: <%=@city.id%>, latitude: <%=@city.latitude%>, longitude: <%=@city.longitude%>, zoom: 12})
+	});
+<% end %>
+
+
 
 <div class="row">        
     <div class="nine columns push-three">
