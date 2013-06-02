@@ -45,6 +45,7 @@ class MainController < ApplicationController
       redirect_to "/" #render :xml => request.env["omniauth.auth"].to_xml
     else
       return_to = session[:return_to]
+      logger.info " => " + return_to
       redirect_to return_to
     end
   end
@@ -56,6 +57,9 @@ class MainController < ApplicationController
   end
   
   def login
+    if params['return']
+      session[:return_to] = params['return']
+    end
   end
   
   def logout

@@ -1,10 +1,7 @@
 <% if logged_in? %>
-	<p>Du kan kun anmelde <%=@location.name.big%> Vandpibe Cafeen engang. <br /></p>
-	<a class="success button" data-reveal-id="comment-modal" href="#">Bedøm Cafe</a>
+	<a class="success button" data-reveal-id="comment-modal" href="#">Bedøm Selv</a>
 <% else %>
-	<p>Du skal være logget på for at skrive om din oplevelse på <strong><%=@location.name.big %> Vandpibe Cafeen</strong>. 
-	<br />På den måde er vi sikker på at alle bruger bedømmer hver cafe 1 gang og ikke flere gange.<br />
-	Alle bruger anmeldelser bliver annonym. </p>
+	<p>Du skal være logget på for at bedømme <strong><%=@location.name.big %> Vandpibe Cafe</strong>.</p>
 
 	<%= link_to image_tag('facebook-login.png'), "/auth/facebook" %>
 <% end %>

@@ -33,12 +33,18 @@
 				</div>
 
 				<div class="content">
+					<% if @location.visible? %>
+					<div class="panel graypage">
+						<%= render 'comment_form' %>
+					</div>
+					<% end %>
+
 					<ul class="comments-list">
 						<%=render :partial => 'comment', :collection => @location.comments.order('id DESC').includes(:user) %>
 					</ul>
 				
 
-					<% if @location.visible? %>
+					<% if @location.visible? && @location.comments.length > 5 %>
 					<div class="panel graypage">
 						<%= render 'comment_form' %>
 					</div>
@@ -77,7 +83,7 @@
 
 <% if @location.visible? && logged_in? %>
 	<div id="comment-modal" class="reveal-modal medium">
-		<h4 class="margin-bottom20">Fortæl om din oplevelse på <%=@location.name.big%></h4>
+		<h3 class="margin-bottom20">Fortæl om din oplevelse på <%=@location.name.big%></h3>
 		<p>Når du beskriver eller giver stjerner, så bør dine beskrivelser fokusere på at formidle dine erfaringer og oplevelser til andre brugere. </p>
 		<%= simple_form_for Comment.new, :url => locations_path, :remote => true, :html => {:id => 'location_new_comment'} do |f| %>
 			<div class="rate-container">
@@ -89,11 +95,11 @@
 			</div>
 			
 			<div class="rate-container">
-				<div class="rate-header">Hvordan var renheden på <%=@location.name.big%>?</div>
+				<div class="rate-header">Hvordan var rengøring på <%=@location.name.big%>?</div>
 				<div class="rate-content"><div id="clean" class="rate"></div><div id="clean_hint" class="hint"></div></div>
 
 				<%= javascript_tag do %>
-					$('#clean').raty({target: '#clean_hint', readOnly: false, hints: ['Meget grimt og beskidt sted', 'Grimt sted at være', 'Det var okay', 'Der var gjort rent', 'Det var gjort ordentlig rent', 'Alt var gjort rent, også inden vi sad så gjorde de bordet rent for os.'], click: function(score, evt){ updateScore('clean', score)} });
+					$('#clean').raty({target: '#clean_hint', readOnly: false, hints: ['Meget grimt og beskidt sted', 'Grimt sted at være', 'Det var okay', 'Der var gjort rent', 'Det var gjort ordentlig rent', 'Alt var gjort rent, og inden vi sad så gjorde de bordet rent for os.'], click: function(score, evt){ updateScore('clean', score)} });
 				<% end %>
 			</div>
 
@@ -102,7 +108,7 @@
 				<div class="rate-content"><div id="service" class="rate"></div><div id="service_hint" class="hint"></div></div>
 
 				<%= javascript_tag do %>
-					$('#service').raty({target: '#service_hint', readOnly: false, hints: ['Meget dårlig service', 'Dårlig service', 'God service.', 'Bedre service end mange andre', 'Meget god service, de ordnede hele tiden vandpibe til os', 'Service i top, de kom over til os, da vi skulle bestille og de skiftede enda kul til os.'], click: function(score, evt){ updateScore('service', score)} });
+					$('#service').raty({target: '#service_hint', readOnly: false, hints: ['Meget dårlig service', 'Dårlig service', 'God service.', 'Bedre service end mange andre', 'Meget god service, de ordnede hele tiden vandpibe til os', 'Service i top, de kom over til os da vi skulle bestille og de skiftede enda kul til os løbende.'], click: function(score, evt){ updateScore('service', score)} });
 				<% end %>
 			</div>
 
@@ -120,7 +126,7 @@
 			<%= text_field_tag "scores[service]", 0, :type => :hidden %>
 			<%= text_field_tag "scores[social]", 0, :type => :hidden %>
 			
-			<%= f.input :body, :label => 'Skrive din anmeldelse i boksen', :required => false, :input_html => {:style => "height:150px"} %>
+			<%= f.input :body, :label => 'Skrive din anmeldelse (Ikke kravet):', :required => false, :input_html => {:style => "height:150px"} %>
 			<%= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }%>
 
 			<%= f.button :submit, :value => "Send min vurdering", :class => "button", data: {disable_with: "Vent et øjeblik..."} %>

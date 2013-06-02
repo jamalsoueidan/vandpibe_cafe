@@ -1,10 +1,7 @@
 <% if logged_in? %>
-	<p>For at skrive en anmeldelse eller bedømme <%=@location.name.big%> Cafeen, så tryk på knappen nedenfor. <br /><strong>Alle bedømmelser og anmeldelser er anonym!</strong></p>
-	<%= link_to "Bedøm Cafe", city_location_write_review_path(@location.city.name, @location.name.to_url), :class => "success button" %>
+	<%= link_to "Bedøm Selv", city_location_write_review_path(@location.city.name, @location.name.to_url), :class => "success button extend no-margin" %>
 <% else %>
-	<p>Du skal være logget på for at skrive om din oplevelse på <strong><%=@location.name.big %> Vandpibe Cafeen</strong>. 
-	<br />På den måde er vi sikker på at alle bruger bedømmer hver cafe 1 gang og ikke flere gange.<br />
-	Alle bruger anmeldelser bliver annonym. </p>
+	<p>Du skal være logget på for at bedømme <strong><%=@location.name.big %> Vandpibe Cafe</strong>.</p>
 
 	<%= link_to image_tag('facebook-login.png'), "/auth/facebook" %>
 <% end %>

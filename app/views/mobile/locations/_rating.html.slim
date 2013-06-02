@@ -10,3 +10,11 @@ ul class="small-block-grid-2"
 
 	li Social
 	li = rating(location, :class => 'social')
+
+
+	- if logged_in?
+		a class="success button extend no-margin" data-reveal-id="comment-modal" href="#"
+			= "Bedøm Selv"
+	- else
+		a class="success button extend no-margin" href="/login?return=#{city_location_path(@location.city.name, @location.name.to_url)}"
+			= "Bedøm Selv"

@@ -15,7 +15,7 @@
 			</div>
 			
 			<div class="rate-container">
-				<div class="rate-header">Hvordan var renheden på <%=@location.name.big%>?</div>
+				<div class="rate-header">Hvordan var rengøring på <%=@location.name.big%>?</div>
 				<div class="rate-content"><div id="clean" class="rate"></div><div id="clean_hint" class="hint"></div></div>
 
 				<%= javascript_tag do %>
@@ -28,7 +28,7 @@
 				<div class="rate-content"><div id="service" class="rate"></div><div id="service_hint" class="hint"></div></div>
 
 				<%= javascript_tag do %>
-					$('#service').raty({width: '100%', targetKeep: true, target: '#service_hint', readOnly: false, hints: ['Meget dårlig service', 'Dårlig service', 'God service.', 'Bedre service end mange andre', 'Meget god service, de ordnede hele tiden vandpibe til os', 'Service i top, de kom over til os, da vi skulle bestille og de skiftede enda kul til os.'], click: function(score, evt){ updateScore('service', score)} });
+					$('#service').raty({width: '100%', targetKeep: true, target: '#service_hint', readOnly: false, hints: ['Meget dårlig service', 'Dårlig service', 'God service.', 'Bedre service end mange andre', 'Meget god service, de ordnede hele tiden vandpibe til os', 'Service i top, de kom over til os da vi skulle bestille og de skiftede enda kul til os.'], click: function(score, evt){ updateScore('service', score)} });
 				<% end %>
 			</div>
 
@@ -46,7 +46,7 @@
 			<%= text_field_tag "scores[service]", 0, :type => :hidden %>
 			<%= text_field_tag "scores[social]", 0, :type => :hidden %>
 			
-			<%= f.input :body, :label => 'Skrive din anmeldelse i boksen', :required => false, :input_html => {:style => "height:150px"} %>
+			<%= f.input :body, :label => 'Skrive din anmeldelse i boksen (ikke kravet)', :required => false, :input_html => {:style => "height:150px"} %>
 			<%= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }%>
 
 			<%= f.button :submit, :value => "Send min vurdering", :class => "button", data: {disable_with: "Vent et øjeblik..."}  %>

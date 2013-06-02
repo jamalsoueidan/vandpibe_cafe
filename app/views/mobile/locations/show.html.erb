@@ -45,11 +45,18 @@
 					</div>
 
 					<div class="content">
+						<% if @location.visible? %>
+						<div class="panel graypage">
+							<%= render 'comment_form' %>
+						</div>
+						<% end %>
+
 						<ul class="comments-list">
 							<%=render :partial => 'comment', :collection => @location.comments.order('id DESC').includes(:user) %>
 						</ul>
 					
-						<% if @location.visible? %>
+
+						<% if @location.visible? && @location.comments.length > 5 %>
 						<div class="panel graypage">
 							<%= render 'comment_form' %>
 						</div>
