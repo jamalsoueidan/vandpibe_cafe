@@ -23,6 +23,6 @@ class CitiesController < ApplicationController
   private
     def set_cities
       @countries = Country.order(:name)
-      @cities = City.limit(30)
+      @cities = City.where(:visible => true).order(:name)
     end
 end
