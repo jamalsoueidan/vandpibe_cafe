@@ -1,0 +1,2 @@
+li id="city_#{city.id}" class="#{( current_page?(city_path(city.name)) ? 'active' : '' )}"
+	= link_to city.name.big, city_path(city.name)

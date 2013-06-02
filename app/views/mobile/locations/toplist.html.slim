@@ -1,0 +1,32 @@
+- content_for(:title, toplist_title) 
+- content_for(:meta_title, toplist_title) 
+- content_for(:meta_description, "Viser listen over de bedste Vandpibe Cafeer i Danmark")
+
+
+div.row
+	div class="large-12 columns margin-top15"
+		p Nu har du mulighed for at bedømme den Vandpibe Cafe du besøger. Det eneste du skal gøre er at logge på og bagefter vælge Vandpibe Cafeen du besøger, så har du muligheden for at bedømme den.
+
+ul.row
+	- @locations.each do |location|
+		li class="large-12 columns margin-bottom25"	
+			div class="outter-box"
+				div class="inner-box"
+					div class="header top-left-corner top-right-corner"
+						h1 = link_to location.name.big, city_location_path(location.city.name, location.name.to_url)
+						h2 = link_to location.city.name.big, city_path(location.city.name)
+
+					div.row
+						div class=" small-12 columns"
+							div.image
+								a href=(city_location_path(location.city.name, location.name.to_url))
+									= image_tag_unless(location.uploads, :class => "bottom-left-corner display-block hundred-procent")
+
+					div.row
+						div class="small-12 columns" 
+							div.padding10
+								- unless location.description == ""
+									p	= truncate(location.description, :length => 100)
+
+								div class="rating"
+									= rating(location, :class => "all", :score => location.ratings.calculate_all)

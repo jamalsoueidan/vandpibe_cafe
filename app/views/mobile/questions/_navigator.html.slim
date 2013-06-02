@@ -1,0 +1,15 @@
+div class="row"
+	div class="small-12 columns"
+		div class="section-container vertical-nav" data-section="" data-options="deep_linking: false; one_up: true" style=""
+			section class=( "section"  + ( current_page?(questions_path) ? ' active' : '' ) )
+				h5 class="title" 
+					= link_to "Vis nyeste spørgsmål", questions_path
+			section class==( "section"  + ( current_page?(hot_questions_path) ? ' active' : '' ) )
+				h5 class="title" 
+					= link_to "Vis mest diskuterede", hot_questions_path
+			section class==( "section"  + ( current_page?(recent_questions_path) ? ' active' : '' ) )
+				h5 class="title" 
+					= link_to "Vis active spørgsmål", recent_questions_path
+			section class==( "section"  + ( current_page?(unanswered_questions_path) ? ' active' : '' ) )
+				h5 class="title" 
+					= link_to "Vis ubesvaret spørgsmål", unanswered_questions_path

@@ -1,0 +1,15 @@
+a href="#{city_location_path(@city.name, location.name.to_url)}" 
+	li class=(cycle("white", "grey") + "-background location") id=("location" + location.id.to_s)
+		div class="row"
+		    div class="small-4 columns" 
+		    	= image_tag_unless(location.uploads, :style => "width:100%;height:80px;")
+
+		    div class="small-8 columns"
+				h5 
+					= location.name.big
+					- if not location.visible?
+						small class="red-color padding-left5" [CAFEEN LUKKET]
+
+				div class="rate"
+					javascript: 
+						$('li#location#{location.id} .rate').raty({ score: #{location.ratings.calculate_all}  });

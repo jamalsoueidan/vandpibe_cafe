@@ -1,0 +1,17 @@
+= content_for(:title, @city.name.big) 
+= content_for(:meta_title, 'Vandpibe Cafe ' + @city.name.big) 
+= content_for(:meta_description, "Find alle Vandpibe Cafe i " + @city.name.big + ". Info omkring Åbningstider, Tobak, Vandpibe, Køb, Salg, osv.") 
+
+= enable_back(root_url) 
+
+div class="row margin-top15 margin-bottom15"
+	div class="small-12 columns"
+		div.outter-box
+			div.inner-box
+				- if @city.locations.nil?
+					p 
+						| Vandpibe Cafe i #{city.name.big} der, hvis du ved der ligger en vandpibe cafe i #{@city.name.big} så er du mere end velkommen til at fortælle os via 
+						= link_to "Kontakt os", contact_path
+				- else
+					ul class="locations"
+						=render :partial => 'location', :collection => @city.locations, :as => :location

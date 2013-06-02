@@ -1,0 +1,37 @@
+// Place all the styles related to the cities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'mixin'
+
+body#cities 
+	.inner-box 
+		background-color: #e4e4e4
+		ul.locations 
+			margin: 0
+
+			li.location 
+				border-bottom: 1px solid #CCC
+
+				.small-4
+
+					img
+						display: block
+
+				.small-8
+					padding-top: $spacing - 3px
+
+			a:first-child li img
+				@include top-left-corner
+
+			a:first-child li 
+				@include top-left-corner
+				@include top-right-corner
+
+			a:last-child li 
+				@include bottom-left-corner
+				@include bottom-right-corner
+				border-bottom: 0px
+
+			a:last-child li img
+				@include bottom-left-corner

@@ -1,0 +1,28 @@
+div class="navigation margin-bottom20"    
+  div class="row"
+    div class="large-12 columns text-center"
+      = link_to(image_tag('logo4.png'), '/', :alt => 'Vandpibe Cafe')
+  div class="row"
+    div class="large-12 columns text-center login"
+
+= javascript_tag do
+  | $(function() {
+    $.get('#{authjs_path}', function(data) {
+      $('.login').html(data)
+    });
+  | })
+  
+div class="row"
+	div class="small-12 columns text-center"
+		h1 hmm, hvor leder du efter en Vandpibe Cafe?
+
+div class="row"
+	div class="small-12 columns"
+		- @countries.each do |c|
+			div class="country-list margin-top15"
+					span style="color: ##{c.color}"
+						= c.name
+
+					div class="city-list"
+						- c.cities.each do |city|
+							= link_to city.name.big, city_path(city.name), :style => "background: ##{c.color}"

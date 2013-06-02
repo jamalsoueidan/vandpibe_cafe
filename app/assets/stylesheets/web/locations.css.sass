@@ -1,0 +1,119 @@
+// Place all the styles related to the locations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'mixin'
+
+#locations 
+	.toplist 
+		.row 
+			li.location 
+				@include outter-box(8px)
+				margin-bottom: 15px
+
+				.wrapper 
+					@include inner-box(8px)
+
+					@include header
+
+					.image 
+						img 
+							display: block
+			&:first-child
+				margin-top: 10px
+
+#locations 
+	.show 
+		.row 
+			@include outter-box(8px)
+			margin-bottom: 30px
+
+			.wrapper 
+				@include inner-box(8px)
+				overflow: hidden
+
+				.large-4, .large-8 
+					padding: 0px
+
+			@include header
+
+			.content 
+				padding: 20px
+
+			.comments-container 
+				.comments-header 
+					background: #242424
+					background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2e2e2e), to(#1a1a1a))
+					background: -webkit-linear-gradient(0% 0%, 0% 100%, from(#2e2e2e), to(#1a1a1a))
+					background: -moz-linear-gradient(center top, #2e2e2e, #1a1a1a)
+					background: linear-gradient(#2e2e2e, #1a1a1a)
+					padding: 12px 20px 10px
+					border-bottom: 1px solid rgba(187, 187, 187, 0.1)
+
+					h3 
+						color: #FFF
+						font-size: 15px
+
+				.comments-list 
+					.comment-container 
+						font-size: 13px
+						padding-bottom: 25px
+						margin-bottom: 27px
+						border-bottom: 1px solid #cacaca
+
+						.comment-text 
+							line-height: 20px
+							word-wrap: break-word
+
+						.comment-date 
+							color: #b5b5b5
+
+			.sidebar-block 
+				position: relative
+				padding: 32px 24px 20px 22px
+				border-top: 1px solid #dfdfdf
+
+				.sidebar-label 
+					-webkit-box-shadow: 0 1px 0 white
+					-moz-box-shadow: 0 1px 0 white
+					box-shadow: 0 1px 0 white
+					border-radius: 0 0 3px 3px
+					border: 1px solid #e5e5e5
+					border-top: none
+					color: #797979
+					cursor: default
+					font-size: 10px
+					font-weight: bold
+					left: 21px
+					line-height: 16px
+					padding: 0 7px 1px
+					position: absolute
+					text-transform: uppercase
+					top: 0
+					font-family: Arial, sans-serif
+
+				.sidebar-content
+					font: normal normal normal 12px/16px 'Helvetica Neue', Helvetica, Arial, sans-serif
+
+					ul
+						margin-bottom: 0
+
+		.rate-container 
+			clear: left
+			margin-bottom: 20px
+
+			.rate-header
+				font-weight: bold
+				margin-bottom: 5px
+			
+			.rate-content 
+				overflow: hidden
+
+			.rate
+				float: left
+
+			.hint 
+				font-size: 10px
+				color: #3085d6
+				float: left
+				padding-top: 3px

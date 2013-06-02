@@ -1,0 +1,50 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.avatar_url {
+	width:32px;
+	height:30px;
+	margin-bottom:-10px;
+}
+
+
+div.header {
+	background: url('/assets/header-repeat-background.png') 0 0 repeat-x;
+
+	ul {
+		h3 {
+			color: #FFF;
+			font-size:1.4	em;
+			padding:0;
+			font-weight: normal;
+			margin:0px 0px 10px 0px;
+		}
+		p {
+			font-size:.75em;
+			margin:0;
+			padding:0;
+			color: #85c0e9;
+		}
+
+		.box {
+			background: url('/assets/box_background.png') 0 0 repeat-x;
+			text-align: center;
+			padding-bottom:10px;
+		}
+
+		.box:hover {
+			background-position: 0px -167px;
+		}
+	}
+}
+
+div.header-down {
+	background: url('/assets/header-down.png') 0 0 repeat-x;
+	height: 50px;
+	line-height:47px;
+
+	a {
+		color: #FFF;
+	}
+}

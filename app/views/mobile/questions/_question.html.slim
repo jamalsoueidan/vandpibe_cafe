@@ -1,0 +1,10 @@
+a href="#{question_path(question.id, question.title.to_url)}"
+	li id="question_#{question.id}" class="row question"
+		div class="small-3 columns"
+			div.question-answers
+				strong
+					= question.comments.length
+				br 
+					= "svar"
+		div class="small-9 columns question-title"
+			h2 = truncate(question.title, :length => 26)

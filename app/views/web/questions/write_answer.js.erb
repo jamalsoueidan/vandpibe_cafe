@@ -1,0 +1,3 @@
+url = window.location.href.replace(/#.*/,'')
+window.location.href = url + "#" + <%=@comment.id%>;
+location.reload();

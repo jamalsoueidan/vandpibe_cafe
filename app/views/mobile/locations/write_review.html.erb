@@ -1,0 +1,61 @@
+<% content_for(:title, 'Del din mening') %>
+
+<%= enable_back(city_location_path(@location.city.name, @location.name.to_url)) %>
+
+<div class="row">
+	<div class="small-12 columns text-center">
+		<p>Når du beskriver eller giver stjerner, så bør dine beskrivelser fokusere på at formidle dine erfaringer og oplevelser til andre brugere. </p>
+		<%= simple_form_for Comment.new, :url => locations_path, :remote => true, :html => {:id => 'location_new_comment'} do |f| %>
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var vandpiben på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="waterpipe" class="rate"></div><div id="waterpipe_hint" class="hint"></div></div>
+				<%= javascript_tag do %>
+					$('#waterpipe').raty({width: '100%', targetKeep: true, target: '#waterpipe_hint', readOnly: false, hints: ['Meget dårlig vandpibe, det er til at brække sig over', 'Man kunne næsten ryge vandpibe!', 'Vandpibe er okay.', 'Vandpibe var god, smagen holdte i stykke tid', 'Vandpibe var meget god, og jeg kunne ryge i flere timer uden at bemærke dårlig smag.', 'Vandpiben var klasse, de skiftede kul til os og tobakken var klasse'], click: function(score, evt){ updateScore('waterpipe', score)} });
+				<% end %>
+			</div>
+			
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var renheden på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="clean" class="rate"></div><div id="clean_hint" class="hint"></div></div>
+
+				<%= javascript_tag do %>
+					$('#clean').raty({width: '100%', targetKeep: true, target: '#clean_hint', readOnly: false, hints: ['Meget grimt og beskidt sted', 'Grimt sted at være', 'Det var okay', 'Der var gjort rent', 'Det var gjort ordentlig rent', 'Alt var gjort rent, også inden vi sad så gjorde de bordet rent for os.'], click: function(score, evt){ updateScore('clean', score)} });
+				<% end %>
+			</div>
+
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var servicen på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="service" class="rate"></div><div id="service_hint" class="hint"></div></div>
+
+				<%= javascript_tag do %>
+					$('#service').raty({width: '100%', targetKeep: true, target: '#service_hint', readOnly: false, hints: ['Meget dårlig service', 'Dårlig service', 'God service.', 'Bedre service end mange andre', 'Meget god service, de ordnede hele tiden vandpibe til os', 'Service i top, de kom over til os, da vi skulle bestille og de skiftede enda kul til os.'], click: function(score, evt){ updateScore('service', score)} });
+				<% end %>
+			</div>
+
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var social livet på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="social" class="rate"></div><div id="social_hint" class="hint"></div></div>
+
+				<%= javascript_tag do %>
+					$('#social').raty({width: '100%', targetKeep: true, target: '#social_hint', readOnly: false, hints: ['Forladt sted', 'Der var ingen tilsted!', 'Der var et par stykker', 'Der var en del mennesker tilsted', 'Det var hyggeligt og der var mange mennesker tilsted', 'Der var helt proppet og gang i det.'], click: function(score, evt){ updateScore('social', score)} });
+				<% end %>
+			</div>
+
+			<%= text_field_tag "scores[waterpipe]", 0, :type => :hidden %>
+			<%= text_field_tag "scores[clean]", 0, :type => :hidden %>
+			<%= text_field_tag "scores[service]", 0, :type => :hidden %>
+			<%= text_field_tag "scores[social]", 0, :type => :hidden %>
+			
+			<%= f.input :body, :label => 'Skrive din anmeldelse i boksen', :required => false, :input_html => {:style => "height:150px"} %>
+			<%= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }%>
+
+			<%= f.button :submit, :value => "Send min vurdering", :class => "button", data: {disable_with: "Vent et øjeblik..."}  %>
+		<% end %>
+	</div>
+</div>
+
+<%= javascript_tag do %>
+function updateScore(element, score) {
+	$('#scores_' + element).val(score);
+}
+<% end %>

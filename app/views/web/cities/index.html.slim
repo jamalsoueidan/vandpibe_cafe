@@ -1,0 +1,35 @@
+div class="row"
+    div class="large-12 columns"
+    	h1 hmm, hvor leder du efter en Vandpibe Cafe?
+
+    	hr /
+
+    	div class="country-list"
+    		- @countries.each do |c| 
+    			css:
+    				body#cities div.index div.row div.country-list span.country#{c.id} {color: ##{c.color};}
+    				body#cities div.index div.row div.city-list a.country#{c.id} {background: ##{c.color};}
+
+				span class="country#{c.id}"
+					= c.name
+
+		hr /
+
+		div class="city-list"
+			- @cities.each do |city| 
+				= link_to city.name.big, city_path(city.name), :class => "country" + city.country_id.to_s
+				= " "
+
+	div class="large-12 columns"
+		div id="map" style="height:496px;-webkit-box-shadow:0 0 15px #000; -moz-box-shadow: 0 0 15px #000; box-shadow:0 0 15px #000; margin: 50px 0px"
+
+div class="random-locations"
+
+javascript:
+	$(function() {
+		init_map()
+
+		$.get('#{random_locations_path}', function(response) {
+			$('.random-locations').html(response);
+		});
+	});
