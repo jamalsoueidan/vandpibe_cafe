@@ -1,3 +1,2 @@
-$('#location_comments').append("<%= escape_javascript(render(:partial => "/locations/comment", :locals => {:comment => @comment}))%>" )
-$('textarea').val('')
-$('#location_comments li:last').effect('highlight', {}, 3000);
+window.location.href += "#" + <%=@comment.id%>;
+location.reload();

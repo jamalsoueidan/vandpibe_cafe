@@ -1,4 +1,6 @@
 da:
+  active_admin:
+    dashboard: 'DashBoard'
   date:
     abbr_day_names:
     - søn

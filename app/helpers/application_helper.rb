@@ -32,4 +32,14 @@ module ApplicationHelper
       return 'http://assets.vandpibecafe.dk/'
     #end
   end
+
+  def enable_back(url=nil, options={})
+    javascript_tag do
+      if url.nil?
+        raw("enable_back()")
+      else
+        raw("enable_back('#{url}')")
+      end
+    end
+  end
 end

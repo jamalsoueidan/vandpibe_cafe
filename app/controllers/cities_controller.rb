@@ -12,7 +12,9 @@ class CitiesController < ApplicationController
   end
 
   def show
-    @city = City.includes(:locations => :uploads).find_by_url(params[:name])
+    @city = City.find_by_url(params[:name])
+    @locations = Location.where(:city_id => @city.id).sort_by(params[:sort])
+
     if @city.nil?
       redirect_to root_path
     end
@@ -20,6 +22,7 @@ class CitiesController < ApplicationController
 
   private
     def set_cities
-      @countries = Country.includes(:cities)
+      @countries = Country.order(:name)
+      @cities = City.limit(30)
     end
 end

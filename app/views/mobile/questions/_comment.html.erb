@@ -1,30 +1,13 @@
-<% if @commentable && @commentable.comments.length > 1 %>
-	<%= render 'spacer_template'%>
-<% end %>
-
-
-<li id="question_comment_<%=comment.id%>">
+<li id="comment_<%=comment.id%>" class="comment">
 	<div class="row">
-		<!--<div class="two columns hide-for-small">
-			<div id="rate_comment_<%=comment.id%>" class="total-comments">
-				<%= link_to image_tag('thumb-up.png'), ratings_path(:rating => 1, :rating_key => 'vote', :table_id => comment.id, :table_type => 'comment'), :method => :post, :remote => true, :class => 'question-comment-rating' %>
-				 
-				<%=comment.ratings.length%> 
-				
-				<%= link_to image_tag('thumb-down.png'), ratings_path(:rating => 0, :rating_key => 'vote', :table_id => comment.id, :table_type => 'comment'), :method => :post, :remote => true, :class => 'question-comment-rating'%> <br />stemmer</div>
-		</div>-->
-		<div class="three columns">
-			<% if comment.anonymous? %>
-				Anonym bruger<br />
-			<% else %>
-			<%= link_to image_tag(comment.user.avatar_url), user_path(comment.user), :class => "remove-right-border left-border" %><br />
-			<%= link_to comment.user.nickname, user_path(comment.user), :class => "remove-right-border left-border" %><br />
-			<% end %>
-			<%=comment.created_at.strftime('%d %b %y')%>
+		<div class="small-3 columns">
+			<%= image_tag(comment.user.avatar_url) %>
 		</div>
-		<div class="nine columns">
-			<%=simple_format(comment.body)%>
-			
+		<div class="small-9 columns">
+			<span class="nickname"><%= comment.user.fullname %></span> <%=simple_format(comment.body)%>
+
+			<span class="created_at"><%=comment.created_at.strftime('%d %b %y')%></span>
+
 			<% if is_owner?(comment) %>
 				<div class="options"><%= link_to "Fjern", comment_path(comment), :method => :delete, :confirm => 'Er du sikker du vil slette din anmeldelse?', :remote => true, :id => "remove_comment" %></div>
 			<% end %>

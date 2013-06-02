@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require "foundation"
+//= require foundation
 //= require_directory .
 
-Google = {};
+$(function() {
+	$(document).foundation();
+})
 
-$.fn.raty.defaults.path = '/assets/';
+Google = {};
 
 String.prototype.all_capitalize = function(){
     return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase();
@@ -59,8 +61,7 @@ function init_map(options) {
 				position: new google.maps.LatLng(location['latitude'], location['longitude']),
 				map: Google.map,
 				title: location['name'],
-				icon: '/assets/map-marker-3-32.png'
-				//icon: new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + location['id'] + '|' + location['city']['color'], new google.maps.Size(28, 48))
+				icon: new google.maps.MarkerImage('http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|' + location['city']['country']['color'], new google.maps.Size(28, 48))
 			});
 
 			if (data.length > 1) {

@@ -1,13 +1,12 @@
 <div class="row">    
-	<div class="eight columns push-four whitepage">
+	<div class="large-9 columns">
 		<h3>Redigere spørgsmål</h3>
 		<%= simple_form_for @question, :url => update_question_path(@question.id) do |f| %>
 			<%= f.input :title, :label => "Ændre dit spørgsmål her:"  %>
 			<%= f.input :category, :as => :select, :collection => Question::CATEGORIES, :include_blank => false %>
 			<%= f.input :body, :label => "Informationer omkring dit spørgsmål:"%>
-			<%= f.input :anonymous, :label => ' Afkryds boksen hvis du gerne vil være anonym?' %>
+			<%#= f.input :anonymous, :label => ' Afkryds boksen hvis du gerne vil være anonym?' %>
 			<%= f.button :submit, :value => "Opdater spørgsmål", :class => "button" %>
 		<% end %>
     </div>
-    <%= render :partial => 'navigator' %>
 </div>

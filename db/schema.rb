@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412150329) do
+ActiveRecord::Schema.define(:version => 20130427100431) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130412150329) do
 
   create_table "countries", :force => true do |t|
     t.string "name"
+    t.string "color"
   end
 
   create_table "locations", :force => true do |t|
@@ -108,13 +109,15 @@ ActiveRecord::Schema.define(:version => 20130412150329) do
 
   create_table "ratings", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "rating_id"
-    t.integer  "rating_value"
-    t.string   "rating_type"
+    t.integer  "location_id"
     t.string   "rating_key"
+    t.float    "rating_value"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "ratings", ["location_id"], :name => "index_ratings_on_location_id"
+  add_index "ratings", ["user_id"], :name => "index_ratings_on_user_id"
 
   create_table "references", :force => true do |t|
     t.string  "name"

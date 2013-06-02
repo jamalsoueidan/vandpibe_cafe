@@ -1,12 +1,12 @@
 # -*- encoding : utf-8 -*-
 class LocationsController < ApplicationController
 
-  before_filter :authorize, :only => [:destroy]
+  before_filter :authorize, :only => [:destroy, :create, :write_review]
 
   caches_page :toplist
 
   def toplist
-    @locations = Location.best_rating(params[:order])
+    @locations = Location.sort_by("rating").limit(10)
   end
 
   def show
@@ -35,20 +35,34 @@ class LocationsController < ApplicationController
     end
   end
 
+  def write_review
+    show
+  end
+
   def random
     @locations = Location.order('RAND()').limit(4)
     render :layout => false
   end
 
+  def new_comment
+    @location = Location.find(params[:id])
+    @city = @location.city
+    
+  end
+
   def create
-    @spacer = true
-    @location = Location.includes(:comments).find(params[:comment][:table_id])
-    @comment = @location.comments.build(params[:comment])
-    if not logged_in?
-      @comment.user = User.annonym
-    else
+    @location = Location.find(params[:comment][:table_id])
+
+    if params[:comment][:body].length > 10
+      @comment = @location.comments.build(params[:comment])
       @comment.user = current_user
+      @comment.save
     end
-    @comment.save
+
+    params[:scores].each do |key, value|
+      if !@location.ratings.exists?(:rating_key => key)
+        @location.ratings.create(:rating_key => key, :rating_value => value)
+      end
+    end
   end
 end

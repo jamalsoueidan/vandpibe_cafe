@@ -1,75 +1,152 @@
 <% content_for(:title, @location.name.big + " Vandpibe Cafe") %>
 <% content_for(:meta_title, @location.name.big + " Vandpibe Cafe") %>
-<% content_for(:meta_description, @location.name.big + " Vandpibe Cafe ligger i " + @location.city.name.big + ". Alt hvad du vil vide om Cafeen, har vi på www.vandpibecafe.dk") %>
+<% content_for(:meta_description, @location.name.big + " Vandpibe Cafe ligger i " + @location.city.name.big + ". Alt hvad du vil vide om Cafeen, kan du læse på vandpibecafe.dk") %>
 
-<%= render :partial => 'breadcrumbs'%>
+<br />
 
 <% if @nearest && @nearest.id != @location.id %>
 	<%= render :partial => 'nearest', :locals => {:location => @nearest}%>
 <% end %>
 
 <div class="row">
-	<div class="eight columns">
-		<div class="panel whitepage" style="margin-bottom:15px;">
-			<h1><%=@location.name.big%> <% if not @location.visible? %><small class="red-color">[CAFEEN ER LUKKET]</small><% end %></h1>
-			<h2 class="subheader"><%= simple_format(@location.description)%></h2>
+	<div class="wrapper">
+		<div class="large-8 columns">
+			<div class="header top-left-corner">
+				<h1><%=@location.name.big%></h1>
+				<h2><%= link_to @location.city.name.big, city_path(@location.city.name) %></h2>
+			</div>
 
-			<ul>
-				<%= render(:partial => 'reference', :collection => @location.references, :as => :reference)%>
-			</ul>
+			<div class="content">
+				<% if @location.description != "" %>
+				<%= simple_format(@location.description)%>
+				<% end %>
 
-			<ul class="block-grid six-up" data-clearing>
-				<%= render(:partial => 'upload', :collection => @location.uploads, :as => :upload)%>
-			</ul>
+				<ul class="large-block-grid-4" data-clearing>
+					<%= render(:partial => 'upload', :collection => @location.uploads, :as => :upload)%>
+				</ul>
+			</div>
+
+			
+			<div class="comments-container">
+				<div class="comments-header">
+					<h3>Bruger anmeldelser (<%=@location.comments.length%>)</h3>
+				</div>
+
+				<div class="content">
+					<ul class="comments-list">
+						<%=render :partial => 'comment', :collection => @location.comments.order('id DESC').includes(:user) %>
+					</ul>
+				
+
+					<% if @location.visible? %>
+					<div class="panel graypage">
+						<%= render 'comment_form' %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div> 
+		<div class="large-4 columns">
+			<div id="right" class="linear-gradient top-right-bottom-right-corner">
+				<%= render 'map' %>
+				<div class="sidebar-block">
+					<div class="sidebar-label">Adresse</div>
+					<div class="sidebar-content"><%= render 'address' %></div>
+				</div>
+				<% unless @location.references.empty? %>
+				<div class="sidebar-block">
+					<div class="sidebar-label">Find <%=@location.name.big%> på:</div>
+					<div class="sidebar-content"><ul><%= render(:partial => 'reference', :collection => @location.references, :as => :reference)%></ul></div>
+				</div>
+				<% end %>
+				<div class="sidebar-block">
+					<div class="sidebar-label">Bedømmelse</div>
+					<div class="sidebar-content"><%= render :partial => 'rating', :locals => {:location => @location }%></div>
+				</div>
+				<% unless @location.tobaccos.empty? %>
+				<div class="sidebar-block">
+					<div class="sidebar-label">Vandpibe Tobak</div>
+					<div class="sidebar-content"><%= render :partial => 'tobacco', :collection => @location.tobaccos, :as => :tobacco %></div>
+				</div>
+				<% end %>
+			</div>
 		</div>
-
-		<ul class="tabs-content">
-			<li class="active">
-		  		<dl class="tabs contained">
-		    		<dd class="active"><a href="#location_comments">Bruger anmeldelser (<%=@location.comments.length%>)</a></dd>
-		  		</dl>
-		  	
-		  	<ul class="tabs-content contained">
-		    	<li class="active" id="location_comments"> 
-		      	<%=render :partial => 'comment', :collection => @location.comments.includes(:user), :spacer_template => 'spacer_template'%>
-		    	</li>
-		    </ul>
-		</ul>
-
-		<% if @location.visible? %>
-		<div class="panel graypage">
-			<%= render 'comment_form' %>
-		</div>
-		<% end %>
-
-	</div>
-	<div class="four columns">
-		<div class="panel" id="map" style="height:250px;">
-			<%= javascript_tag do %>
-				$(function() {
-					init_map({city_id: <%=@location.city.id%>, location_id: <%=@location.id%>, latitude: <%=@location.latitude%>, longitude: <%=@location.longitude%>, zoom: 17})
-				});
-			<% end %>
-	    </div>
-
-		<div class="panel">
-			<h3>Adresse:</h3>
-			<p><%=@location.name.big%><br />
-			<%=@location.address%><br />
-			<%=@location.post%><br />
-			<%=@location.city.country.name%></p>
-			<a class="button" href="http://maps.google.com?q=<%=@location.address%>,<%=@location.post%>" target="_blank">Vis på kort</a>
-		</div>
-
-		<div class="panel callout">
-			<%= render :partial => 'site_rating', :locals => {:location => @location }%>
-		</div>
-
-		<div class="panel sixteen-line-height">
-			<h3>Vandpibe Tobak:</h3>
-			<%= render :partial => 'tobacco', :collection => @location.tobaccos, :as => :tobacco %>
-		</div>
-
-		<br />
 	</div>
 </div>
+
+
+<% if @location.visible? && logged_in? %>
+	<div id="comment-modal" class="reveal-modal medium">
+		<h4 class="margin-bottom20">Fortæl om din oplevelse på <%=@location.name.big%></h4>
+		<p>Når du beskriver eller giver stjerner, så bør dine beskrivelser fokusere på at formidle dine erfaringer og oplevelser til andre brugere. </p>
+		<%= simple_form_for Comment.new, :url => locations_path, :remote => true, :html => {:id => 'location_new_comment'} do |f| %>
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var vandpiben på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="waterpipe" class="rate"></div><div id="waterpipe_hint" class="hint"></div></div>
+				<%= javascript_tag do %>
+					$('#waterpipe').raty({target: '#waterpipe_hint', readOnly: false, hints: ['Meget dårlig vandpibe, det er til at brække sig over', 'Man kunne næsten ryge vandpibe!', 'Vandpibe er okay.', 'Vandpibe var god, smagen holdte i stykke tid', 'Vandpibe var meget god, og jeg kunne ryge i flere timer uden at bemærke dårlig smag.', 'Vandpiben var klasse, de skiftede kul til os og tobakken var klasse'], click: function(score, evt){ updateScore('waterpipe', score)} });
+				<% end %>
+			</div>
+			
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var renheden på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="clean" class="rate"></div><div id="clean_hint" class="hint"></div></div>
+
+				<%= javascript_tag do %>
+					$('#clean').raty({target: '#clean_hint', readOnly: false, hints: ['Meget grimt og beskidt sted', 'Grimt sted at være', 'Det var okay', 'Der var gjort rent', 'Det var gjort ordentlig rent', 'Alt var gjort rent, også inden vi sad så gjorde de bordet rent for os.'], click: function(score, evt){ updateScore('clean', score)} });
+				<% end %>
+			</div>
+
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var servicen på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="service" class="rate"></div><div id="service_hint" class="hint"></div></div>
+
+				<%= javascript_tag do %>
+					$('#service').raty({target: '#service_hint', readOnly: false, hints: ['Meget dårlig service', 'Dårlig service', 'God service.', 'Bedre service end mange andre', 'Meget god service, de ordnede hele tiden vandpibe til os', 'Service i top, de kom over til os, da vi skulle bestille og de skiftede enda kul til os.'], click: function(score, evt){ updateScore('service', score)} });
+				<% end %>
+			</div>
+
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var social livet på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="social" class="rate"></div><div id="social_hint" class="hint"></div></div>
+
+				<%= javascript_tag do %>
+					$('#social').raty({target: '#social_hint', readOnly: false, hints: ['Forladt sted', 'Der var ingen tilsted!', 'Der var et par stykker', 'Der var en del mennesker tilsted', 'Det var hyggeligt og der var mange mennesker tilsted', 'Der var helt proppet og gang i det.'], click: function(score, evt){ updateScore('social', score)} });
+				<% end %>
+			</div>
+
+			<%= text_field_tag "scores[waterpipe]", 0, :type => :hidden %>
+			<%= text_field_tag "scores[clean]", 0, :type => :hidden %>
+			<%= text_field_tag "scores[service]", 0, :type => :hidden %>
+			<%= text_field_tag "scores[social]", 0, :type => :hidden %>
+			
+			<%= f.input :body, :label => 'Skrive din anmeldelse i boksen', :required => false, :input_html => {:style => "height:150px"} %>
+			<%= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }%>
+
+			<%= f.button :submit, :value => "Send min vurdering", :class => "button", data: {disable_with: "Vent et øjeblik..."} %>
+		<% end %>
+	  <a class="close-reveal-modal">&#215;</a>
+	</div>
+<% end %>
+
+
+<%= javascript_tag do %>
+$(function(){
+	if ($('.large-8').height() > $('#right').height()) {
+		$('#right').height($('.large-8').height());
+	}
+
+ 	if(window.location.hash) {
+		var hash = window.location.hash.substring(1);
+		$target = $('#comment-' + hash)
+		$('html, body').stop().animate({'scrollTop': $target.offset().top - 100}, 900, 'swing', function() {
+			console.log($target)
+			$target.effect("highlight", {}, 2000);
+		})
+  	}
+});
+
+function updateScore(element, score) {
+	$('#scores_' + element).val(score);
+}
+<% end %>

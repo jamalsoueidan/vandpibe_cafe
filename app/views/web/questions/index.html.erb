@@ -1,12 +1,20 @@
+<% content_for(:title, @description) %>
+<% content_for(:meta_title, @description) %>
+<% content_for(:meta_description, @description) %>
+
+
 <div class="row">    
-	<div class="eight columns push-four panel whitepage">
-		<h3>Nyeste spørgsmål</h3>
+	<div class="large-9 columns">
+		
+		<h3><%=@title%></h3>
+		<p><%=@description%></p>
+
 		<ul id="questions">
-			<%= render :partial => 'question', :collection => @questions, :spacer_template => 'spacer_template' %>
+			<%= render :partial => 'question', :collection => @questions %>
 		</ul>
 		
 		<%= will_paginate @questions %>
     </div>
 
-   	<%= render :partial => 'navigator' %>
+    <%= render :partial => 'navigator' %>
 </div>

@@ -1,15 +1,7 @@
-<% if @spacer && @location.comments.length > 1 %>
-	<%= render 'spacer_template'%>
-<% end %>
-
-<div class="row" id="location_comment_<%=comment.id%>">
-	<div class="twelve columns">
-		<%=simple_format(comment.body)%>
-
-		<i>Skrevet den <%=l comment.created_at%></i>
-		
-		<% if is_owner?(comment) %>
-			<div class="options"><%= link_to "Fjern", location_path(@location, :comment_id => comment.id), :method => :delete, :confirm => 'Er du sikker du vil slette din anmeldelse?', :remote => true %></div>
-		<% end %>
-	</div>
-</div>
+<li id="comment-<%=comment.id%>" class="comment-container">
+	<div class="comment-text"><%=simple_format(comment.body)%></div>
+	<div class="comment-date">Skrevet den <%=l comment.created_at%></i>
+	<% if is_owner?(comment) %>
+		<div class="options"><%= link_to "Fjern", location_path(@location, :comment_id => comment.id), :method => :delete, :confirm => 'Er du sikker du vil slette din anmeldelse?', :remote => true %></div>
+	<% end %>
+</li>

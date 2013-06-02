@@ -1,13 +1,21 @@
-<% @locations.each do |location|%>
-<div class="three columns">
-	<div class="panel" style="padding:10px">
-	<% if location.uploads.empty? %>
-		<%= link_to raw('<img src="/assets/thumb.gif" style="width:305px;height:200px;">'), city_location_path(location.city.name, location.name.parameterize) %>
-	<% else %>
-	<%= link_to(image_tag(asset_host + location.uploads.first.avatar.path(:medium), :style => 'width:305px;height:200px;'), city_location_path(location.city.name, location.name.parameterize)) %>
-	<% end%>
-		<h5><%= link_to location.name.big, city_location_path(location.city.name, location.name.parameterize), :alt => location.name.big %></h5>
-		<h6 class="subheader" style="padding:0px;margin:0px;"><%= location.city.name.big%></h6>
+<div class="row margin-bottom20">
+	<div class="large-12 columns centered">
+		<h2 class="white-color">Vi har udvalgt Vandpibe Cafeer du måske vil besøg...</h2>
 	</div>
 </div>
-<% end %>
+
+<div class="row margin-bottom15">
+	<% @locations.each do |location|%>
+	<div class="large-3 columns">
+		<div class="panel white-background" style="padding:7px;">
+		<% if location.uploads.empty? %>
+			<%= link_to raw('<img src="/assets/thumb.gif" style="width:305px;height:200px;">'), city_location_path(location.city.name, location.name.to_url) %>
+		<% else %>
+		<%= link_to(image_tag(asset_host + location.uploads.first.avatar.path(:medium), :style => 'width:305px;height:200px;'), city_location_path(location.city.name, location.name.to_url)) %>
+		<% end%>
+			<h5><%= link_to location.name.big, city_location_path(location.city.name, location.name.to_url), :alt => location.name.big %></h5>
+			<h6 class="subheader" style="padding:0px;margin:0px;"><%= location.city.name.big%></h6>
+		</div>
+	</div>
+	<% end %>
+</div>

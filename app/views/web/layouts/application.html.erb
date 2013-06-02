@@ -1,16 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="da" itemscope itemtype="http://schema.org/Vandpibe">
+ <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
 	<%= render '/layouts/header' %>
-	<%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Advent+Pro:500,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext">
+  <%= stylesheet_link_tag    "icons/general_foundicons.css" %>
+	<%= stylesheet_link_tag    "web/application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "vendor/custom.modernizr" %>
+  <!--[if lt IE 8]>
+    <link rel="stylesheet" href="/assets/icons/general_foundicons_ie7.css">
+  <![endif]-->
 	<%= render '/layouts/google' %>
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBEmB9qG5E3HPSKQ_Veb0ErystIyagHXNQ&sensor=false"></script>
-  <%= render '/layouts/google' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="<%=params[:controller]%>">
 
 <%= render 'layouts/navbar' %>
 
@@ -25,12 +36,13 @@
 </div>
 <% end %>
 
-<div class="container shadow">
+<div class="<%=params[:action]%>">
   <%= yield %>
 </div>
 
 <%= render 'layouts/welcome' %>
 <%= render 'layouts/footer' %>
+
 
 </body>
 </html>

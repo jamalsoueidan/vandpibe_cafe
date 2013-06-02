@@ -1,27 +1,21 @@
-<div id="dropdown-1" class="dropdown dropdown-tip">
-      <ul class="dropdown-menu">
-          <li><%= link_to "Log af", logout_path %></li>
-      </ul>
-  </div>
-
-  <div id="dropdown-1" class="dropdown dropdown-tip">
-      <div class="dropdown-panel">
-        You can put whatever HTML you want in a panel!
-      </div>
-  </div>
-
-<div class="container padding-top10">
+<div class="navigation">
+  <!--<div class="row">
+    <div class="columns large-12 text-center margin-bottom15"><small>Reklame for vores partner</small><br /><a href="https://www.facebook.com/TeleDoktor" target="_blank"><img src="/assets/teledoktor.png" alt="Tele Doktor" /></a></div>
+  </div>-->
   <div class="row">
-    <div class="three columns">
-      <%= link_to(image_tag('logo4.png'), '/', :alt => 'Vandpibe Cafe')%>
-    </div>
-    <div class="nine columns navigation">
-      <ul class="block-grid four-up" style="padding-top:17px;">
-        <li><%= link_to(image_tag('debat.png'), questions_path, :alt => 'Vandpibe Cafe Forum')%></li>
-        <li><%= link_to(image_tag('top10.png'), toplist_path, :alt => 'Bedste Vandpibe Cafeer')%></li>
-        <li><%= link_to(image_tag('contact.png'), "https://www.facebook.com/vandpibecafe.dk", :alt => 'Kontakt os på facebook', :target => '_blank')%></li>
-        <li class="login"></li>
+    <div class="large-4 columns">
+      <ul class="sections">
+        <li><span class="foundicon-idea"></span><%= link_to('Forum', questions_path)%><p>Deltag i debatten med andre.</p></li>
+        <li><div>&nbsp;</div></li>
+        <li><span class="foundicon-graph"></span><%= link_to('Top liste', toplist_path)%> <p>Bedste Vandpibe Cafeer!</p></li>
+        <li><div>&nbsp;</div></li>
+        <li><span class="foundicon-mail"></span><%= link_to('Kontakt os', "https://www.facebook.com/vandpibecafe.dk", :target => '_blank')%><p>Har du spørgsmål på hjertet?</p></li>
       </ul>
+    </div>
+    <div class="large-4 columns text-center">
+      <%= link_to(image_tag('logo4.png', :style => "height:88px"), '/', :alt => 'Vandpibe Cafe')%>
+    </div>
+    <div class="large-4 columns text-center login">
     </div>
   </div>
 

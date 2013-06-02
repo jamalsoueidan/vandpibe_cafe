@@ -1,16 +1,10 @@
 <% if logged_in? %>
-	<%= simple_form_for Comment.new, :url => locations_path, :remote => true, :html => {:id => 'location_new_comment'} do |f| %>
-		<h4 class="no-top-margin">Fortæl om din oplevelse</h4>
-		<p>Når du beskriver, så bør dine beskrivelser fokusere på at formidle dine erfaringer og oplevelser til andre brugere. </p>
-		
-		<%= f.input :body, :label => 'Beskrivelse', :input_html => {:rows => 6} %>
-		<%= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }%>
-
-		<%= f.button :submit, :value => "Send kommentar", :class => "button" %>
-	<% end %>
+	<p>Du kan kun anmelde <%=@location.name.big%> Vandpibe Cafeen engang. <br /></p>
+	<a class="success button" data-reveal-id="comment-modal" href="#">Bedøm Cafe</a>
 <% else %>
-	<p>Du skal være logget på for at skrive om din oplevelse på <strong><%=@location.name.big %> Vandpibe Cafeen</strong>, på den måde garantere vi at alle bruger bedømmer hver cafe 1 gang og ikke flere gange.<br />
-	Alle bruger anmeldelser bliver annonym, </p>
+	<p>Du skal være logget på for at skrive om din oplevelse på <strong><%=@location.name.big %> Vandpibe Cafeen</strong>. 
+	<br />På den måde er vi sikker på at alle bruger bedømmer hver cafe 1 gang og ikke flere gange.<br />
+	Alle bruger anmeldelser bliver annonym. </p>
 
 	<%= link_to image_tag('facebook-login.png'), "/auth/facebook" %>
 <% end %>

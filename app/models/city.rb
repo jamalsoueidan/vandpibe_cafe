@@ -7,7 +7,7 @@ class City < ActiveRecord::Base
 
   has_many :locations, :order => 'name asc' do
     def include_all
-      self.includes(:city, :comments => [:user, :ratings], :tobaccos => :brand)
+      self.includes(:city, :comments => [:user], :tobaccos => :brand)
     end
   end
 

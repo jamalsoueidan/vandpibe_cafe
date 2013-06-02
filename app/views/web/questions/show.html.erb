@@ -1,42 +1,63 @@
-<div class="row">    
-	<div class="eight columns push-four">
-		<div class="panel whitepage">
+<% content_for(:title, @question.title) %>
+<% content_for(:meta_title, @question.title) %>
+<% content_for(:meta_description, @question.title) %>
 
-			<h3><%=@question.title%></h3>
-			<p><%=@question.body%></p>
-			<p>oprettet d. <%=@question.created_at.strftime('%d %b %y')%> af <% if @question.anonymous? %>Annonym bruger<% else %><%=link_to @question.user.nickname, user_path(@question.user)%><% end %> i <%=@question.category%></p>
-			
-			<% if is_owner?(@question) %>
-				<div class="options"><%= link_to "Luk spørgsmålet", delete_question_path(@question.id), :method => :delete, :confirm => "Er du sikker?" %> - <%= link_to "Redigere", edit_question_path(@question.id) %></div>
-			<% end %>
-		</div>
-		
-		<dl class="tabs">
-		  <dd class="active"><a href="#">Bruger svar (<%=@question.comments.length%>)</a></dd>
-		</dl>
-		<ul class="tabs-content tabs-questions-content">
-			<li class="active whitepage">
-				<ul id="question_comments">
-					<%=render :partial => 'comment', :collection => @question.comments.includes(:user), :spacer_template => 'spacer_template' %>
+<div class="row">    
+	<div class="large-12 columns">
+		<div class="wrapper">
+			<div class="header-container">
+				<div class="header top-left-corner top-right-corner">
+					<h1><%=@question.title%></h1>
+					<h2><%=@question.category %></h2>
+				</div>
+
+				<div class="header-content">
+					<p><%=@question.body%></p>
+					<p class="small">oprettet d. <%=@question.created_at.strftime('%d %b %y')%> af <strong><% if @question.anonymous? %>Annonym bruger<% else %><%= @question.user.nickname %><% end %></strong></p>
+					
+					<% if is_owner?(@question) %>
+						<div class="options small"><%#= link_to "Luk spørgsmålet", delete_question_path(@question.id), :method => :delete, :confirm => "Er du sikker?" %><%= link_to "Redigere spørgsmål", edit_question_path(@question.id) %></div>
+					<% end %>
+				</div>
+			</div>
+			<div class="comments-container">
+				<div class="comments-header">
+					<h3>Bruger svar (<%=@question.comments.length%>)</h3>
+				</div>
+
+				<ul class="comments-list">
+					<%=render :partial => 'comment', :collection => @question.comments.order('id ASC').includes(:user) %>
 				</ul>
-			</li>
-		</ul>
-		
-		<div class="panel graypage">
-			<% if not logged_in? %>
-				<strong>Du bedes <a href="/login">logge ind</a> hvis du vil kommentarer dette spørgsmål</strong>
-			<% elsif @question.visible?%>
-				<%= simple_form_for Comment.new, :remote => true, :html => {:id => 'question_new_comment'} do |f| %>
-			    	<%= f.input :body, :label => 'Kommentare' %>
-					<%= f.input :table, :as => :hidden, :input_html => {:value => 'question' }%>
-					<%= f.input :table_id, :as => :hidden, :input_html => {:value => @question.id }%>
-					<%= f.input :anonymous, :label => ' Afkryds boksen hvis du gerne vil være anonym?' %>
-					<%= f.button :submit, :value => "Send kommentar", :class => "button" %>
+			</div>
+			
+			<div class="panel graypage bottom-left-corner bottom-right-corner">
+				<% if not logged_in? %>
+					<strong>Du bedes <a href="/login">logge ind</a> hvis du vil kommentarer dette spørgsmål</strong>
+				<% elsif @question.visible?%>
+					<%= simple_form_for Comment.new, :url => question_write_answer_path(@question.id), :remote => true, :html => {:id => 'question_new_comment'} do |f| %>
+				    	<%= f.input :body, :label => 'Kommentare' %>
+						<%= f.input :table, :as => :hidden, :input_html => {:value => 'question' }%>
+						<%= f.input :table_id, :as => :hidden, :input_html => {:value => @question.id }%>
+						<%#= f.input :anonymous, :label => ' Afkryds boksen hvis du gerne vil være anonym?' %>
+						<%= f.button :submit, :value => "Send kommentar", :class => "button" %>
+					<% end %>
+				<% else %>
+					<strong>Spørgsmålet er lukket, så man kan ikke længere kommentarer den.</strong>
 				<% end %>
-			<% else %>
-				<strong>Spørgsmålet er lukket, så man kan ikke længere kommentarer den.</strong>
-			<% end %>
+			</div>
 		</div>
     </div>
-    <%= render :partial => 'navigator' %>
 </div>
+
+<%= javascript_tag do %>
+$(function(){
+ 	if(window.location.hash) {
+		var hash = window.location.hash.substring(1);
+		$target = $('#comment-' + hash)
+		$('html, body').stop().animate({'scrollTop': $target.offset().top - 100}, 900, 'swing', function() {
+			console.log($target)
+			$target.effect("highlight", {}, 2000);
+		})
+  	}
+});
+<% end %>

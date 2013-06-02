@@ -1,5 +1,7 @@
 # -*- encoding : utf-8 -*-
 VandpibeCafe::Application.routes.draw do
+  root :to => 'cities#index'
+  
   ActiveAdmin.routes(self)
 
   match '/auth-js' => 'main#auth_js', :via => :get, :as => 'authjs'
@@ -20,6 +22,9 @@ VandpibeCafe::Application.routes.draw do
     collection do
       match 'random'
     end
+    member do
+      get 'new_comment'
+    end
   end
 
   match '/get_json' => "main#get_json", :via => :get
@@ -35,13 +40,16 @@ VandpibeCafe::Application.routes.draw do
   match '/debat/seneste' => "questions#recent", :as => 'recent_questions', :via => :get
   match '/debat/opret' => "questions#new", :as => 'new_question', :via => :get
 
+  match '/debat/:id/skriv_svar' => "questions#write_answer", :as => 'question_write_answer'
   match '/debat/:id/*title' => "questions#show", :as => 'question', :via => :get
+
   match '/by/:city' => 'cities#old_url', :via => :get
 
   match '/:name' => "cities#show", :as => 'city'
   match '/:city_name/:name' => "locations#show", :as => 'city_location'
+  match '/:city_name/:name/skriv_anmeldelse' => "locations#write_review", :as => 'city_location_write_review'
 
-  root :to => 'cities#index'
+  
 
   # See how all your routes lay out with "rake routes"
   # This is a legacy wild controller route that's not recommended for RESTful applications.

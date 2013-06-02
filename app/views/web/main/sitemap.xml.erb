@@ -18,7 +18,7 @@
 </url>
 <%- city.locations.each do |location|%>
 <url>
-	<loc>http://www.vandpibecafe.dk<%=city_location_path(city.name, location.name)%></loc>
+	<loc>http://www.vandpibecafe.dk<%=city_location_path(city.name, location.name.to_url)%></loc>
 	<changefreq>daily</changefreq>
 	<priority>1</priority>
 </url>
@@ -31,7 +31,7 @@
 </url>
 <%- @questions.each do |question| %>
 <url>
-	<loc>http://www.vandpibecafe.dk<%=question_path(question.id, question.title.parameterize)%></loc>
+	<loc>http://www.vandpibecafe.dk<%=question_path(question.id, question.title.to_url)%></loc>
 	<changefreq>daily</changefreq>
 	<priority>1</priority>
 </url>

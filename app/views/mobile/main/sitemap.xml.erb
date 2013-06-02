@@ -12,7 +12,7 @@
 </url>
 <%- city.locations.each do |location|%>
 <url>
-	<loc>http://m.vandpibecafe.dk<%=city_location_path(city.name, location.name)%></loc>
+	<loc>http://m.vandpibecafe.dk<%=city_location_path(city.name, location.name.to_url)%></loc>
 	<mobile:mobile/>
 </url>
 <%- end %>
@@ -23,7 +23,7 @@
 </url>
 <%- @questions.each do |question| %>
 <url>
-	<loc>http://m.vandpibecafe.dk<%=question_path(question.id, question.title.parameterize)%></loc>
+	<loc>http://m.vandpibecafe.dk<%=question_path(question.id, question.title.to_url)%></loc>
 	<mobile:mobile/>
 </url>
 <%- end %>
