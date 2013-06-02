@@ -15,15 +15,6 @@
 			</div>
 			
 			<div class="rate-container">
-				<div class="rate-header">Hvordan var rengøring på <%=@location.name.big%>?</div>
-				<div class="rate-content"><div id="clean" class="rate"></div><div id="clean_hint" class="hint"></div></div>
-
-				<%= javascript_tag do %>
-					$('#clean').raty({width: '100%', targetKeep: true, target: '#clean_hint', readOnly: false, hints: ['Meget grimt og beskidt sted', 'Grimt sted at være', 'Det var okay', 'Der var gjort rent', 'Det var gjort ordentlig rent', 'Alt var gjort rent, også inden vi sad så gjorde de bordet rent for os.'], click: function(score, evt){ updateScore('clean', score)} });
-				<% end %>
-			</div>
-
-			<div class="rate-container">
 				<div class="rate-header">Hvordan var servicen på <%=@location.name.big%>?</div>
 				<div class="rate-content"><div id="service" class="rate"></div><div id="service_hint" class="hint"></div></div>
 
@@ -38,6 +29,15 @@
 
 				<%= javascript_tag do %>
 					$('#social').raty({width: '100%', targetKeep: true, target: '#social_hint', readOnly: false, hints: ['Forladt sted', 'Der var ingen tilsted!', 'Der var et par stykker', 'Der var en del mennesker tilsted', 'Det var hyggeligt og der var mange mennesker tilsted', 'Der var helt proppet og gang i det.'], click: function(score, evt){ updateScore('social', score)} });
+				<% end %>
+			</div>
+
+			<div class="rate-container">
+				<div class="rate-header">Hvordan var rengøring på <%=@location.name.big%>?</div>
+				<div class="rate-content"><div id="clean" class="rate"></div><div id="clean_hint" class="hint"></div></div>
+
+				<%= javascript_tag do %>
+					$('#clean').raty({width: '100%', targetKeep: true, target: '#clean_hint', readOnly: false, hints: ['Meget grimt og beskidt sted', 'Grimt sted at være', 'Det var okay', 'Der var gjort rent', 'Det var gjort ordentlig rent', 'Alt var gjort rent, også inden vi sad så gjorde de bordet rent for os.'], click: function(score, evt){ updateScore('clean', score)} });
 				<% end %>
 			</div>
 
