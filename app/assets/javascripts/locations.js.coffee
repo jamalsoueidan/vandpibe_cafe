@@ -19,11 +19,5 @@ jQuery ->
 					update_target.val(0)
 					target.html('')
 		});
-
-	$('#location_new_comment').bind 'ajax:before', (evt, data, status, xhr) ->
-		if !$('#comment_body').val()
-			alert 'Du mangler indtast noget i beskrivelse feltet'
-			$('#comment_body').focus()
-			return false
 		
 		
