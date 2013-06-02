@@ -1,2 +1,4 @@
+<% if @comment %>
 window.location.href += "#" + <%=@comment.id%>;
+<% end %>
 location.reload();
