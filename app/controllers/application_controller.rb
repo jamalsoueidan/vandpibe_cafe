@@ -16,10 +16,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_view_path
-    prepend_view_path 'app/views/mobile/'
-    return
-    
+  def set_view_path    
     session[:return_to] = request.fullpath if request.fullpath.index('auth').nil? && request.fullpath.index('get_json').nil? && request.fullpath.index('random').nil?
 
     if request.subdomain == 'm'
