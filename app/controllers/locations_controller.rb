@@ -62,8 +62,10 @@ class LocationsController < ApplicationController
     end
 
     params[:scores].each do |key, value|
-      if !@location.ratings.exists?(:rating_key => key)
-        @location.ratings.create(:rating_key => key, :rating_value => value)
+      if value.to_i > 0
+        if !@location.ratings.exists?(:rating_key => key)
+          @location.ratings.create(:rating_key => key, :rating_value => value, :user_id => current_user.id)
+        end
       end
     end
   end
