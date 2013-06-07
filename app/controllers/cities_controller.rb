@@ -13,7 +13,7 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find_by_url(params[:name])
-    @locations = Location.where(:city_id => @city.id).sort_by(params[:sort])
+    @locations = Location.where(:city_id => @city.id, :visible => true).sort_by(params[:sort])
 
     if @city.nil?
       redirect_to root_path
