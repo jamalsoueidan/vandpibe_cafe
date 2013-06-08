@@ -1,0 +1,37 @@
+<header id="navigation">
+	<div class="row">
+		<div class="large-12 columns text-center">
+			<img src="/assets/logo4.png" width="160" style="margin-top:-30px;"/>
+			<ul>
+				<li>
+					<a href="<%=root_url%>">
+						<i class="foundicon-home"></i>
+						<span>Hjem</span>
+					</a>
+				</li>
+				<li>
+					<a href="<%=questions_path%>">
+						<i class="foundicon-idea"></i>
+						<span>Debat</span>
+					</a>
+				</li>
+				<li>
+					<a href="<%=toplist_path%>">
+						<i class="foundicon-graph"></i>
+						<span>Toplist</span>
+					</a>
+				</li>
+				<li id="login">
+				</li>
+			</ul>
+		</div>
+	</div>
+</header>
+
+<%= javascript_tag :login do %>
+$(function() {
+  $.get('<%=authjs_path%>', function(data) {
+    $('#login').html(data)
+  });
+})
+<% end %>
