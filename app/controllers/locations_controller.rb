@@ -40,7 +40,7 @@ class LocationsController < ApplicationController
   end
 
   def random
-    @locations = Location.order('RAND()').limit(4)
+    @locations = Location.where(:visible => true).order('RAND()').limit(4)
     render :layout => false
   end
 
