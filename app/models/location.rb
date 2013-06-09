@@ -9,11 +9,11 @@ class Location < ActiveRecord::Base
   has_many :references
   has_many :ratings  do
     def calculate_by_key(rating_key=nil)
-      return calcalate(self.where(:rating_key => rating_key))
+      calcalate(self.where(:rating_key => rating_key))
     end
 
     def calculate_all
-      return calcalate(self)
+      calcalate(self)
     end
 
     private
@@ -25,7 +25,7 @@ class Location < ActiveRecord::Base
         end
         
         if objects.empty?
-          return 0
+          return 3
         else
           return (rating_value / objects.size).round(1)
         end
