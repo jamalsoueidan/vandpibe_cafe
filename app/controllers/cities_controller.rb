@@ -4,7 +4,7 @@ class CitiesController < ApplicationController
   caches_page :index, :show
 
   def index
-
+    @locations = Location.where(:visible => true).order('RAND()').limit(12)
   end
 
   def old_url

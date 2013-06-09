@@ -31,11 +31,11 @@ div class="random-locations"
 
 	ul data-orbit="" data-options="timer_speed:2500; bullets:false; slide_number_class: display-none; timer_container_class: display-none; timer_paused_class: display-none;"
 		li data-orbit-slide="headline-1"
-			= render :partial => 'random', :locals => { :locations => Location.where(:visible => true).order('RAND()').limit(4) }
+			= render :partial => 'random', :locals => { :locations => @locations[0..3] }
 		li data-orbit-slide="headline-1"
-			= render :partial => 'random', :locals => { :locations => Location.where(:visible => true).order('RAND()').limit(4) }
+			= render :partial => 'random', :locals => { :locations => @locations[4..7] }
 		li data-orbit-slide="headline-1"
-			= render :partial => 'random', :locals => { :locations => Location.where(:visible => true).order('RAND()').limit(4) }
+			= render :partial => 'random', :locals => { :locations => @locations[8..11] }
 
 javascript:
 	$(function() {
