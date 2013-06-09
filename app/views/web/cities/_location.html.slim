@@ -6,7 +6,7 @@ li class="location" id="location#{location.id}"
 	div class="content"
 		h5 = link_to location.name.big, city_location_path(@city.name, location.name.to_url)
 
-		p = truncate(location.description, :length => 80)
+		p = description(location)
 
 		h6 class="fixed-bottom" = image_tag("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|" + @city.country.color, :style => "width:10px;height:14px;margin-right:5px;") + @city.name.big
 
