@@ -1,20 +1,19 @@
 li class="location" id="location#{location.id}"
-	div class="location-wrap"
-		div class="image"
-			a href=(city_location_path(@city.name, location.name.to_url))
-				= image_tag_unless(location.uploads)
-				
-		div class="content"
-			h5 = link_to location.name.big, city_location_path(@city.name, location.name.to_url)
+	div class="image"
+		a href=(city_location_path(@city.name, location.name.to_url))
+			= image_tag_unless(location.uploads)
+			
+	div class="content"
+		h5 = link_to location.name.big, city_location_path(@city.name, location.name.to_url)
 
-			p = truncate(location.description, :length => 100)
+		p = truncate(location.description, :length => 80)
 
-			h6 class="fixed-bottom" = image_tag("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|" + @city.country.color, :style => "width:10px;height:14px;margin-right:5px;") + @city.name.big
+		h6 class="fixed-bottom" = image_tag("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|" + @city.country.color, :style => "width:10px;height:14px;margin-right:5px;") + @city.name.big
 
-		div class="rating"
-			= rating(location, :class => 'total', :score => location.ratings.calculate_all)
+	div class="rating"
+		= rating(location, :class => 'total', :score => location.ratings.calculate_all)
 
-			//strong 
-			//	= 'Bedømmelser:'
+		//strong 
+		//	= 'Bedømmelser:'
 
-			//= location.count.to_s
+		//= location.count.to_s

@@ -96,7 +96,7 @@
 
 // We use this to control the maximum number of block grid elements per row
 // $block-grid-elements: 12;
-// $block-grid-default-spacing: 10px;
+$block-grid-default-spacing: 15px;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
 // $block-grid-media-queries: true;
@@ -1031,3 +1031,15 @@ $orbit-container-bg: none;
 
 
 @import 'foundation';
+
+.large-block-grid-3 > li {
+	width: 30.9999%;
+	padding: 0;
+	margin: 0 7.5px 15px;
+}
+
+.large-block-grid-4 > li {
+	width: 22.6666%;
+	padding: 0;
+	margin: 0 7.5px 15px;
+}

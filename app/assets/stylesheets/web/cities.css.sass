@@ -4,57 +4,72 @@
 
 @import 'modules/mixin'
 
+$padding: 8px
+
 body#cities
 	div.show
-		margin-bottom: $spacing * 2
+		padding-bottom: $spacing * 2
+		background-color: #f6f6f6
+
 		ul#locations 
 			margin-top: $spacing
+
 			li.location 
-				@include outter-box(8px)
+				-webkit-box-sizing: border-box
+				-moz-box-sizing: border-box
+				box-sizing: border-box
+				background: #fff
+				cursor: pointer
+				-webkit-box-shadow: #d6d6d6 0px 1px 3px
+				-moz-box-shadow: #d6d6d6 0px 1px 3px
+				box-shadow: #d6d6d6 0px 1px 3px
 
-				.location-wrap 
-					@include inner-box(8px, #f6f6f6)
+				div.image
+					padding: $padding
 
-					div.image 
-						background-color: #fff
-						-webkit-border-radius: 8px
-						-moz-border-radius: 8px
-						border-radius: 8px
-						padding: 5px 5px 0px 5px
+					img
+						@include top-left-top-right-corner(3px)
+						-webkit-transition: opacity 0.15s linear
+						-moz-transition: opacity 0.15s linear
+						transition: opacity 0.15s linear
+						height: 120px
+						width: 100%
 
-						img
-							height: 150px
-							width: 100%
+				div.content 
+					background-color: #FFF
+					padding: 0px 10px 10px 10px
 
-					div.content 
-						background-color: #FFF
-						padding: 0px 10px 10px 10px
+					h5
+						margin: 0px 0px 4px 0px
+						padding: 0
+						font-size: 1em
 
-						h5
-							margin: 0px 0px 4px 0px
-							padding: 0
-							a 
-								color: #000
-								font-weight: 400
+						a 
+							color: #000
+							font-weight: 600
+							text-overflow: ellipsis
+							display: -webkit-box
+							-webkit-line-clamp: 3
+							-webkit-box-orient: vertical
 
-						p
-							height: 70px
+					p
+						font-size: .8em
+						height: 70px
+						color: #9f9f9f
 
-						p, h6 
-							font-size: 12px
-							color: #75796f
-
-					div.rating 
-						padding: 10px 
+					h6
 						color: #75796f
-						font-size: 11px
-						border-top: 1px solid #d0d5cb
+						font-size: 12px
 
-						strong
-							margin-right: 5px
-							color: #0b1902
-				&:hover
-					background-color: #b5d596
+				div.rating 
+					padding: 10px 
+					color: #75796f
+					font-size: 11px
+					border-top: 1px solid #d0d5cb
+
+					strong
+						margin-right: 5px
+						color: #0b1902
 
 
 
