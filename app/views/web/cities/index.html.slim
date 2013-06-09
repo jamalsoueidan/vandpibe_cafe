@@ -25,23 +25,27 @@ div class="row"
 		div id="map" style="height:460px;-webkit-box-shadow:0 0 15px #000; -moz-box-shadow: 0 0 15px #000; box-shadow:0 0 15px #000; margin: 50px 0px"
 
 div class="random-locations"
-	div class="row margin-bottom20"
+	div class="row"
 		div class="large-12 columns centered"
-			h2 class="white-color" Vi har udvalgt nogle Vandpibe Cafeer du måske vil besøg...
+			h2 class="white-color margin-bottom20" Vi har udvalgt nogle Vandpibe Cafeer du måske vil besøg...
 
-	ul data-orbit="" data-options="timer_speed:2500; bullets:false; slide_number_class: display-none; timer_container_class: display-none; timer_paused_class: display-none;"
-		li data-orbit-slide="headline-1"
-			= render :partial => 'random', :locals => { :locations => @locations[0..3] }
-		li data-orbit-slide="headline-1"
-			= render :partial => 'random', :locals => { :locations => @locations[4..7] }
-		li data-orbit-slide="headline-1"
-			= render :partial => 'random', :locals => { :locations => @locations[8..11] }
+			ul data-orbit="" data-options="timer_speed:2500; bullets:false; slide_number_class: display-none; timer_container_class: display-none; timer_paused_class: display-none; next_class:none; prev_class: none;"
+				li data-orbit-slide="headline-1"
+					= render :partial => 'random', :locals => { :locations => @locations[0..3] }
+				li data-orbit-slide="headline-1"
+					= render :partial => 'random', :locals => { :locations => @locations[4..7] }
+				li data-orbit-slide="headline-1"
+					= render :partial => 'random', :locals => { :locations => @locations[8..11] }
+
+//div#users.container
+//	div.row
+//		div.large-12.columns
+//			h2	Hvem har brugt Vandpibe Cafe?
+//			ul
+//				= render :partial => 'user', :collection => @users
+
 
 javascript:
 	$(function() {
 		init_map()
-
-		/*$.get('#{random_locations_path}', function(response) {
-			$('.random-locations').html(response);
-		});*/
 	});
