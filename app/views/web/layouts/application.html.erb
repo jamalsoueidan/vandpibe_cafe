@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if lt IE 7 ]> <html class="ie6" lang="da"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="da"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="da"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="da" itemscope itemtype="http://schema.org/Vandpibe">
  <!--<![endif]-->
@@ -10,12 +9,12 @@
 	<meta charset="utf-8" />
 	<%= render '/layouts/header' %>
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Advent+Pro:500,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext">
-  <%= stylesheet_link_tag    "icons/general_enclosed_foundicons.css" %>
 	<%= stylesheet_link_tag    "web/application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
   <%= javascript_include_tag "vendor/custom.modernizr" %>
   <!--[if lt IE 8]>
-    <link rel="stylesheet" href="icons/general_enclosed_foundicons_ie7.css">
+    <%= stylesheet_link_tag "web/general_enclosed_foundicons_ie7.css" %>
+    <%= stylesheet_link_tag "web/general_foundicons_ie7.css" %>
   <![endif]-->
 	<%= render '/layouts/google' %>
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBEmB9qG5E3HPSKQ_Veb0ErystIyagHXNQ&sensor=false"></script>

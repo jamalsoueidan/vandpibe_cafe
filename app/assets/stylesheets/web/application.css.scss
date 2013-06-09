@@ -8,6 +8,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require ./icons/general_foundicons.css
+ *= require ./icons/general_enclosed_foundicons.css
+ *= require_directory ./sections
  *= require_directory .
  *= require_self
  */
@@ -77,73 +80,3 @@ $types: margin padding;
 #map img { max-width: none; height: auto } 
 
 li {list-style: none;}
-
-footer.background {
-	background: #000 url('/assets/footer-background.png') bottom repeat-x;
-}
-
-footer .wallpaper {
-	/*background: url('/assets/footer-wallpaper.png') bottom no-repeat;*/
-}
-
-.navigation {
-	background-color: #f7f7f7;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(87%, #f7f7f7), color-stop(100%, #e2e2e2));
-	background-image: -webkit-linear-gradient(#ffffff,#f7f7f7 87%,#e2e2e2);
-	background-image: -moz-linear-gradient(#ffffff,#f7f7f7 87%,#e2e2e2);
-	background-image: -o-linear-gradient(#ffffff,#f7f7f7 87%,#e2e2e2);
-	background-image: linear-gradient(#ffffff,#f7f7f7 87%,#e2e2e2);
-	border-bottom: 1px solid #ccc;
-	clear: both;
-	padding-top: 15px;
-
-	ul.sections {
-		margin: 0;
-
-		li {
-			display: inline-block;
-			list-style: none;
-			text-align: center;
-			vertical-align: middle;
-
-			a {
-				color: #000;
-			}
-
-			p {
-				font-size: .6em;
-				color: #57585c;
-				width: 92px;
-				padding: 0; margin: 0;
-			}
-
-			div	{
-				background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e2e2e2), color-stop(50%, #aaaaaa), color-stop(100%, #e2e2e2));
-				background-image: -webkit-linear-gradient(top, #e2e2e2,#aaaaaa,#e2e2e2);
-				background-image: -moz-linear-gradient(top, #e2e2e2,#aaaaaa,#e2e2e2);
-				background-image: -o-linear-gradient(top, #e2e2e2,#aaaaaa,#e2e2e2);
-				background-image: linear-gradient(top, #e2e2e2,#aaaaaa,#e2e2e2);
-				-webkit-box-shadow: 1px 0 2px #fff;
-				-moz-box-shadow: 1px 0 2px #fff;
-				box-shadow: 1px 0 2px #fff;
-				width: 1px;
-				padding: 1.7em 0 0.35em;
-				margin: 0.4em 0 0;
-				padding: 0.9em 0;
-			}
-		}
-	}
-
-	span[class*="foundicon-"] {
-		display: block;
-		font-size: 20px;
-	}
-
-	.signin {
-		margin-top:17px;
-	}
-	
-	.login	{
-		line-height: 80px;
-	}
-}
