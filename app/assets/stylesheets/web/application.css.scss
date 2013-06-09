@@ -78,23 +78,6 @@ $types: margin padding;
 
 li {list-style: none;}
 
-footer {
-	background-color: #000;
-	color: #FFF;
-	padding: 30px;
-	line-height: 40px;
-
-	h4, h5 {
-		color: #FFF;
-		margin-bottom: 15px;
-	}	
-
-	.copyright {
-		font-size: .7em;
-	}
-
-}
-
 footer.background {
 	background: #000 url('/assets/footer-background.png') bottom repeat-x;
 }

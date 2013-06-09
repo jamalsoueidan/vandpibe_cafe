@@ -1,42 +1,24 @@
-<footer class="background">
-  <div class="row wallpaper">
-    <div class="large-3 columns text-center">
-      <h4>Århus</h4>
-        <ul class="locations">
-        <%- City.find_by_url('aarhus').locations.reorder('RAND()').limit(5).each do |location|%>
-          <li class="location"><%= link_to location.name.big, city_location_path('århus', location.name.to_url) %></li>
-        <%- end %>
-      </ul>
-    </div>
-    <div class="large-3 columns text-center">
-      <h4>København</h4>
-        <ul class="locations">
-        <%- City.find_by_url('københavn').locations.reorder('RAND()').limit(5).each do |location|%>
-          <li class="location"><%= link_to location.name.big, city_location_path('københavn', location.name.to_url) %></li>
-        <%- end %>
-      </ul>
-    </div>
-    <div class="large-3 columns text-center">
-      <h4>Frederiksberg</h4>
-        <ul class="locations">
-        <%- City.find_by_url('frederiksberg').locations.reorder('RAND()').limit(5).each do |location|%>
-          <li class="location"><%= link_to location.name.big, city_location_path('frederiksberg', location.name.to_url) %></li>
-        <%- end %>
-      </ul>
-    </div>
-    <div class="large-3 columns text-center">
-      <h4>Valby</h4>
-        <ul class="locations">
-        <%- City.find_by_url('valby').locations.reorder('RAND()').limit(5).each do |location|%>
-          <li class="location"><%= link_to location.name.big, city_location_path('valby', location.name.to_url) %></li>
-        <%- end %>
-      </ul>
+<footer>
+  <div class="container" id="top">
+    <div class="row">
+      <div class="large-6 columns" id="welcome">
+        <h2>Vandpibe Cafe</h2>
+        <p>På VandpibeCafe.dk vil du finde oversigt over alle Vandpibe Cafeer i Danmark. Som I allerde har lagt mærk til er vi begyndt at lægge Vandpibe Cafeer som ligger i Sverige og Tyskland, og det vil vi forsætte med. I fremtiden vil vi starte med sælge Vandpibe Slanger, Hoveder og andre Tilbehør til Vandpibe. Debat sektionen er alle velkommen til at deltag i, hvor i har mulighed for at få hjælp til "Hvordan man gøre en Vandpibe klar" eller hvad man nu har i tankerne.</p>
+      </div>
+      <div class="large-6 columns">
+
+      </div>
     </div>
   </div>
-
-  <div class="row copyright">
-    <div class="large-12 columns text-center">
-      Copyright 2012 - 2013 VandpibeCafe
+  <div class="container">
+    <div class="row">
+      <div class="large-6 columns" id="bottom">
+        © 2012 - 2013 VandpibeCafe, All rights reserved. 
+      </div>
+      <!--<div class="large-6 columns text-right" id="bottom">
+        <i class="foundicon-up-arrow" style="font-size:13px"></i> 
+        <p>Gå til top</p>
+      </div>-->
     </div>
   </div>
 </footer>
