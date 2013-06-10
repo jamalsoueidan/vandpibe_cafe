@@ -8,74 +8,72 @@
 	<%= render :partial => 'nearest', :locals => {:location => @nearest}%>
 <% end %>
 
-<div class="row">
-	<div class="wrapper">
-		<div class="large-8 columns">
-			<div class="header top-left-corner">
-				<h1><%=@location.name.big%></h1>
-				<h2><%= link_to @location.city.name.big, city_path(@location.city.name) %></h2>
+<div class="row margin-top30 margin-bottom30">
+	<div class="large-8 columns">
+		<div class="header top-left-corner">
+			<h1><%=@location.name.big%></h1>
+			<h2><%= link_to @location.city.name.big, city_path(@location.city.name) %></h2>
+		</div>
+
+		<div class="content">
+			<% if @location.description != "" %>
+			<%= simple_format(@location.description)%>
+			<% end %>
+
+			<ul class="large-block-grid-4" data-clearing>
+				<%= render(:partial => 'upload', :collection => @location.uploads, :as => :upload)%>
+			</ul>
+		</div>
+
+		
+		<div class="comments-container">
+			<div class="comments-header">
+				<h3>Bruger anmeldelser (<%=@location.comments.length%>)</h3>
 			</div>
 
 			<div class="content">
-				<% if @location.description != "" %>
-				<%= simple_format(@location.description)%>
+				<% if @location.visible? %>
+				<div class="panel graypage">
+					<%= render 'comment_form' %>
+				</div>
 				<% end %>
 
-				<ul class="large-block-grid-4" data-clearing>
-					<%= render(:partial => 'upload', :collection => @location.uploads, :as => :upload)%>
+				<ul class="comments-list">
+					<%=render :partial => 'comment', :collection => @location.comments.order('id DESC').includes(:user) %>
 				</ul>
-			</div>
-
 			
-			<div class="comments-container">
-				<div class="comments-header">
-					<h3>Bruger anmeldelser (<%=@location.comments.length%>)</h3>
-				</div>
 
-				<div class="content">
-					<% if @location.visible? %>
-					<div class="panel graypage">
-						<%= render 'comment_form' %>
-					</div>
-					<% end %>
-
-					<ul class="comments-list">
-						<%=render :partial => 'comment', :collection => @location.comments.order('id DESC').includes(:user) %>
-					</ul>
-				
-
-					<% if @location.visible? && @location.comments.length > 5 %>
-					<div class="panel graypage">
-						<%= render 'comment_form' %>
-					</div>
-					<% end %>
-				</div>
-			</div>
-		</div> 
-		<div class="large-4 columns">
-			<div id="right" class="linear-gradient top-right-bottom-right-corner">
-				<%= render 'map' %>
-				<div class="sidebar-block">
-					<div class="sidebar-label">Adresse</div>
-					<div class="sidebar-content"><%= render 'address' %></div>
-				</div>
-				<% unless @location.references.empty? %>
-				<div class="sidebar-block">
-					<div class="sidebar-label">Find <%=@location.name.big%> på:</div>
-					<div class="sidebar-content"><ul><%= render(:partial => 'reference', :collection => @location.references, :as => :reference)%></ul></div>
-				</div>
-				<% end %>
-				<div class="sidebar-block">
-					<div class="sidebar-label">Bedømmelse</div>
-					<div class="sidebar-content"><%= render :partial => 'rating', :locals => {:location => @location }%></div>
-				</div>
-				<% unless @location.tobaccos.empty? %>
-				<div class="sidebar-block">
-					<div class="sidebar-label">Vandpibe Tobak</div>
-					<div class="sidebar-content"><%= render :partial => 'tobacco', :collection => @location.tobaccos, :as => :tobacco %></div>
+				<% if @location.visible? && @location.comments.length > 5 %>
+				<div class="panel graypage">
+					<%= render 'comment_form' %>
 				</div>
 				<% end %>
 			</div>
+		</div>
+	</div> 
+	<div class="large-4 columns">
+		<div id="right" class="linear-gradient top-right-bottom-right-corner">
+			<%= render 'map' %>
+			<div class="sidebar-block">
+				<div class="sidebar-label">Adresse</div>
+				<div class="sidebar-content"><%= render 'address' %></div>
+			</div>
+			<% unless @location.references.empty? %>
+			<div class="sidebar-block">
+				<div class="sidebar-label">Find <%=@location.name.big%> på:</div>
+				<div class="sidebar-content"><ul><%= render(:partial => 'reference', :collection => @location.references, :as => :reference)%></ul></div>
+			</div>
+			<% end %>
+			<div class="sidebar-block">
+				<div class="sidebar-label">Bedømmelse</div>
+				<div class="sidebar-content"><%= render :partial => 'rating', :locals => {:location => @location }%></div>
+			</div>
+			<% unless @location.tobaccos.empty? %>
+			<div class="sidebar-block">
+				<div class="sidebar-label">Vandpibe Tobak</div>
+				<div class="sidebar-content"><%= render :partial => 'tobacco', :collection => @location.tobaccos, :as => :tobacco %></div>
+			</div>
+			<% end %>
 		</div>
 	</div>
 </div>
