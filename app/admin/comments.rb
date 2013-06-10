@@ -1,22 +1,23 @@
 ActiveAdmin.register Comment do
-  index do      
-	selectable_column
-	column :section do |comment|
-		div do
-			comment.commentable_type
+	menu :parent => "Countries"
+	index do      
+		selectable_column
+		column :section do |comment|
+			div do
+				comment.commentable_type
+			end
 		end
-	end
-	column :user do |comment|
-		div do
-			comment.user.nickname
+		column :user do |comment|
+			div do
+				comment.user.nickname
+			end
 		end
-	end
-	column :location do |comment|
-		div do
-			comment.location.name
+		column :location do |comment|
+			div do
+				comment.location.name
+			end
 		end
+		column :body
+		default_actions
 	end
-    column :body
-    default_actions
-  end
 end

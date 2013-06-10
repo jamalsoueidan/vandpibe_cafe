@@ -1,8 +1,16 @@
 ActiveAdmin.register Location do  
+  menu :parent => "Countries"
   index do       
+    column :id
     column :name do |location|
       div do
         link_to location.name, admin_location_path(location)
+      end
+    end
+    column :city
+    column :country do |location|
+      div do
+        link_to location.city.country.name, admin_country_path(location.city.country)
       end
     end
   end
