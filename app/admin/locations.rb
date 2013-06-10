@@ -11,6 +11,7 @@ ActiveAdmin.register Location do
     attributes_table do
       row :id
       row :name
+      row :visible
     end
     
     panel "List of images" do
