@@ -6,6 +6,80 @@
 
 $padding: 8px
 
+section#intro
+	@include grid-row
+	div.content, div.map 
+		@include grid-column(6)
+		text-align: center
+
+	div.content
+		padding-top: $spacing / 2
+
+		h1
+			margin-top: 50px
+			font-size: 2.3em
+
+		div.country-list 
+			margin-bottom: 20px
+			text-transform: uppercase
+			font-weight: 400
+			letter-spacing: 0.15em
+			text-align: center
+			margin-top: 20px
+
+			span 
+				padding: 0 1px 4px 1px
+				margin: 0 10px
+				border-bottom: 3px solid transparent
+				outline: none
+
+		div.city-list 
+			
+			a
+				font-weight: 300
+				font-size: 13px
+				padding: 5px 10px
+				color: #FFF
+				margin: 8px 10px
+				display: inline-block
+				@include radius
+				
+				&:hover 
+					text-decoration: underline
+
+	div.map
+		#map
+			-webkit-box-shadow: 0 0 15px #000
+			-moz-box-shadow: 0 0 15px #000
+			box-shadow: 0 0 15px #000
+			margin: 50px 0px
+
+section#random 
+	box-shadow: inset 0 0 10px #000000
+	-moz-box-shadow: inset 0 0 10px #000000
+	-webkit-box-shadow: inset 0 0 10px #000000
+	text-align: center
+	padding: 10px 0px $spacing 0px
+	background: url(/assets/blue-pattern.png) 0 0 repeat
+
+	&:before 
+		content: ''
+		display: block
+		background: url(/assets/comment-arrow.png) 0 0 no-repeat
+		position: relative
+		top: -11px
+		width: 56px
+		height: 16px
+		margin: 0 auto
+
+	h2
+		color: #fff
+		margin-bottom: $spacing * 2
+		font-size: 1.6em
+
+	.panel
+		margin: 0
+
 body#cities
 	div.show
 		padding-bottom: $spacing * 2
@@ -73,90 +147,34 @@ body#cities
 
 
 
-body#cities
-	div.index
-		div.row
+section#users
+	border-bottom: 3px solid rgba(0,0,0,0.1)
+	text-align: center
+	h2
+		font: 500 13px "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
+		text-align: center
+		padding: $spacing 0px
+		color: #9e9694
+	ul 
+		margin: 0px 0px 10px 0px
+		padding: 0
+
+		li
+			display: inline-block
+			width: 34px
 			text-align: center
+			vertical-align: top
+			position: relative
+		
+			img
+				width: 28px
+				height: 28px
+				max-width: none
+				@include radius(3px)
+				-webkit-box-shadow: 0 1px 1px 0px rgba(0,0,0,0.3)
+				box-shadow: 0 1px 1px 0px rgba(0,0,0,0.3)
 
-			h1
-				margin-top: 50px
-				font-size: 2.3em
-
-			div.country-list 
-				margin-bottom: 20px
-				text-transform: uppercase
-				font-weight: 400
-				letter-spacing: 0.15em
-				text-align: center
-				margin-top: 20px
-
-				span 
-					color: #666
-					padding: 0 1px 4px 1px
-					margin: 0 10px
-					border-bottom: 3px solid transparent
-					outline: none
-
-			div.city-list 
-				
-				a
-					white-space: nowrap
-					font-weight: 300
-					font-size: 13px
-					padding: 5px 10px
-					color: #FFF
-					background: transparent
-					margin: 8px 10px
-					display: inline-block
-					-webkit-border-radius: 4px
-					-moz-border-radius: 4px
-					-ms-border-radius: 4px
-					-o-border-radius: 4px
-					border-radius: 4px
-					
-					&:hover 
-						color: #111
-						background: #eee
-
-
-		#users
-			border-bottom: 3px solid rgba(0,0,0,0.1)
-			
-			h2
-				font: 500 13px "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
-				text-align: center
-				padding: $spacing 0px
-				color: #9e9694
-			ul 
-				margin: 0px 0px 10px 0px
-				padding: 0
-
-				li
-					display: inline-block
-					width: 50px
-					text-align: center
-					vertical-align: top
-					margin: 0 5px 5px
-					position: relative
-				
-					img
-						width: 48px
-						height: 48px
-						max-width: none
-						background-image: none
-						-webkit-border-radius: 3px
-						-moz-border-radius: 3px
-						-ms-border-radius: 3px
-						-o-border-radius: 3px
-						border-radius: 3px
-						-webkit-box-shadow: 0 1px 1px 0px rgba(0,0,0,0.3)
-						-moz-box-shadow: 0 1px 1px 0px rgba(0,0,0,0.3)
-						-ms-box-shadow: 0 1px 1px 0px rgba(0,0,0,0.3)
-						-o-box-shadow: 0 1px 1px 0px rgba(0,0,0,0.3)
-						box-shadow: 0 1px 1px 0px rgba(0,0,0,0.3)
-						font-size: 0 !important
-
-					.fullname
-						margin-top: $spacing / 5
-						font-size: .6em
-						line-height: 18px
+			.fullname
+				margin-top: $spacing / 5
+				font-size: .6em
+				line-height: 18px
