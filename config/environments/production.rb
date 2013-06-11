@@ -47,7 +47,7 @@ VandpibeCafe::Application.configure do
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js web/icons/general_enclosed_foundicons_ie7.css web/icons/general_foundicons_ie7.css]
+  config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js share/general_enclosed_foundicons_ie7.css share/general_foundicons_ie7.css]
   config.assets.precompile += %w( .svg .eot .woff .ttf )
   
   # Disable delivery errors, bad email addresses will be ignored
