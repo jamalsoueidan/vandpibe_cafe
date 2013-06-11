@@ -4,14 +4,17 @@
 
 = enable_back(root_url) 
 
-div class="row margin-top15 margin-bottom15"
-	div class="small-12 columns"
-		div.outter-box
-			div.inner-box
-				- if @city.locations.nil?
-					p 
-						| Vandpibe Cafe i #{city.name.big} der, hvis du ved der ligger en vandpibe cafe i #{@city.name.big} så er du mere end velkommen til at fortælle os via 
-						= link_to "Kontakt os", contact_path
-				- else
-					ul class="locations"
-						=render :partial => 'location', :collection => @city.locations, :as => :location
+- if @city.locations.nil?
+	p 
+		| Vandpibe Cafe i #{city.name.big} der, hvis du ved der ligger en vandpibe cafe i #{@city.name.big} så er du mere end velkommen til at fortælle os via 
+		= link_to "Kontakt os", contact_path
+- else
+	ul class="locations"
+		=render :partial => 'location', :collection => @city.locations.where(:visible => true), :as => :location
+
+	javascript:
+		$('.rate').raty({
+			score: function() {
+				return $(this).attr('data-score');
+  			}
+		});

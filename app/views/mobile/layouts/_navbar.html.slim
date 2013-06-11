@@ -1,27 +1,28 @@
-nav.top-bar
-  ul
-    li class="title"
-      h1
-        = link_to "VandpibeCafe.dk", root_url
+- unless content_for?(:hide_navigation)
+  nav.top-bar
+    ul
+      li class="title"
+        h1
+          = link_to "VandpibeCafe.dk", root_url
 
-    li class="menu-right foundicon-plus"
+      li class="menu-right foundicon-plus"
 
-    li class="menu-left foundicon-left-arrow"
+      li class="menu-left foundicon-left-arrow"
 
-div class="top-bar-section"
-  ul class="right"
-    li class="divider"
-    li
-      = link_to "Forsiden", root_url
-    li class="divider"
-    li
-      = link_to "Debat", questions_path
-    li class="divider"
-    li
-      = link_to "Top liste", toplist_path
-    li class="divider"
-    li 
-      = link_to "Kontakt os", "https://www.facebook.com/vandpibecafe.dk", :target => '_blank'
+  div class="top-bar-section"
+    ul class="right"
+      li class="divider"
+      li
+        = link_to "Forsiden", root_url
+      li class="divider"
+      li
+        = link_to "Debat", questions_path
+      li class="divider"
+      li
+        = link_to "Top liste", toplist_path
+      li class="divider"
+      li 
+        = link_to "Kontakt os", "https://www.facebook.com/vandpibecafe.dk", :target => '_blank'
 
 div.row
 

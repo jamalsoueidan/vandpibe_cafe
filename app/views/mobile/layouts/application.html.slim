@@ -17,7 +17,7 @@ head
   = render '/layouts/google'
   = csrf_meta_tags 
 
-body id="#{params[:controller]}"
+body
 
   = render '/layouts/navbar'
 
@@ -28,7 +28,7 @@ body id="#{params[:controller]}"
           = flash[:notice]
           a href="" class="close"
 
-  div class="#{params[:action]}"
+  div id="#{params[:controller]}" class="#{params[:action]}"
     = yield
 
   = render '/layouts/footer'
