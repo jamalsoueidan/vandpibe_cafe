@@ -1,0 +1,51 @@
+@import 'modules/mixin'
+
+.products-header
+	@include grid-row
+	padding: $spacing*2 0
+	h1
+		font-size: 2em
+
+ul#products
+	@include grid-row
+	padding-bottom: $spacing*2
+
+	.product
+		width: 25%
+		float: left
+		display: block
+		border: 1px solid #CCC
+		margin: -1px 0px 0px -1px
+
+		&:hover li
+			border-color: #FF2A00
+
+		li
+			padding: $spacing
+			border: 10px solid #FFF
+
+			.image
+
+			.details
+				margin: $spacing*2 0
+				color: #000
+				text-align: center
+				min-height: 114px
+
+				.title
+					margin-bottom: $spacing
+					font-size: 18px
+					text-transform: uppercase
+					letter-spacing: 1px
+
+				.price
+					font-weight: 400
+
+			.button
+				background: #000
+				margin: 0
+				font-size: 1em
+				text-transform: uppercase
+
+				&:hover 
+					background: #1dafed

@@ -1,0 +1,11 @@
+a href="#{store_product_path(product)}" class="product"
+		li
+			.image
+				= image_tag(product.uploads.first.avatar.url)
+
+			.details
+				h1.title = product.title
+				span.price = product.price.to_s + " kr,-"
+
+			.buy.button.extend
+					= "KØB"

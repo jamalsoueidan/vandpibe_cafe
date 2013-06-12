@@ -1,8 +1,10 @@
 <% if current_user.nil?%>
- 	<%= link_to image_tag('facebook-login.png', :style => "max-width: none;width:200px;"), "/auth/facebook" %>
+ 	<%= link_to image_tag('facebook-login.png', :style => "max-width: none; width:180px;margin: 40px 30px 0"), "/auth/facebook" %>
 <% else %>
-	<a href="<%=logout_path%>">
-		<%= image_tag(current_user.avatar_url, :class => 'avatar_url') %> 
-		<%= current_user.nickname %> <i class="foundicon-remove" style="position:static; font-size:10px"></i>
-	</a>
+	<div style="margin: 40px 0px 0px 25px">
+		<a href="<%=logout_path%>" title="Log af">
+			<%= image_tag(current_user.avatar_url, :style => "display:inline-block; width: 30px") %> 
+			<span style="font-size: 14px"><%= current_user.nickname %></span> <i class="foundicon-remove" style="display:inline; font-size:9px"></i>
+		</a>
+	</div>
 <% end %>

@@ -1,0 +1,29 @@
+@import '../modules/mixin'
+
+div.product
+	@include grid-row
+	padding: $spacing*3 0
+
+	.image
+		text-align: center
+		@include grid-column(4)
+
+
+	.details
+		@include grid-column(8)
+
+		h1
+			font-weight: bold
+
+		p
+			line-height: 1.5em
+			font-weight: 300
+
+		.price
+			font-size: 1.5em
+		
+		.buy
+			margin-top: $spacing
+
+			.button
+				background: #1dafed

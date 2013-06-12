@@ -5,8 +5,8 @@ ActiveAdmin.register Upload do
     f.inputs "Details" do
       f.input :avatar, :as => :file
       f.input :title
-      f.input :uploadable_id, :as => :hidden, :input_html => {:value => params[:location_id]}
-      f.input :uploadable_type, :as => :hidden, :input_html => {:value => 'Location'}
+      f.input :uploadable_id, :as => :hidden, :input_html => {:value => params[:uploadable_id]}
+      f.input :uploadable_type, :as => :hidden, :input_html => {:value => params[:uploadable_type]}     
     end
     f.buttons
   end
@@ -23,7 +23,9 @@ ActiveAdmin.register Upload do
   member_action :destroy, :method => :delete do
     flash[:notice] = 'Upload was successfully destroyed.'
     upload = Upload.find(params[:id])
-    upload.delete
-    redirect_to admin_location_path(:id => upload.uploadable_id)
+    upload.destroy
+    name = upload.uploadable_type.singularize.downcase
+    uri = send("admin_" + name + "_path", upload.uploadable_id)
+    redirect_to uri
   end
 end

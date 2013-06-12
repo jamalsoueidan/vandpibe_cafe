@@ -1,5 +1,4 @@
 $height: 110px
-$width: 150px
 
 #navigation
 	z-index: 100
@@ -21,50 +20,32 @@ $width: 150px
 	height: $height
 	
 	ul 
-		display: inline-block
-		zoom: 1
-		vertical-align: middle
-		top: 0
-		height: $height
-		right: 0px
-	
-		li 
-			border-width: 0 0 0 1px
-			margin-left: 0
-			display: -moz-inline-stack
-			display: inline-block
-			vertical-align: middle
-			white-space: nowrap
-			width: $width
-			background: url('/assets/navigation_divider.png') no-repeat
-			height: $height
+		overflow: hidden
+		margin: 0
+		padding: 0
 
-			a 
+		li 
+			height: $height
+			float: left
+			width: 18.66%
+			background: url('/assets/navigation_divider.png') no-repeat
+			text-align: center
+
+			span
+				color: #000
+				
+			i
 				color: #000
 				display: block
-				position: relative
-				text-align: center
-				height: 38px
-				padding: 73px 0 0
-				font-size: 14px
-				font-weight: normal
-				background: transparent
-				-webkit-transition: background 0.2s ease-in-out
-				-moz-transition: background 0.2s ease-in-out
-				-o-transition: background 0.2s ease-in-out
-				transition: background 0.2s ease-in-out
-			
-				i 
-					font-size: 35px
-					width: 60px
-					left: 52px
-					position: absolute
-					top: 16px
-				
-				span 
-					margin-left: 15px
+				font-size: 30px
 
-			&#login
-				a
-					padding: 0
-					margin: 35px 0px 0px 20px
+			&.logo
+				padding: 15px 15px 0
+				width: 22%
+				background: none
+
+			&.login
+				width: 22%
+
+			&.spot
+				padding-top: 20px

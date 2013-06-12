@@ -18,6 +18,10 @@ VandpibeCafe::Application.routes.draw do
   resources :ratings, :only => [:create, :new]
   resources :users
 
+  match 'koeb' => "store#index", :as => 'store'
+  match 'koeb/:id' => "store::products#show", :as => 'store_product'
+
+
   resources :locations, :only => [:create, :destroy] do
     collection do
       match 'random'

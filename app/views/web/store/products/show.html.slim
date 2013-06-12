@@ -1,0 +1,11 @@
+.product
+	.image
+		= image_tag(@product.uploads.first.avatar.url)
+	.details
+		h1 = @product.title
+		p = @product.long_desc
+
+		span.price = @product.price.to_s + " kr,-"
+
+		.buy
+			.button	Køb nu
