@@ -53,9 +53,9 @@ class LocationsController < ApplicationController
   def create
     @location = Location.find(params[:comment][:table_id])
 
-    flash[:notice] = "Din bedømmelse er nu tilføjet!"
+    flash[:notice] = "Din anmedelse er nu tilføjet!"
 
-    if params[:comment][:body].length > 10
+    if params[:comment][:body].length > 5
       @comment = @location.comments.build(params[:comment])
       @comment.user = current_user
       @comment.save
