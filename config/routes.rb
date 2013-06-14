@@ -18,8 +18,9 @@ VandpibeCafe::Application.routes.draw do
   resources :ratings, :only => [:create, :new]
   resources :users
 
-  match 'koeb' => "store#index", :as => 'store'
-  match 'koeb/:id' => "store::products#show", :as => 'store_product'
+  get 'koeb' => "store#index", :as => 'store'
+  post 'koeb/add_to_cart' => "store#add_to_cart", :as => 'add_to_cart_store'
+  get 'koeb/:id' => "store::products#show", :as => 'store_product'
 
 
   resources :locations, :only => [:create, :destroy] do
