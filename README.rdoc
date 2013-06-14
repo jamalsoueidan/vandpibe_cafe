@@ -3,13 +3,10 @@ VandpibeCafe
 * correct title and link, when embedding link on the facebook
 * show login popup like autobutler.dk
 * let owner send klage
-* update comment box like http://davidwalsh.name/mysql-random
 * create vote on every city on the top
 * use bold on keywords
 * use correct h1, h2, h3 etc.
 * get mail when someone submit any comment or debat
-* register hvor mange der ruller siden helt ned til bunds. (google analytics)
-* update the return_to after login, sometime it goes to wrong page because of some hidden pages lige random.html.erb etc.
 
 http://menucard.dk/restauranter/la-grotte-vandpibe-cafe
 http://leafletjs.com/examples/mobile-example.html
