@@ -1,0 +1,47 @@
+.row
+	.large-12.columns
+		h1 style="margin-top:15px" 1. Indkøbskurv
+		p Vi er tæt på at kunne sende din ordre hjem til dig, når du har undersøgt din indkøbskurv så bedes du <a href="#ordre">udfylde ordre detaljer</a> og til sidst <a href="#ordre">gå til betaling</a>. Efter betaling får du en bekræftelse og du modtager din ordre indenfor 2-3 dage.
+
+
+#checkout
+	.container
+		.row
+			.large-9.columns
+				table border="0" cellspacing="0" cellpadding="0"
+					thead
+						tr
+							th class="title" &nbsp;
+							th scope="col" class="quantity" Antal
+							th scope="col" class="price" Pris
+							th scope="col" class="remove" Fjern
+					tbody
+			.large-3.columns
+				.total = "Total"
+				#total-price.price = "0 kr,-"
+
+#ordre
+	.large-5.columns
+		h1 2. Ordre detaljer
+		p Du bedes udfylde alle felter
+
+		= simple_form_for :ordre do |f|
+			= f.input :first_name, :label => "Fornavn"
+			= f.input :last_name, :label => "Efternavn"
+			= f.input :address, :label => "Gade/vej"
+			= f.input :post, :label => "Postnr/by"
+			= f.input :city, :label => "By"
+			= f.input :phone, :label => "Telefon"
+			= f.input :email, :label => "E-mailadresse"
+			= f.input :country, priority: [ "Denmark" ], :label => "Land"
+			
+	.large-5.columns
+		h1 3. Betaling
+		p Når du udfyldt order detaljer til venstre så skal du trykke på knappen nedenfor.
+		a href="#" class="button" Gå til betaling
+
+
+javascript:
+	$(function() {
+		$('#checkout').cart({ getDataURL: "#{get_cart_store_path}", removeFromCartURL: "#{remove_from_cart_store_path}", addToCartURL: "#{add_to_cart_store_path}"})
+	})

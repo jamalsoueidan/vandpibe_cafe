@@ -56,30 +56,7 @@ ul#products
 					background: #1dafed
 
 
-div#cart
-	z-index: 3000
-	display: none
-	
-	.overlay
-		position: fixed
-		left: 0px
-		top: 0px
-		right: 0px
-		bottom: 0px
-		background-color: white
-		opacity: .7
-		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"
-		filter: alpha(opacity=50)
-		z-index: 3000
-	
-	.container
-		position: fixed
-		top: 30%
-		width: 100%
-		z-index: 3001
-		background-color: #000
-		padding: 30px 0
-
+@mixin cart
 	.foundicon-remove
 		position: absolute
 		right: $spacing*1.5
@@ -152,3 +129,84 @@ div#cart
 
 				.icon-plus, .icon-minus, .icon-cancel-circle
 					cursor: pointer
+
+
+div#checkout 
+	margin: 15px 0
+
+	.container
+		padding: 30px 0
+		background-color: #000
+		
+	@include cart
+
+div#cart
+	z-index: 3000
+	display: none
+	
+	.overlay
+		position: fixed
+		left: 0px
+		top: 0px
+		right: 0px
+		bottom: 0px
+		background-color: white
+		opacity: .7
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"
+		filter: alpha(opacity=50)
+		z-index: 3000
+	
+	.container
+		position: fixed
+		top: 30%
+		width: 100%
+		z-index: 3001
+		background-color: #000
+		padding: 30px 0
+
+	@include cart
+
+#ordre
+	@include grid-row
+	margin-bottom: 30px
+
+	label, input
+		float: left
+	
+	label
+		width: 30%
+		line-height: 30px
+
+	input, select
+		width: 70%
+
+	select
+		margin-top: 5px
+
+	.input
+		clear: both
+
+	.ordre_post
+		width: 50%
+		float: left
+
+		label
+			width: 60%
+
+		input
+			width: 40%
+
+	.ordre_city
+		clear: none
+		width: 50%
+		float: left
+
+		label
+			display: none
+
+		input
+			margin-left: 1%
+			width: 99%
+
+	.ordre_phone
+		clear: both

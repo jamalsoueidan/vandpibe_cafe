@@ -15,6 +15,7 @@
 	Plugin = (element, options) ->
 		console.log 'done'
 		@products = {}
+		@show_container = false
 		@element = element
 		@options = $.extend({}, defaults, options)
 		@_defaults = defaults
@@ -25,21 +26,28 @@
 	Plugin:: =
 		init: ->
 			console.log 'init cart'
-			$('form.product').on 'ajax:success', self: this, this.addProduct
+			$('form.product').on 'ajax:success', self: this, this.productComingIn
+			
+			self = this
+			$.post this.options['getDataURL'], (data) ->
+				$.each data, ->
+					self.addProduct(this)
 
-			#this.element.find('#remove')
+				self.show_container = true
 
-		addProduct: (evt, data, status, xhr) ->
+		productComingIn: (evt, data, status, xhr) ->
 			self = evt.data.self
-			id = data.id
-			if self.productExists(id)
-				self.products[id].quantity++
+			self.addProduct(data)
+			
+		addProduct: (product, ignoreUpdateDisplay) ->
+			id = product.id
+			if this.productExists(id)
+				this.products[id].quantity++
 			else
-				data.quantity = 1
-				self.products[id] = data
+				product.quantity = 1 if product.quantity is `undefined`
+				this.products[id] = product
 
-			self.updateDisplay()
-			return
+			this.updateDisplay()
 
 		removeProduct: (evt) ->
 
@@ -47,6 +55,7 @@
 
 			element = $(evt.target).closest('tr')
 			productId = element.attr('product-id')
+			$.post(self.options['removeFromCartURL'], product: id: productId, quantity: 0)
 
 			delete self.products[productId]
 			self.updateDisplay()
@@ -62,10 +71,11 @@
 
 			self = this
 			$.each this.products, ->
-				self.displayElement().append(self.template(this))
+				self.displayElement().prepend(self.template(this))
 
 			this.updateTotalPrice();
-			this.showDisplay()
+
+			this.showDisplay() if this.show_container
 
 		updateTotalPrice: ->
 			self = this
@@ -86,16 +96,22 @@
 			self = evt.data.self
 			element = $(evt.target).closest('tr')
 			productId = element.attr('product-id')
-			self.products[productId].quantity-- if self.products[productId].quantity > 1
-			element.find('.quantity .value').html(self.products[productId].quantity)
-			self.updateTotalPrice()
+
+			if self.products[productId].quantity > 1
+				self.products[productId].quantity-- 
+				$.post(self.options['removeFromCartURL'], product: id: productId, quantity: self.products[productId].quantity)
+				element.find('.quantity .value').html(self.products[productId].quantity)
+				self.updateTotalPrice()
 
 		plusProduct: (evt) ->
 			self = evt.data.self
 			element = $(evt.target).closest('tr')
 			productId = element.attr('product-id')
+
 			self.products[productId].quantity++
 			element.find('.quantity .value').html(self.products[productId].quantity)
+			$.post(self.options['addToCartURL'], product: id: productId, quantity: self.products[productId].quantity)
+
 			self.updateTotalPrice()
 
 		close: (evt) ->
@@ -125,7 +141,3 @@
     		return
 
 ) jQuery
-
-
-jQuery ->
-	$('#cart').cart()

@@ -1,0 +1,24 @@
+#cart
+	.close.overlay
+
+	.container
+		i class="foundicon-remove close"
+		.row
+			.large-9.columns
+				table border="0" cellspacing="0" cellpadding="0"
+					thead
+						tr
+							th class="title" &nbsp;
+							th scope="col" class="quantity" Antal
+							th scope="col" class="price" Pris
+							th scope="col" class="remove" Fjern
+					tbody
+			.large-3.columns
+				.total = "Total"
+				#total-price.price = "0 kr,-"
+				a href="#{checkout_store_path}" class="checkout button" Til kassen
+
+javascript:
+	$(function() {
+		$('#cart').cart({ getDataURL: "#{get_cart_store_path}", removeFromCartURL: "#{remove_from_cart_store_path}", addToCartURL: "#{add_to_cart_store_path}"})
+	})

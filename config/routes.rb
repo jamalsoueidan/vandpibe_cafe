@@ -20,6 +20,9 @@ VandpibeCafe::Application.routes.draw do
 
   get 'koeb' => "store#index", :as => 'store'
   post 'koeb/add_to_cart' => "store#add_to_cart", :as => 'add_to_cart_store'
+  post 'koeb/remove_to_cart' => "store#remove_from_cart", :as => 'remove_from_cart_store'
+  post 'koeb/get_cart' => "store#get_cart", :as => 'get_cart_store'
+  get 'koeb/checkout' => "store#checkout", :as => "checkout_store"
   get 'koeb/:id' => "store::products#show", :as => 'store_product'
 
 
