@@ -1,7 +1,8 @@
 # -*- encoding : utf-8 -*-
 class LocationsController < ApplicationController
-
   before_filter :authorize, :only => [:destroy, :create, :write_review]
+  
+  after_filter :set_login_return_path, :only => [:toplist, :show]
 
   caches_page :toplist
 

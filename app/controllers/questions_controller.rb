@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class QuestionsController < ApplicationController
   before_filter :authorize, :only => [:new, :edit, :create]
+  after_filter :set_login_return_path, :only => [:index, :new, :hot, :unanswered, :recent, :show]
   
   def index
     @questions = Question.where(:visible => true).order('created_at DESC').paginate(:page => params[:page])

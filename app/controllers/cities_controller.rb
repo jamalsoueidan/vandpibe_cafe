@@ -1,6 +1,7 @@
 class CitiesController < ApplicationController
   before_filter :set_cities
 
+  after_filter :set_login_return_path, :only => [:index, :show]
   caches_page :index, :show
 
   def index
