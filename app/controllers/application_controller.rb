@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_view_path
+    prepend_view_path 'app/views/mobile/'
+    return
     if request.subdomain == 'm'
       prepend_view_path 'app/views/mobile/'
     else

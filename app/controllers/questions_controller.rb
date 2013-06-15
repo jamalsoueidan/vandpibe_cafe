@@ -5,8 +5,8 @@ class QuestionsController < ApplicationController
   
   def index
     @questions = Question.where(:visible => true).order('created_at DESC').paginate(:page => params[:page])
-    @title = "Vandpibe Hvordan?"
-    @description = "Hvis du ikke ved <strong>hvordan man laver en Vandpibe</strong>, <strong>hvor du køber en billig Vandpibe</strong>, eller <strong>hvordan du gør?</strong> Kan du oprette et spørgsmål her også vil der være andre bruger der vil svar dig."
+    @title = "Har du et spørgsmål?"
+    @description = "Her kan du spørge om alt der omhandler Vandpiber, Vandpibe tobak, almen viden om Vandpibe eller bare hvordan man laver en Vandpibe.  Så kan du oprette et spørgsmål her også vil der være andre brugere der garanteret vil hjælpe dig. "
   end
   
   def new
