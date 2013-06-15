@@ -20,3 +20,9 @@ section#random
 				h2	Hvem har logget på Vandpibe Cafe?
 				ul
 					= render :partial => 'user', :collection => @users
+
+				.login
+					a href="/auth/facebook"
+						img alt="Facebook-login" src="/assets/facebook-login.png"
+
+				p Få mere ud af Vandpibe Cafe ved at logge på

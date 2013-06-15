@@ -6,7 +6,7 @@ class CitiesController < ApplicationController
 
   def index
     @locations = Location.where(:visible => true).order('RAND()').limit(12)
-    #@users = User.order('RAND()').select('avatar_url').limit(25)
+    @users = User.order('RAND()').select('avatar_url').limit(25)
   end
 
   def old_url
