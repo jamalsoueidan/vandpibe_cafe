@@ -4,8 +4,6 @@ class LocationsController < ApplicationController
   
   after_filter :set_login_return_path, :only => [:toplist, :show]
 
-  caches_page :toplist
-
   def toplist
     @locations = Location.sort_by("rating").limit(10)
   end

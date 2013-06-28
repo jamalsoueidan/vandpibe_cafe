@@ -6,16 +6,6 @@ class ApplicationController < ActionController::Base
 
   MOBILE = 'http://m.' + ActionMailer::Base.default_url_options[:host]
 
-  before_filter :update_cache_location
-
-  def update_cache_location
-    if request.subdomain.empty? || request.subdomain == 'www'
-      ActionController::Base.page_cache_directory = "#{Rails.root}/public/cache/web"
-    else
-      ActionController::Base.page_cache_directory = "#{Rails.root}/public/cache/mobile"
-    end
-  end
-
   def set_view_path
     if request.subdomain == 'm'
       prepend_view_path 'app/views/mobile/'

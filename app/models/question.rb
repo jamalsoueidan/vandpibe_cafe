@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Question < ActiveRecord::Base
-  attr_accessible :title, :body, :category, :anonymous
+  #attr_accessible :title, :body, :category, :anonymous
   attr_accessor :category
   belongs_to :user
   has_many :comments, :as => :commentable

@@ -1,5 +1,5 @@
 class City < ActiveRecord::Base
-  attr_accessible :name, :latitude, :longitude, :visible, :color, :meta_title, :meta_description, :meta_keywords, :country_id
+  #attr_accessible :name, :latitude, :longitude, :visible, :color, :meta_title, :meta_description, :meta_keywords, :country_id
 
   belongs_to :country 
   

@@ -1,5 +1,5 @@
 class Upload < ActiveRecord::Base
-  attr_accessible :avatar, :uploadable_type, :uploadable_id, :title 
+  #attr_accessible :avatar, :uploadable_type, :uploadable_id, :title 
   has_attached_file :avatar, 
                     :storage => :s3,
                     :styles => { :big => "600x600>", :medium => "300x300>", :thumb => "100x100>" }, 

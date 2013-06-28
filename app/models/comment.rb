@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :body, :table, :table_id
+  #attr_accessible :body, :table, :table_id
   attr_accessor :table, :table_id
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
