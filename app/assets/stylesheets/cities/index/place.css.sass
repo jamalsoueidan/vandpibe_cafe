@@ -1,0 +1,69 @@
+section#place
+	background: #000 url(asset-path("place_background.jpg")) no-repeat
+	background-position: -370px 0px
+	padding-top: 150px
+	height: 320px
+
+	.columns
+		@include media($mobile)	
+			padding: $gutter/2
+
+	@include media($desktop)
+		height: 500px
+		padding-top: 150px
+		background-position: 0px 0px
+		background-size: 100% 100%
+	
+	h1
+		color: #fff
+		font-size: 1.8em
+		font-weight: 700
+		text-shadow: 0 0 15px rgba(0,0,0,0.6),0 -1px 1px rgba(0,0,0,0.6)
+		margin-bottom: $gutter/2
+		
+		@include media($desktop)
+			font-size: 3em
+
+	h2
+		color: #fff
+		font-size: 1em
+		font-weight: 300
+		text-shadow: 0 0 15px rgba(0,0,0,0.6),0 -1px 1px rgba(0,0,0,0.6)
+
+	.search
+		background: rgba(57,60,61,0.8)
+		@include box-shadow(0 0 5px rgba(0,0,0,0.5))
+		@include border-radius(3px)
+		border: 1px solid rgba(0,0,0,0.8)
+		padding: 4px
+		margin-top: 20px
+
+		input
+			border: 1px solid #000
+			@include box-shadow(inset 1px 1px 5px rgba(0,0,0,0.4))
+			@include border-radius(3px)
+			height: 23px
+			margin: 0
+			width: 100%
+			padding: $gutter/2 8px
+			font-size: 17px
+
+.dropdown-countries
+	padding: 10px
+	line-height: 20px
+
+	h3
+		margin-bottom: 10px
+
+	ul#cities
+		margin-bottom: 20px
+
+		li.city
+			padding-right: 25px
+			height: 1.6em
+			min-width: 8em
+			display: inline-block
+			color: #666
+
+		&:last-child
+			margin-bottom: 0px

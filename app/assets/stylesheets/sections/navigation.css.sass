@@ -1,0 +1,62 @@
+$height: 110px
+
+#navigation
+	position: relative
+	z-index: 500
+	background: #ffffff
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f7f7f7 100%)
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f7f7f7))
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f7f7f7 100%)
+	background: -o-linear-gradient(top,  #ffffff 0%,#f7f7f7 100%)
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f7f7f7 100%)
+	background: linear-gradient(to bottom,  #ffffff 0%,#f7f7f7 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 )
+	@include box-shadow(0 2px 7px rgba(20,24,35,0.25))
+	width: 100%
+	height: $height
+	
+	ul 
+		overflow: hidden
+		margin: 0
+		padding: 0
+
+		li 
+			height: $height
+			line-height: 42px
+			float: left
+			width: 33%
+			background: url(asset-path('navigation_divider.png')) no-repeat
+			text-align: center
+
+			@include media($desktop)
+				width: 18.66%
+
+			span
+				color: #000
+				font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
+				
+			i
+				color: #000
+				display: block
+				font-size: 30px
+
+			&.logo
+				padding: 20px 15px 0
+				width: 22%
+				background: none
+				display: none
+
+				img
+					width: 160px
+				@include media($desktop)
+					display: inline
+
+			&.login
+				width: 22%
+				display: none
+				
+				@include media($desktop)
+					display: inline
+
+			&.spot
+				padding-top: 26px

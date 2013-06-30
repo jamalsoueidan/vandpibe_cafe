@@ -1,0 +1,7 @@
+section#locations
+	.row
+		.columns
+			h3 Vi har udvalgte nogle Vandpibe Caféer du måske vill besøge...
+
+			ul id="locations"
+				= render :partial => 'location', :collection => @locations, :as => :location

@@ -3,9 +3,11 @@ class City < ActiveRecord::Base
 
   belongs_to :country 
   
-  default_scope :order => 'name asc'
+  default_scope {
+    where(:visible => true).order('name asc')
+  }
 
-  has_many :locations, :order => 'name asc' do
+  has_many :locations do
     def include_all
       self.includes(:city, :comments => [:user], :tobaccos => :brand)
     end

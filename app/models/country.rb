@@ -1,4 +1,7 @@
 class Country < ActiveRecord::Base
-	has_many :cities, :conditions => {:visible => true}
-	#attr_accessible :name, :color
+	has_many :cities, -> { where visible: true }
+
+	default_scope {
+    	order('name asc')
+  	}
 end

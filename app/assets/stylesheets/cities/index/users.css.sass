@@ -1,0 +1,48 @@
+section#users
+	border-bottom: 3px solid rgba(0,0,0,0.1)
+	text-align: center
+	height: 220px
+
+	@include media($desktop)
+		height: 320px
+
+	.columns
+		background: #fff url(asset-path('users-background.png')) center no-repeat
+		background-position: -300px 60px
+		height: 220px
+
+		@include media($desktop)
+			background-position: 0px 80px
+			height: 300px
+
+	h3
+		margin: $gutter 0
+		font-size: 1.3em
+		text-align: center
+
+		@include media($desktop)
+			font-size: 2em
+
+	.login	
+		background: #fff
+		@include border-radius(5px)
+		padding: 10px
+		border: 1px dotted #000
+		margin: 40px auto
+		width: 300px
+
+		@include media($desktop)
+			width: 400px
+			padding: 25px
+			margin: 48px auto
+
+		img
+			width: 230px
+
+			@include media($desktop)
+				width: 300px
+
+		p
+			margin: 0
+			font-size: .8em
+			margin-top: $gutter/2

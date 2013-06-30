@@ -1,0 +1,24 @@
+section#place
+	.row
+		.columns
+			h1 Find en Vandpibe Cafe?
+
+			h2 Du vil finde vandpibe cafeer i Danmark, Sverige samt Tyskland.
+			
+			= simple_form_for :search do | f |
+				= f.input :name, placeholder: 'Hvor vil du finde en Vandpibe Cafe?', label: false, input_html: { 'data-dropdown' => '#dropdown-6' }
+
+#dropdown-6.dropdown.dropdown-tip
+	.dropdown-panel
+		.dropdown-countries
+			- @countries.each do |country|
+				h3 = country.name
+				ul#cities
+					- country.cities.each do |city|
+						li.city
+							= link_to city.name.big, city_path(city.name)
+
+javascript:
+	$(document).ready(function() {
+		$('.dropdown-panel').width($('#search_name').width())
+	});

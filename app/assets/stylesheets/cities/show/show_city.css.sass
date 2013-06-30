@@ -1,0 +1,29 @@
+#show-city
+	background-color: #f6f6f6
+	padding: 20px 0
+
+	.location-list
+		@include span-columns(12)
+
+		@include media($desktop)
+			@include span-columns(8)
+
+		ul#locations 
+			@include outer-container
+
+			li
+				@include media($mobile)
+					margin-bottom: $gutter/3
+					@include span-columns(6)
+					@include omega(2n)
+
+				@include media($desktop)
+					margin-bottom: $gutter/2
+					@include span-columns(4)
+					@include omega(3n)
+
+	.navigation
+		@include span-columns(12)
+
+		@include media($desktop)
+			@include span-columns(4)

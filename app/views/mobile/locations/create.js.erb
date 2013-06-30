@@ -1,5 +1,0 @@
-<% if @comment.nil? %>
-window.location = "<%=city_location_path(@location.city.name, @location.name.to_url)%>";
-<% else %>
-window.location = "<%=city_location_path(@location.city.name, @location.name.to_url)%>#<%=@comment.id%>";
-<% end %>

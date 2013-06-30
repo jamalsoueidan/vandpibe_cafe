@@ -41,6 +41,8 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
+gem 'fancybox2-rails', '~> 0.2.4'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
@@ -55,4 +57,8 @@ gem 'aws-sdk'
 gem 'aquarium'
 gem 'slim'
 #gem 'exception_notification'
-gem 'zurb-foundation', '~> 4.2.1'
+
+gem 'neat'
+gem 'compass-rails'
+
+gem 'quiet_assets', :group => :development

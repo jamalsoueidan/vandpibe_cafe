@@ -1,0 +1,52 @@
+section#toplist
+	background-color: #f6f6f6
+	padding-top: 10px
+
+	div.row
+		.columns
+			padding: 20px
+
+		h1
+			font-size: 2em
+			font-weight: 500
+			padding: 10px 0
+
+		p
+			font-weight: 300
+
+	li.location
+		@include span-columns(12)
+		margin-bottom: 20px
+
+		div.location
+			@include outer-container	
+
+			.image
+				@include span-columns(4)
+				margin-right: 0px
+				width: 40%
+
+				img
+					width: 100%
+					height: 100px
+
+					@include media($desktop)
+						height: 200px
+					
+			.details
+				@include span-columns(8)
+				width: 60%
+
+				.data
+					padding: 10px 0px 0px 0px
+					
+					h5
+						font-size: 1.7em
+						font-weight: 300
+						margin-bottom: $gutter/1.5
+
+						@include media($mobile)
+							line-height: 1em
+
+				.rating
+					padding: 10px 0px 0px 0px

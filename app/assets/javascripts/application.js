@@ -13,14 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require foundation
+//= require fancybox
 //= require_directory .
 
-$(function() {
-	$(document).foundation();
-})
-
 Google = {};
+
+/*$(document).ready(function() {
+	$(document).foundation();
+})*/
 
 String.prototype.all_capitalize = function(){
     return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase();

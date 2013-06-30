@@ -1,0 +1,12 @@
+- content_for(:title, toplist_title) 
+- content_for(:meta_title, toplist_title) 
+- content_for(:meta_description, "Bedste Vandpibe Cafeer")
+
+section#toplist
+	.row
+		.columns
+			h1	Bedste Vandpibe Cafeer
+			p Nu har du mulighed for at bedømme den Vandpibe Cafe du besøger. Det eneste du skal gøre er at logge på og bagefter vælge Vandpibe Cafeen du besøger, så har du muligheden for at bedømme den.
+
+	ul.row
+		= render :partial => 'cities/location', :collection => @locations, :as => :location

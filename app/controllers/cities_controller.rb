@@ -4,8 +4,7 @@ class CitiesController < ApplicationController
   after_filter :set_login_return_path, :only => [:index, :show]
 
   def index
-    @locations = Location.where(:visible => true).order('RAND()').limit(12)
-    @users = User.order('RAND()').select('avatar_url').limit(25)
+    @locations = Location.includes(:uploads, :city).order('RAND()').limit(8)
   end
 
   def old_url
@@ -14,7 +13,7 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find_by_url(params[:name])
-    @locations = Location.where(:city_id => @city.id, :visible => true).sort_by(params[:sort])
+    @locations = @city.locations.includes(:uploads).sort_by(params[:sort])
 
     if @city.nil?
       redirect_to root_path
@@ -23,7 +22,6 @@ class CitiesController < ApplicationController
 
   private
     def set_cities
-      @countries = Country.order(:name)
-      @cities = City.where(:visible => true).order(:name)
+      @countries = Country.includes(:cities)
     end
 end

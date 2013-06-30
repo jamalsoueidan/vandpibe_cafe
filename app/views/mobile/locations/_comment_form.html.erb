@@ -1,7 +1,0 @@
-<% if logged_in? %>
-	<%= link_to "Bedøm Selv", city_location_write_review_path(@location.city.name, @location.name.to_url), :class => "success button extend no-margin" %>
-<% else %>
-	<p>Du skal være logget på for at bedømme <strong><%=@location.name.big %> Vandpibe Cafe</strong>.</p>
-
-	<%= link_to image_tag('facebook-login.png'), "/auth/facebook" %>
-<% end %>

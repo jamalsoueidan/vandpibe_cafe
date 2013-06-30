@@ -23,7 +23,7 @@ VandpibeCafe::Application.routes.draw do
   post 'koeb/remove_to_cart' => "store#remove_from_cart", :as => 'remove_from_cart_store'
   post 'koeb/get_cart' => "store#get_cart", :as => 'get_cart_store'
   get 'koeb/checkout' => "store#checkout", :as => "checkout_store"
-  #get 'koeb/:id' => "store::products#show", :as => 'store_product'
+  get 'koeb/:id' => "store/products#show", :as => 'store_product'
 
 
   resources :locations, :only => [:create, :destroy] do
@@ -38,21 +38,6 @@ VandpibeCafe::Application.routes.draw do
   get '/get_json' => "main#get_json"
   
   resources :questions, :only => [:index, :create]
-  #get '/debat' => "questions#index", :as => 'questions'
-  #post '/debat' => "questions#create", :as => 'questions'
-
-  put '/debat/:id/update' => "questions#update",  :as => 'update_question'
-  delete '/debat/:id/delete' => "questions#destroy", :as => 'delete_question'
-  get '/debat/:id/edit' => "questions#edit", :as => 'edit_question'
-
-  get '/debat/ubesvaret' => "questions#unanswered", :as => 'unanswered_questions'
-  get '/debat/mest' => "questions#hot", :as => 'hot_questions'
-  get '/debat/seneste' => "questions#recent", :as => 'recent_questions'
-  get '/debat/opret' => "questions#new", :as => 'new_question'
-
-  get '/debat/:id/skriv_svar' => "questions#write_answer", :as => 'question_write_answer'
-  get '/debat/:id/*title' => "questions#show", :as => 'question'
-
   get '/by/:city' => 'cities#old_url'
 
   get '/:name' => "cities#show", :as => 'city'

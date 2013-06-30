@@ -1,0 +1,22 @@
+ul#ratings
+	li.rating
+		= "Vandpibe"
+		= rating(location, :class => 'waterpipe')
+	li.rating
+		= "Hygiene"
+		= rating(location, :class => 'clean')
+	li.rating
+		= "Service"
+		= rating(location, :class => 'service')
+	li.rating
+		= "Social"
+		= rating(location, :class => 'social')
+
+	- if @location.visible? 
+		li.rating
+			- if logged_in?
+				a class="button" href="#{city_location_write_review_path(@location.city.name, @location.name.to_url)}"
+					= "Bedøm Selv"
+			- else
+				a class="button" href="/login?return=#{city_location_path(@location.city.name, @location.name.to_url)}"
+					= "Bedøm Selv"

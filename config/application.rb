@@ -24,5 +24,7 @@ module VandpibeCafe
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += Dir["#{config.root}/lib", "#{config.root}/lib/**/"]
+
+    config.assets.paths << Compass::Frameworks[:compass].stylesheets_directory
   end
 end

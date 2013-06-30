@@ -1,0 +1,51 @@
+div.location
+	background: #fff
+	cursor: pointer
+	@include box-shadow(#d6d6d6 0px 1px 3px)
+	@include box-sizing(border-box)
+
+	.image
+		padding: $gutter/3
+
+		img
+			-webkit-transition: opacity 0.15s linear
+			-moz-transition: opacity 0.15s linear
+			transition: opacity 0.15s linear
+			height: 120px
+			width: 100%
+			display: block
+
+	.content 
+		.details
+			background-color: #FFF
+			padding: 0px 10px 10px 10px
+
+			.name
+				margin: 0px 0px 4px 0px
+				padding: 0
+				font-size: 1em
+				font-weight: 600
+				color: #000
+				text-overflow: ellipsis
+
+			.description
+				font-size: .8em
+				height: 70px
+				color: #9f9f9f
+
+				@include media($mobile)
+					display: none
+
+			h6
+				color: #75796f
+				font-size: 12px
+
+		.rating 
+			padding: 10px 
+			color: #75796f
+			font-size: 11px
+			border-top: 1px solid #d0d5cb
+
+			strong
+				margin-right: 5px
+				color: #0b1902

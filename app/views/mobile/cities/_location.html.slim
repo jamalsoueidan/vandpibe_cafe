@@ -1,9 +1,0 @@
-a href="#{city_location_path(@city.name, location.name.to_url)}" 
-	li class=(cycle("white", "grey") + "-background location")
-		    .image 
-		    	= image_tag_unless(location.uploads)
-
-		    .data
-				h5 = location.name.big
-
-				div class="rate" data-score="#{location.ratings.calculate_all}"

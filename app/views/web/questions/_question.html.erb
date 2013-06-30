@@ -1,9 +1,0 @@
-<li id="question_<%=question.id%>" class="row question">
-	<div class="large-2 columns">
-		<div class="total-comments"><strong><%=question.comments.length%></strong><br />svar</div>
-	</div>
-	<div class="large-10 columns">
-		<h1><%=link_to truncate(question.title, :length => 52), question_path(question.id, question.title.to_url)%></h1>
-		<p>oprettet d. <%=question.created_at.strftime('%d %b %y')%> af <% if question.anonymous? %>Annonym bruger<% else %><%=link_to question.user.nickname, user_path(question.user)%><% end %> om <%=question.category%></p>
-	</div>
-</li>
