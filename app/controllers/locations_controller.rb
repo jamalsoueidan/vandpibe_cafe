@@ -11,12 +11,11 @@ class LocationsController < ApplicationController
   def show
     @city = City.find_by_url(params[:city_name])
     @location = @city.locations.include_all.unscoped.find_by_url(params[:name])
-    
     if @location.nil?
       redirect_to root_path
     end
 
-    @nearest = Location.where(:city_id => @city.id).order('RAND()').first
+    @comments = @location.comments.order('id DESC').includes(:user).paginate(:per_page => 7, :page => params[:page])
   end
 
   def destroy

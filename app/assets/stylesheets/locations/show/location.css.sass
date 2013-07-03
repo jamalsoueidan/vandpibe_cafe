@@ -1,136 +1,164 @@
-section#location
-	.row 
-		@include box-sizing(border-box)
-		background: #fff
-		@include box-shadow(#d6d6d6 0px 1px 3px)
+$line-height: 24px
 
-		.about
-			@include span-columns(12)
+.box
+	@include box-shadow(0 0 5px #ddd)
+	@include box-sizing(border-box)
+	background-color: #FFF
+	line-height: $line-height
+	font-weight: 300
+	font-size: 14px
 
-			@include media($desktop)
-				@include span-columns(8)
-				margin-right: 0px
-				width: 68.08511%
+.location-content
+	@include box-shadow(0 0 5px #ddd)
+	@include box-sizing(border-box)
+	background-color: #FFF
 
-			@include header
+	.location-header
+		position: relative
+		border-bottom: 1px solid #e8e8e8
+		padding: $gutter/2
 
-			ul#uploads
-				@include outer-container
+		h1
+			font-size: 30px
+			font-weight: 500
+			margin-bottom: 4px
 
-				li
-					@include media($mobile)
-						@include span-columns(6)
-						@include omega(2n)
+		h2
+			margin-top: 8px
+			color: #A7A7A7
+			font-size: 18px
 
-					@include media($desktop)
-						@include span-columns(3)
-						@include omega(4n)
+		a
+			position: absolute
+			right: 15px
+			top: 28px
+
+	.location-inner
+		padding: $gutter/2
+.address-content
+	border-top: 1px solid #e8e8e8
+	background-color: #F3F9FC
+	padding: $gutter/2
+
+	.address-header
+		h2
+			font-size: 16px
+			font-weight: 600
+			margin-bottom: 10px
+
+	.btn
+		margin-top: 10px
+		width: 100%
+
+.rating-content
+	border-top: 1px solid #e8e8e8
+	padding: $gutter/2
+
+	.rating-header
+		h2
+			font-size: 16px
+			font-weight: 600
+			margin-bottom: 10px
+	
+	.rating-inner
+		li
+			line-height: $line-height + 2
+			div
+				padding-left: 10px
+				padd
+				display: inline
+
+	.btn
+		margin-top: 10px
+		width: 100%
+
+.rate-content
+	padding: $gutter/2
+	background: #fff url(asset-path('rate-background.png')) top right no-repeat
+
+	.rate-header
+		h2
+			font-size: 16px
+			font-weight: 600
+			margin-bottom: 10px
+
+	.rate-inner
+		img
+			width: 24px
+			height: 24px
+
+		a
+			margin-top: 6px
+
+.comments-content
+	@include media($desktop)
+		margin-top: $gutter
+
+	@include media($mobile)
+		margin-top: $gutter/2
+		padding: $gutter/2
+
+	.comments-header
+		margin-bottom: $gutter
+
+		h2
+			font-size: 20px
+			line-height: 20px
+
+	.comments-inner
+		ul#comments
+			li.comment
+				position: relative
+				padding: 0 0 15px 0
+
+				.comment-avatar
+					position: absolute
+					left: 0px
+					top: 0px
+					padding-top: 3px
 
 					img
-						width: 100%
-						height: 100%
+						width: 38px
+						height: 38px
+						@include border-radius(3px)
+					i
+						border: 1px solid #000
+						font-size: 38px
 
-			.comments-container 
-				.comments-header 
-					background: #242424
-					background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#2e2e2e), to(#1a1a1a))
-					background: -webkit-linear-gradient(0% 0%, 0% 100%, from(#2e2e2e), to(#1a1a1a))
-					background: -moz-linear-gradient(center top, #2e2e2e, #1a1a1a)
-					background: linear-gradient(#2e2e2e, #1a1a1a)
-					padding: 12px 20px 10px
-					border-bottom: 1px solid rgba(187, 187, 187, 0.1)
+				.comment-details
+					padding-top: 3px
+					padding-left: 46px
 
-					h3 
-						color: #FFF
-						font-size: 15px
+					.comment-date
+						color: #9c9c9c
+						border-bottom: 1px solid #e0e0e0
+						margin: 0 0 3px 0
+						padding: 0 0 6px 0
+						line-height: 11px
+						font-size: 11px
+						font-weight: bold
 
-				.comments-list 
-					margin: 0
-					.comment-container 
+					.comment-text
 						font-size: 13px
-						padding-bottom: 25px
-						margin-bottom: 27px
-						border-bottom: 1px solid #cacaca
+						line-height: 18px
 
-						.comment-text 
-							line-height: 20px
-							word-wrap: break-word
+section#location
+	padding: 30px 0
+	background-color: #f6f6f6
 
-						.comment-date 
-							color: #b5b5b5
+	.info
+		@include span-columns(12)
 
-				.facebook-login
-					@include media($mobile)
-						width: 100%
+		@include media($desktop)
+			@include span-columns(8)
+	.navigation
+		@include span-columns(12)
 
-		.info
-			vertical-align: middle
-			background: -moz-linear-gradient(left, #eee 0%, #f8f8f8 2%)
-			background: -webkit-linear-gradient(left, #eee 0%, #f8f8f8 2%)
-			background: -o-linear-gradient(left, #eee 0%, #f8f8f8 2%)
-			background: -ms-linear-gradient(left, #eee 0%, #f8f8f8 2%)
-			background: linear-gradient(right, #eee 0%, #f8f8f8 2%)
-			@include span-columns(12)
+		@include media($desktop)
+			@include span-columns(4)
 
-			@include media($desktop)
-				@include span-columns(4)
-
-			.sidebar-block 
-				position: relative
-				padding: 32px 24px 20px 22px
-				border-top: 1px solid #dfdfdf
-
-				.sidebar-label 
-					-webkit-box-shadow: 0 1px 0 white
-					-moz-box-shadow: 0 1px 0 white
-					box-shadow: 0 1px 0 white
-					border-radius: 0 0 3px 3px
-					border: 1px solid #e5e5e5
-					border-top: none
-					color: #797979
-					cursor: default
-					font-size: 10px
-					font-weight: bold
-					left: 21px
-					line-height: 16px
-					padding: 0 7px 1px
-					position: absolute
-					text-transform: uppercase
-					top: 0
-					font-family: Arial, sans-serif
-
-				.sidebar-content
-					font: normal normal normal 12px/16px 'Helvetica Neue', Helvetica, Arial, sans-serif
-
-					ul
-						margin-bottom: 0
-
-				li.rating
-					.button
-						margin-top: 10px
-		.content 
-			padding: 15px
-			background-color: #FFF
-
-
-			
-
-	.rate-container 
-		clear: left
-		margin-bottom: 20px
-
-		.rate-header
-			font-weight: bold
-			margin-bottom: 5px
-		
-		.rate-content 
-			overflow: hidden
-
-		.rate
-			float: left
-
-		.hint 
-			font-size: 10px
-			color: #3085d6
-			float: left
-			padding-top: 3px
+		#map
+			border-top: 2px solid #e8e8e8
+			border-bottom: 1px solid #e8e8e8
+			@include media($mobile)
+				display: none

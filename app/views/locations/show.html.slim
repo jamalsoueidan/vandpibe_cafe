@@ -1,0 +1,29 @@
+= content_for(:title, @location.name.big + " Vandpibe Cafe")
+= content_for(:meta_title, @location.name.big + " Vandpibe Cafe") 
+= content_for(:meta_description, @location.name.big + " Vandpibe Cafe ligger i " + @location.city.name.big + ". Alt hvad du vil vide om Cafeen, kan du læse på vandpibecafe.dk")
+
+section#location
+	.row
+		.info
+			= render 'locations/partials/location'
+			= render 'locations/partials/comments'
+		.navigation
+			.box
+				= render 'locations/partials/rate'
+				= render 'locations/partials/map'
+				= render 'locations/partials/address'
+				= render 'locations/partials/rating'
+
+javascript:
+	$(document).ready(function() {
+	 	if(window.location.hash) {
+			var hash = window.location.hash.substring(1);
+			$target = $('#comment-' + hash)
+			$('html, body').stop().animate({'scrollTop': $target.offset().top - 100}, 900, 'swing', function() {
+				console.log($target)
+				$target.effect("highlight", {}, 2000);
+			})
+	  	}
+
+	  	$(".fancybox").fancybox();
+	});

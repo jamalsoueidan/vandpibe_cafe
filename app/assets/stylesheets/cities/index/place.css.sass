@@ -1,8 +1,13 @@
 section#place
+	position: fixed
+	z-index: 0
 	background: #000 url(asset-path("place_background.jpg")) no-repeat
-	background-position: -370px 0px
+	background-position: -570px 0px
 	padding-top: 150px
 	height: 320px
+	left: 0px
+	right: 0px
+	top: 0px
 
 	.columns
 		@include media($mobile)	
@@ -11,8 +16,7 @@ section#place
 	@include media($desktop)
 		height: 500px
 		padding-top: 150px
-		background-position: 0px 0px
-		background-size: 100% 100%
+		background-position: top center
 	
 	h1
 		color: #fff

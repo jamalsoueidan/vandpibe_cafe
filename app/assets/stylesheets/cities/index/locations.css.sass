@@ -1,15 +1,18 @@
 section#locations
 	@include box-shadow(inset 0 0 10px #000000)
-	background: url(asset-path('blue-pattern.png')) 0 0 repeat
+	position: relative
+	z-index: 500
+	background: url(asset-path("blue-pattern.png")) 0 0 repeat
 
 	.columns
 		padding: $gutter/2
 		
-		h3
-			color: #fff
-			text-align: center
-			margin: $gutter 0
-			font-size: 1.6em
+		.header
+			h3
+				color: #fff
+				text-align: center
+				margin: $gutter 0
+				font-size: 1.6em
 
 		ul#locations 
 			@include outer-container

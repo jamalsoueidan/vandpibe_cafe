@@ -14,7 +14,18 @@ $height: 110px
 	@include box-shadow(0 2px 7px rgba(20,24,35,0.25))
 	width: 100%
 	height: $height
-	
+
+	&.front
+		-webkit-box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.6)
+		-moz-box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.6)
+		-ms-box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.6)
+		-o-box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.6)
+		box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.6)
+		margin-top: 320px
+
+		@include media($desktop)
+			margin-top: 500px
+
 	ul 
 		overflow: hidden
 		margin: 0

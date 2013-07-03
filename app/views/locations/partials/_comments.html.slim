@@ -1,0 +1,8 @@
+.comments-content
+	.comments-header
+		= render 'locations/partials/comment_form' 
+	.comments-inner
+		ul#comments
+			= render :partial => 'locations/partials/comment', :collection => @comments
+
+		= will_paginate(@comments)

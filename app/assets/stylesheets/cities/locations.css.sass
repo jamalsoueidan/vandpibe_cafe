@@ -1,8 +1,17 @@
-div.location
-	background: #fff
+li.location
+	position: relative
 	cursor: pointer
-	@include box-shadow(#d6d6d6 0px 1px 3px)
+	@include box-shadow(0 0 5px #ddd)
 	@include box-sizing(border-box)
+	background: #fff
+	
+	.link
+		position: absolute
+		top: 0px
+		left: 0px
+		right: 0px
+		bottom: 0px
+		z-index: 5
 
 	.image
 		padding: $gutter/3
@@ -15,37 +24,27 @@ div.location
 			width: 100%
 			display: block
 
-	.content 
-		.details
-			background-color: #FFF
-			padding: 0px 10px 10px 10px
 
-			.name
-				margin: 0px 0px 4px 0px
-				padding: 0
-				font-size: 1em
-				font-weight: 600
-				color: #000
-				text-overflow: ellipsis
+	.details
+		background-color: #FFF
+		padding: 0px 10px 10px 10px
 
-			.description
-				font-size: .8em
-				height: 70px
-				color: #9f9f9f
+		h3.name
+			margin: 0px 0px 4px 0px
+			padding: 0
+			font-size: 1em
+			font-weight: 600
+			color: #000
+			text-overflow: ellipsis
 
-				@include media($mobile)
-					display: none
+		.description
+			font-size: .8em
+			height: 70px
+			color: #9f9f9f
 
-			h6
-				color: #75796f
-				font-size: 12px
+			@include media($mobile)
+				display: none
 
-		.rating 
-			padding: 10px 
+		.city
 			color: #75796f
-			font-size: 11px
-			border-top: 1px solid #d0d5cb
-
-			strong
-				margin-right: 5px
-				color: #0b1902
+			font-size: 12px

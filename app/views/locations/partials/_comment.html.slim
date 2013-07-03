@@ -1,0 +1,15 @@
+li id="comment-<%=comment.id%>" class="comment"
+	.comment-avatar
+		img src="http://500px.com/graphics/userpic.png"
+
+		/i class="icon-user"
+	.comment-details
+		.comment-date 
+			= "skrevet for #{distance_of_time_in_words(Time.now, comment.created_at)}"
+
+		.comment-text
+			= simple_format(comment.body)
+			
+			- if is_owner?(comment)
+				.options 
+					= link_to "Fjern", location_path(@location, :comment_id => comment.id), :method => :delete, :confirm => 'Er du sikker du vil slette din anmeldelse?', :remote => true 

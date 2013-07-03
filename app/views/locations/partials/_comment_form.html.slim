@@ -1,0 +1,9 @@
+- if @location.visible? 
+	- if logged_in? 
+		= link_to "Bedøm Selv", city_location_write_review_path(@location.city.name, @location.name.to_url), :class => "success button extend no-margin"
+	- else
+		h2.login
+			= link_to "Login", login_path
+			= " eller "
+			= link_to "opret dig", login_path
+			= " for at kommentarer."

@@ -8,15 +8,6 @@ module ApplicationHelper
     content_tag 'li', link_to(title, path), :class => current_class(path)
   end
   
-  def breadcrumbs(options={})
-    content_tag :ul, :class => :breadcrumbs do
-      concat(content_tag :li, link_to('Start side', '/'))
-      options.each_with_index do |key, index| 
-        is_current_url = ( options.length == (index+1) ? 'current' :  '')
-        concat(content_tag(:li, link_to(key[0], key[1]), :class => is_current_url)) 
-      end
-    end
-  end
   
   def active_class(condtion)
     if condition.kind_of?(Array)
@@ -31,15 +22,5 @@ module ApplicationHelper
     #if asset.nil?
       return 'http://assets.vandpibecafe.dk/'
     #end
-  end
-
-  def enable_back(url=nil, options={})
-    javascript_tag do
-      if url.nil?
-        raw("enable_back()")
-      else
-        raw("enable_back('#{url}')")
-      end
-    end
   end
 end
