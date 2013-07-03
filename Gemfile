@@ -61,4 +61,6 @@ gem 'slim'
 gem 'neat'
 gem 'compass-rails'
 
+gem 'bxslider-rails'
+
 gem 'quiet_assets', :group => :development

@@ -14,13 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require fancybox
+//= require bxslider
 //= require_directory .
 
 Google = {};
-
-/*$(document).ready(function() {
-	$(document).foundation();
-})*/
 
 String.prototype.all_capitalize = function(){
     return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase();
@@ -77,9 +74,3 @@ function init_map(options) {
 		});
 	});
 }
-
-$(function() {
-  $('.notify').each(function() {
-    console.log(this);
-  });
-});

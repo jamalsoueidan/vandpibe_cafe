@@ -1,0 +1,8 @@
+- unless @location.uploads.empty?
+	ul#uploads
+		= render :partial => 'locations/partials/upload', :collection => @location.uploads, :as => :upload
+
+	javascript:
+		$(document).ready(function() {
+			$('ul#uploads').bxSlider({adaptiveHeight: true});
+		});

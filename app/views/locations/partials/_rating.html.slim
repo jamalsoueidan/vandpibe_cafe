@@ -1,27 +1,14 @@
 .rating-content
 	.rating-header
-		h2 Bedømmelse
-
+		h2 Bedøm selv!
 	.rating-inner
-		ul#ratings
-			li.rating
-				= "Vandpibe"
-				= rating(@location, :class => 'waterpipe')
-			li.rating
-				= "Hygiene"
-				= rating(@location, :class => 'clean')
-			li.rating
-				= "Service"
-				= rating(@location, :class => 'service')
-			li.rating
-				= "Social"
-				= rating(@location, :class => 'social')
+		= rating(@location, :class => 'location', :width => 150)
 
-			- if @location.visible? 
-				li.rating
-					- if logged_in?
-						a class="btn yellow" href="#{city_location_write_review_path(@location.city.name, @location.name.to_url)}"
-							= "Bedøm Selv"
-					- else
-						a class="btn yellow" href="/login?return=#{city_location_path(@location.city.name, @location.name.to_url)}"
-							= "Bedøm Selv"
+		- if @location.visible? 
+			.rating
+				- if logged_in?
+					a class="btn yellow" href="#{city_location_write_review_path(@location.city.name, @location.name.to_url)}"
+						= "Bedøm Selv"
+				- else
+					a class="btn yellow" href="/login?return=#{city_location_path(@location.city.name, @location.name.to_url)}"
+						= "Bedøm Selv"

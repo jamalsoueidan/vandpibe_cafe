@@ -46,22 +46,6 @@ class Location < ActiveRecord::Base
         query.order('rating DESC')
       end
     end
-
-    def best_rating(sort_by=nil)
-      sort_by.gsub!('bedste+', '') unless sort_by.nil?
-
-      if sort_by == 'vandpibe'
-        self.order('waterpipe_rating DESC').limit(10)
-      elsif sort_by == 'service'
-        self.order('service_rating DESC').limit(10)
-      elsif sort_by == 'indretning'
-        self.order('furniture_rating DESC').limit(10)
-      elsif sort_by == 'stemning'
-        self.order('mood_rating DESC').limit(10)
-      else
-        self.select('*, round(sum(mood_rating)+sum(service_rating)+sum(waterpipe_rating)+sum(furniture_rating), 3) as total').group('id').order('total desc').includes(:comments).limit(10)
-      end
-    end
   end
 
   belongs_to :city, :counter_cache => true

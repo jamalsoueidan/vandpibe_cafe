@@ -1,4 +1,15 @@
 @import "fancybox"
+@import "bxslider"
+
+.bx-wrapper .bx-viewport
+	-moz-box-shadow: none
+	-webkit-box-shadow: none
+	box-shadow: none
+	left: 0px
+
+.bx-wrapper
+	margin: 0 auto 30px
+
 @import "compass"
 @import "compass/reset"
 
@@ -144,11 +155,7 @@ hr
 .full-width
 	display: block
 
-@import "modules/dropdown"
-@import "modules/fonts"
-@import "modules/icons"
-@import "modules/paginate"
-
+@import "modules/*"
 @import "sections/*"
 @import "store"
 @import "cities"

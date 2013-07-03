@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130630202638) do
+ActiveRecord::Schema.define(version: 20130703203809) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "resource_id",   null: false
@@ -67,16 +67,13 @@ ActiveRecord::Schema.define(version: 20130630202638) do
     t.string  "latitude"
     t.string  "longitude"
     t.integer "city_id"
-    t.boolean "visible",          default: true
-    t.float   "furniture_rating", default: 0.0
-    t.float   "waterpipe_rating", default: 0.0
-    t.float   "service_rating",   default: 0.0
-    t.float   "mood_rating",      default: 0.0
-    t.boolean "television",       default: false
-    t.boolean "music",            default: false
-    t.boolean "football",         default: false
+    t.boolean "visible",       default: true
+    t.boolean "television",    default: false
+    t.boolean "music",         default: false
+    t.boolean "football",      default: false
     t.text    "openings_time"
     t.text    "description"
+    t.float   "rating",        default: 0.0
   end
 
   create_table "locations_menus", id: false, force: true do |t|

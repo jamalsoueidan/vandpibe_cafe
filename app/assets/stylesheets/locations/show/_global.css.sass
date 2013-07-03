@@ -1,0 +1,28 @@
+.box
+	@include box-shadow(0 0 5px #ddd)
+	@include box-sizing(border-box)
+	background-color: #FFF
+	line-height: 24px
+	font-weight: 300
+	font-size: 14px
+
+section#location
+	padding: 30px 0
+	background-color: #f6f6f6
+
+	.info
+		@include span-columns(12)
+
+		@include media($desktop)
+			@include span-columns(8)
+	.navigation
+		@include span-columns(12)
+
+		@include media($desktop)
+			@include span-columns(4)
+
+		#map
+			border-top: 2px solid #e8e8e8
+			border-bottom: 1px solid #e8e8e8
+			@include media($mobile)
+				display: none

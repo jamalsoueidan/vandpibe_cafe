@@ -51,20 +51,29 @@ class LocationsController < ApplicationController
   def create
     @location = Location.find(params[:comment][:table_id])
 
-    flash[:notice] = "Din anmedelse er nu tilføjet!"
-
-    if params[:comment][:body].length > 5
-      @comment = @location.comments.build(params[:comment])
-      @comment.user = current_user
-      @comment.save
+    if params[:comment]
+      flash[:notice] = "Din kommentare er nu tilføjet!"
+      if params[:comment][:body].length > 5
+        @comment = @location.comments.build(comment_params)
+        @comment.user = current_user
+        @comment.save
+      end
     end
 
-    params[:scores].each do |key, value|
-      if value.to_i > 0
-        if !@location.ratings.exists?(:rating_key => key, :user_id => current_user.id)
-          @location.ratings.create(:rating_key => key, :rating_value => value, :user_id => current_user.id)
+    if params[:scores]
+      flash[:notice] = "Din bedømmelse er nu tilføjet!"
+      params[:scores].each do |key, value|
+        if value.to_i > 0
+          if !@location.ratings.exists?(:rating_key => key, :user_id => current_user.id)
+            @location.ratings.create(:rating_key => key, :rating_value => value, :user_id => current_user.id)
+          end
         end
       end
     end
   end
+
+  private
+    def comment_params
+      params.require(:comment).permit(:body, :table_id)
+    end
 end

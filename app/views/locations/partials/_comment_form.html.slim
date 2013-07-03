@@ -1,6 +1,14 @@
 - if @location.visible? 
 	- if logged_in? 
-		= link_to "Bedøm Selv", city_location_write_review_path(@location.city.name, @location.name.to_url), :class => "success button extend no-margin"
+		.comment-content
+			.comment-avatar
+				= image_tag('userpic.png')
+			.comment-form
+				= simple_form_for Comment.new, :url => locations_path, :remote => true do |f| 
+					= f.input :body, :label => false, :placeholder => 'Skriv om din oplevelse på denne café'
+					= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }
+					= f.button :submit, :value => "Send min vurdering", :class => "btn green", data: {disable_with: "Vent et øjeblik..."} 
+					
 	- else
 		h2.login
 			= link_to "Login", login_path

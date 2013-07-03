@@ -12,7 +12,7 @@ li class="location" id="location#{location.id}"
 			= image_tag("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|" + location.city.country.color, :style => "width:10px;height:14px;margin-right:5px;") + location.city.name.big
 
 		.rating
-			= rating(location, :class => 'total', :score => location.ratings.calculate_all)
+			= rating(location, :class => 'location')
 
 			//strong 
 			//	= 'Bedømmelser:'
