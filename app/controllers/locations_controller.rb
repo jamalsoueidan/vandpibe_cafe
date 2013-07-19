@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
   after_filter :set_login_return_path, :only => [:toplist, :show]
 
   def toplist
-    @locations = Location.sort_by("rating").limit(10)
+    @locations = Location.order('rating DESC').limit(10)
   end
 
   def show
@@ -51,7 +51,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.find(params[:comment][:table_id])
 
-    if params[:comment]
+    if params[:comment] && params[:comment][:body]
       flash[:notice] = "Din kommentare er nu tilføjet!"
       if params[:comment][:body].length > 5
         @comment = @location.comments.build(comment_params)
@@ -60,16 +60,17 @@ class LocationsController < ApplicationController
       end
     end
 
-    if params[:scores]
-      flash[:notice] = "Din bedømmelse er nu tilføjet!"
-      params[:scores].each do |key, value|
-        if value.to_i > 0
-          if !@location.ratings.exists?(:rating_key => key, :user_id => current_user.id)
-            @location.ratings.create(:rating_key => key, :rating_value => value, :user_id => current_user.id)
-          end
+    if params[:score]
+      flash[:notice] = "Din bedømmelse er allerede tilføjet!"
+      value = params[:score]
+      if value.to_i > 0
+        if !@location.ratings.exists?(:rating_key => 'location', :user_id => current_user.id)
+          flash[:notice] = "Din bedømmelse er nu tilføjet!"
+          @location.ratings.create(:rating_key => 'location', :rating_value => value, :user_id => current_user.id)
         end
       end
     end
+
   end
 
   private

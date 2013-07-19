@@ -46,8 +46,11 @@ gem 'fancybox2-rails', '~> 0.2.4'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
-gem 'activeadmin', github: 'akashkamboj/active_admin', branch: 'rails4'
+gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+gem 'ransack',             github: 'ernie/ransack',         branch: 'rails-4'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'formtastic',          github: 'justinfrench/formtastic'
+
 gem 'will_paginate', '~> 3.0.0'
 gem 'omniauth-facebook'
 gem 'simple_form', "~> 3.0.0.rc"

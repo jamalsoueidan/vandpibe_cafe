@@ -1,6 +1,9 @@
 .login-content
-	margin: 40px 0 20px 0
-	
+	margin: 40px $gutter/2
+
+	@include media($desktop)
+		margin: 40px 0 20px 0
+
 	h2
 		font-weight: 600
 		margin: 15px 0
@@ -26,7 +29,7 @@
 
 	.btn_facebook
 		color: #fff
-		font-size: 18px
+		font-size: 16px
 		padding: 20px 40px 20px 90px
 		display: inline-block
 		border: 1px solid #243C74
@@ -66,7 +69,7 @@
 			background-position: 24px 17px
 			content: ""
 			width: 62px
-			height: 59px
+			height: 73px
 			position: absolute
 			left: 0px
 			margin-top: -20px
@@ -75,3 +78,6 @@
 			-ms-border-radius: 3px 0px 0px 3px
 			-o-border-radius: 3px 0px 0px 3px
 			border-radius: 3px 0px 0px 3px
+
+			@include media($desktop)
+				height: 56px

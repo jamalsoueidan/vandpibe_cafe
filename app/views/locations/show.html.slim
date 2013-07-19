@@ -12,17 +12,3 @@ section#location
 				= render 'locations/partials/rating'
 				= render 'locations/partials/map'
 				= render 'locations/partials/address'
-
-javascript:
-	$(document).ready(function() {
-	 	if(window.location.hash) {
-			var hash = window.location.hash.substring(1);
-			$target = $('#comment-' + hash)
-			$('html, body').stop().animate({'scrollTop': $target.offset().top - 100}, 900, 'swing', function() {
-				console.log($target)
-				$target.effect("highlight", {}, 2000);
-			})
-	  	}
-
-	  	$(".fancybox").fancybox();
-	});

@@ -3,6 +3,7 @@
 		h1 = @location.name.big
 
 		h2 = @location.city.name.big
+		
 		- unless @location.references.empty?
 			a class="btn" href="#{@location.references.first.link}" target="blank" Besøg hjemmeside
 

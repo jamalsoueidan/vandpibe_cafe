@@ -1,24 +1,53 @@
 section#place
 	.row
 		.columns
-			h1 Find en Vandpibe Cafe?
+			h1 Hvor leder du efter en Vandpibe Café?
 
-			h2 Du vil finde vandpibe cafeer i Danmark, Sverige samt Tyskland.
+			h2 Brug felterne for at søg efter en specific Vandpibe Cafe.
 			
-			= simple_form_for :search do | f |
-				= f.input :name, placeholder: 'Hvor vil du finde en Vandpibe Cafe?', label: false, input_html: { 'data-dropdown' => '#dropdown-6' }
+			.search
 
-#dropdown-6.dropdown.dropdown-tip
-	.dropdown-panel
-		.dropdown-countries
-			- @countries.each do |country|
-				h3 = country.name
-				ul#cities
-					- country.cities.each do |city|
-						li.city
-							= link_to city.name.big, city_path(city.name)
+			    div class="dropdown"
+					select class="dropdown-select"
+						option value="" Vælge land
+						- @countries.each do |country|
+							option value="#{country.id}" = country.name.big
+			        
+				div class="dropdown"
+					select class="dropdown-select"
+						option value="" Vælge by
+						- @cities.each do |city|
+							option value="#{city.id}" = city.name.big
+
+			    button type="submit" class="large pink btn"
+			    	i class="icon-cart" 
+			    		= " Søg"
 
 javascript:
 	$(document).ready(function() {
-		$('.dropdown-panel').width($('#search_name').width())
+		/*$('ul#cities li').hide();
+		default_text = $('div.countries .title').text();
+		height = "225px"
+
+		$(".select.countries .title").click(function () {
+			$(this).parent().toggleClass("closed");
+		});
+
+		$(".select.cities .title").click(function() {
+			if ($('div.countries .title').text() == default_text) {
+				alert('Du bedes først vælge land')
+				return;
+			}
+
+			$('ul#cities').animate({height: height});
+			( height == "225px" ? height = "0px" : height = "225px");
+			$(this).parent().toggleClass("closed");
+		});
+
+		$(".select li").click(function () {
+			id = $(this).attr('class')
+			$('ul#cities li').hide();
+			$('ul#cities li.' + id).show();
+			$(this).parent().parent().toggleClass("closed").find(".title").text($(this).text());
+		});*/
 	});

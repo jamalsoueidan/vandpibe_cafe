@@ -2,7 +2,7 @@
 VandpibeCafe::Application.routes.draw do
   root :to => 'cities#index'
   
-  #ActiveAdmin.routes(self)
+  ActiveAdmin.routes(self)
 
   get '/auth-js' => 'main#auth_js', :as => 'authjs'
   get '/sitemap.xml' => 'main#sitemap', :format => :xml
@@ -24,7 +24,6 @@ VandpibeCafe::Application.routes.draw do
   post 'koeb/get_cart' => "store#get_cart", :as => 'get_cart_store'
   get 'koeb/checkout' => "store#checkout", :as => "checkout_store"
   get 'koeb/:id' => "store/products#show", :as => 'store_product'
-
 
   resources :locations, :only => [:create, :destroy] do
     collection do

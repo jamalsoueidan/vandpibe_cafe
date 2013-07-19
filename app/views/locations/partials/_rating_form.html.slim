@@ -1,0 +1,17 @@
+.rating-form
+	h2 Bedøm caféen
+	p Give antal stjerner til caféen som du synes den er værd udefra vandpibe kvalitet, service samt hygiejne.
+
+	= simple_form_for Comment.new, :url => locations_path, :remote => true, :html => {:id => 'location_new_comment'} do |f|
+
+		.raty-score
+		.raty-hint
+
+		javascript:
+			$('.raty-score').raty({readOnly: false, targetKeep: true, target: '.raty-hint', readOnly: false, hints: ['Meget dårlig', 'Dårlig', 'Ok', 'God', 'Meget god'], click: function(score, evt){ $('#score').val(score)}})
+
+		= text_field_tag "score", 0, :type => :hidden
+
+		= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }
+
+		= f.button :submit, :value => "Send min vurdering", data: {disable_with: "Vent et øjeblik..."} 

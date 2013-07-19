@@ -8,10 +8,21 @@
 					= f.input :body, :label => false, :placeholder => 'Skriv om din oplevelse på denne café'
 					= f.input :table_id, :as => :hidden, :input_html => { :value => @location.id }
 					= f.button :submit, :value => "Send min vurdering", :class => "btn green", data: {disable_with: "Vent et øjeblik..."} 
-					
+		
+		javascript:
+			$(document).ready(function() {
+			 	if(window.location.hash) {
+					var hash = window.location.hash.substring(1);
+					$target = $('#comment-' + hash)
+					$('html, body').stop().animate({'scrollTop': $target.offset().top - 100}, 900, 'swing', function() {
+						console.log($target)
+						$target.effect("highlight", {}, 2000);
+					})
+			  	}
+			});
 	- else
 		h2.login
 			= link_to "Login", login_path
 			= " eller "
-			= link_to "opret dig", login_path
-			= " for at kommentarer."
+			= link_to "opret en dig", login_path
+			= " for at kommentere."

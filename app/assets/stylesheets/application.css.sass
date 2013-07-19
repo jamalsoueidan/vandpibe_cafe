@@ -22,7 +22,8 @@ $grid-columns: 12
 $max-width: em(960)
 
 $mobile: new-breakpoint(max-width 480px)
-$desktop: new-breakpoint(min-width 480px)
+$landscape: new-breakpoint(orientation landscape max-width 640px)
+$desktop: new-breakpoint(min-width 768px)
 
 @import "neat"
 
@@ -36,23 +37,31 @@ body
 
 h1, h2, h3, h4, h5 
 	font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
-	font-weight: 300
+	font-weight: 400
+	letter-spacing: -1px
 	font-style: normal
 	text-rendering: optimizeLegibility
 
+h1
+	font-size: 1.5em
+
+h2
+	font-size: 1.4em
+
+h3
+	font-size: 1.3em
+
+h4
+	font-size: 1.2em
+
+h5
+	font-size: 1.1em
+
 p
 	font-weight: normal
-	font-size: 1em
+	font-size: 13px
 	line-height: 1.6
 	text-rendering: optimizeLegibility
-
-.panel
-	border-style: solid
-	border-width: 1px
-	border-color: #d9d9d9
-	margin-bottom: 1.25em
-	padding: 1.25em
-	background: #f2f2f2
 
 hr
 	border: solid #ddd
@@ -60,106 +69,29 @@ hr
 	margin: 0
 	height: 0
 
-.btn
-	font-weight: bold
-	display: inline-block
-	padding: 0.4em 1.2em
-	-webkit-box-sizing: border-box
-	-moz-box-sizing: border-box
-	box-sizing: border-box
-	text-align: center
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
-	vertical-align: middle
-	margin-bottom: 0
-	-webkit-border-radius: 5px
-	-moz-border-radius: 5px
-	border-radius: 5px
-	-webkit-box-shadow: inset 0 0 0.2em rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.2),0 0 0 #000
-	box-shadow: inset 0 0 0.2em rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.2),0 0 0 #000
-	background-color: rrggbb(extract_color(#00aeff 0%, #018fe1 100%, 1))
-	background-image: -webkit-linear-gradient(top, #00aeff 0%, #018fe1 100%)
-	background-image: -moz-linear-gradient(top, #00aeff 0%, #018fe1 100%)
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='aarrggbb(extract_color(#00aeff 0%,#018fe1 100%, 0))', endColorstr='aarrggbb(extract_color(#00aeff 0%,#018fe1 100%, 1))', GradientType=0)
-	border: 1px solid rgba(0,0,0,0.2)
-	border-color: #0195eb #0083c7 #0175b8 #0083c7
-	font-size: 12px
-	line-height: 16px
-	color: #fff
-	text-shadow: 0 -1px 0px rgba(0,0,0,0.2)
+a
+	color: #2ba6cb
+	text-decoration: none
+	line-height: inherit
 
-	.large
-		line-height: normal
-		font-size: 15px
-		padding: 0.6em 1.3em
-
-	&:hover
-		text-decoration: none
-		color: #fff
-		background-color: rrggbb(extract_color(#33beff 0%, #018fe1 100%, 1))
-		background-image: -webkit-linear-gradient(top, #33beff 0%, #018fe1 100%)
-		background-image: -moz-linear-gradient(top, #33beff 0%, #018fe1 100%)
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='aarrggbb(extract_color(#33beff 0%,#018fe1 100%, 0))', endColorstr='aarrggbb(extract_color(#33beff 0%,#018fe1 100%, 1))', GradientType=0)
-
-	&.yellow
-		background-color: rrggbb(extract_color(#fde44c 0%, #f3c613 100%, 1))
-		background-image: -webkit-linear-gradient(top, #fde44c 0%, #f3c613 100%)
-		background-image: -moz-linear-gradient(top, #fde44c 0%, #f3c613 100%)
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='aarrggbb(extract_color(#fde44c 0%,#f3c613 100%, 0))', endColorstr='aarrggbb(extract_color(#fde44c 0%,#f3c613 100%, 1))', GradientType=0)
-		border: 1px solid rgba(0,0,0,0.2)
-		border-color: #f3c81d #f6cd08 #d2aa0b #f6cd08
-		color: #393c3d
-		text-shadow: 0 1px 0px rgba(255,255,255,0.3)
-
-		&:hover
-			text-decoration: none
-			color: #fff
-			background-color: rrggbb(extract_color(#feec7e 0%, #f3c613 100%, 1))
-			background-image: -webkit-linear-gradient(top, #feec7e 0%, #f3c613 100%)
-			background-image: -moz-linear-gradient(top, #feec7e 0%, #f3c613 100%)
-			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='aarrggbb(extract_color(#feec7e 0%,#f3c613 100%, 0))', endColorstr='aarrggbb(extract_color(#feec7e 0%,#f3c613 100%, 1))', GradientType=0)
-
-	&.gray
-		background-color: #eee
-		background-image: -webkit-linear-gradient(top, #fefefe 0%,#eee 100%)
-		background-image: -moz-linear-gradient(top, #fefefe 0%,#eee 100%)
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffefefe', endColorstr='#ffeeeeee', GradientType=0)
-		border: 1px solid rgba(0,0,0,0.2)
-		border-color: #f3f3f3 #e2e2e2 #dadada #e2e2e2
-		color: #393c3d
-		text-shadow: none
-		-webkit-box-shadow: inset 0 0 0.2em rgba(255,255,255,0.3),0 0 0 #000
-		box-shadow: inset 0 0 0.2em rgba(255,255,255,0.3),0 0 0 #000
-		border-color: #d3d3d3 #cfcfcf #c7c7c7 #cfcfcf
-		&:hover
-			color: #393c3d
-			background-color: #f9f9f9
-			background-image: -webkit-linear-gradient(top, #fff 0%,#f9f9f9 100%)
-			background-image: -moz-linear-gradient(top, #fff 0%,#f9f9f9 100%)
-			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff9f9f9', GradientType=0)
-
-	&.green
-		background-color: #05ab01
-		background-image: -webkit-linear-gradient(top, #08ce03 0%,#05ab01 100%)
-		background-image: -moz-linear-gradient(top, #08ce03 0%,#05ab01 100%)
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff08ce03', endColorstr='#ff05ab01', GradientType=0)
-		border: 1px solid rgba(0,0,0,0.2)
-		border-color: #05b501 #059402 #048201 #059402
-		&:hover
-			text-decoration: none
-			color: #fff
-			background-color: #05ab01
-			background-image: -webkit-linear-gradient(top, #0ffb09 0%,#05ab01 100%)
-			background-image: -moz-linear-gradient(top, #0ffb09 0%,#05ab01 100%)
-			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0ffb09', endColorstr='#ff05ab01', GradientType=0)
+.flash
+	.columns
+		background-color: #A4E7A0
+		padding: 8px
 	
-.full-width
-	display: block
+ul
+	font-size: 1em
+	line-height: 1.6
+	li
+		list-style: none
 
+//@import "lib/*"
 @import "modules/*"
 @import "sections/*"
 @import "store"
 @import "cities"
 @import "locations"
+
 
 a:link, a:visited
 	text-decoration: none
@@ -174,35 +106,6 @@ a:link, a:visited
 	max-width: none 
 	height: auto  
 
-a
-	color: #2ba6cb
-	text-decoration: none
-	line-height: inherit
-
-.side-nav
-	display: block
-	margin: 0
-	padding: 0.875em 0
-	list-style-type: none
-	list-style-position: inside
-	li 
-		margin: 0 0 0.4375em 0
-		font-size: 0.875em
-
-		&.divider
-			border-top: 1px solid
-			height: 0
-			padding: 0
-			list-style: none
-			border-top-color: #e6e6e6
-
-
-		&.active > a:first-child
-			color: #4d4d4d
-			font-weight: bold
-
-ul
-	font-size: 1em
-	line-height: 1.6
-	li
-		list-style: none
+.bx-wrapper .bx-controls-direction a
+	z-index: 1
+	

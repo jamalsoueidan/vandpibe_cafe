@@ -1,17 +1,17 @@
-$spacing = 15px
+$spacing: 15px
 
 div.product
-	@include grid-row
+	@include outer-container
 	padding: $spacing*4 0
 
 	.image
 		text-align: center
 		padding-top: $spacing/2
-		@include grid-column(4)
+		@include span-columns(4)
 
 
 	.details
-		@include grid-column(7)
+		@include span-columns(7)
 
 		h1
 			margin: 0px 0px $spacing 0px

@@ -1,0 +1,15 @@
+li.product
+	a href="#{store_product_path(product)}"
+		.wrapper
+			.image
+				= image_tag(product.uploads.first.avatar.url)
+
+			.details
+				h1.title
+					= product.title
+				span.price
+					= product.price.to_s + " kr,-"
+			
+			= simple_form_for(:product, :url => add_to_cart_store_path, :remote => true) do |f| 
+				= f.input :id, :as => :hidden, :input_html => {:value => product.id} 
+				= f.submit 'Læg i indkøbskurv', :class => "btn"

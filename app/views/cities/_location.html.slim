@@ -4,7 +4,7 @@ li class="location" id="location#{location.id}"
 	.image = image_tag_unless(location.uploads)
 			
 	.details
-		h3.name = truncate(location.name.big, :length => 20)
+		h5.name = truncate(location.name.big, :length => 20)
 
 		p.description = description(location)
 
@@ -12,7 +12,7 @@ li class="location" id="location#{location.id}"
 			= image_tag("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|" + location.city.country.color, :style => "width:10px;height:14px;margin-right:5px;") + location.city.name.big
 
 		.rating
-			= rating(location, :class => 'location')
+			= raty('location', :score => location.rating)
 
 			//strong 
 			//	= 'Bedømmelser:'

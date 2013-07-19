@@ -1,59 +1,16 @@
 $spacing: 15px
 
+@import "stores/*"
+
 .products-header
-	@include outer-container
-	padding: $spacing*2 0
+	padding: 20px
+
+	@include media($desktop)
+		padding: 20px 0
+	
 	h1
-		font-size: 2em
-
-ul#products
-	@include outer-container
-	padding-bottom: $spacing*2
-
-	a.product
-		width: 25%
-		float: left
-		display: block
-		border: 1px solid #CCC
-		margin: -1px 0px 0px -1px
-
-		&:hover li
-			border-color: #FF2A00
-
-		li
-			padding: $spacing
-			border: 10px solid #FFF
-
-			.image
-
-			.details
-				margin: $spacing*2 0
-				color: #000
-				text-align: center
-				min-height: 114px
-
-				.title
-					margin-bottom: $spacing
-					font-size: 18px
-					text-transform: uppercase
-					letter-spacing: 1px
-
-				.price
-					font-weight: 400
-
-			.button
-				background: #000
-				margin: 0
-				font-size: .8em
-				text-transform: uppercase
-
-				form
-					border: 0
-					z-index: 100
-					width: 100%
-
-				&:hover 
-					background: #1dafed
+		font-weight: 600
+		padding: 10px 0
 
 
 @mixin cart

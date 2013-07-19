@@ -1,14 +1,23 @@
 .rating-content
 	.rating-header
-		h2 Bedøm selv!
+		h2 Bedømmelse
 	.rating-inner
-		= rating(@location, :class => 'location', :width => 150)
+		= raty('location', :score => @location.rating)
 
-		- if @location.visible? 
+		/= @location.ratings.length.to_s + " har bedømt"
+		- if @location.visible?
 			.rating
-				- if logged_in?
-					a class="btn yellow" href="#{city_location_write_review_path(@location.city.name, @location.name.to_url)}"
-						= "Bedøm Selv"
-				- else
-					a class="btn yellow" href="/login?return=#{city_location_path(@location.city.name, @location.name.to_url)}"
-						= "Bedøm Selv"
+				a class="btn yellow" id="rate" href="#data" Bedøm caféen
+				div style="display:none; text-align:center;" id="data"
+
+					- if logged_in?
+						= render 'locations/partials/rating_form'
+					- else
+						= render '/main/login'
+
+			javascript:
+				$(function() {
+					$("a#rate").fancybox({
+						'hideOnContentClick': true
+					});
+				})
