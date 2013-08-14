@@ -4,7 +4,7 @@ class CitiesController < ApplicationController
   after_filter :set_login_return_path, :only => [:index, :show]
 
   def index
-    @locations = Location.includes(:uploads, :city).order('RAND()').limit(40)
+    @locations = Location.includes(:uploads).order('RAND()').limit(40)
   end
 
   def old_url
@@ -22,7 +22,7 @@ class CitiesController < ApplicationController
 
   private
     def set_cities
-      @countries = Country.all
-      @cities = City.all
+      #@countries = Country.all
+      #@cities = City.all
     end
 end

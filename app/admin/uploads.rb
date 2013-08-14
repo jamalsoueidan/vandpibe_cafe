@@ -13,7 +13,7 @@ ActiveAdmin.register Upload do
   
   member_action :create, :method => :post do
     flash[:notice] = 'Upload was successfully created.'
-    @upload = Upload.new(params[:upload])
+    @upload = Upload.new(upload_params)
     if @upload.save
       redirect_to :back
       #redirect_to admin_location_path(:id => @upload.uploadable_id)
@@ -27,5 +27,11 @@ ActiveAdmin.register Upload do
     name = upload.uploadable_type.singularize.downcase
     uri = send("admin_" + name + "_path", upload.uploadable_id)
     redirect_to uri
+  end
+
+  controller do
+    def upload_params
+      params.require(:upload).permit(:avatar, :title, :uploadable_id, :uploadable_type)
+    end
   end
 end

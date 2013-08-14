@@ -4,19 +4,21 @@ section#mosaic
 			- unless location.uploads.empty?
 				.mosaicflow__item
 					.location
-						a href=(city_location_path(location.city.name, location.name.to_url)) 
+						//a href=(city_location_path(location.city.name, location.name.to_url)) 
+						a href="#"
 						= image_tag(asset_host + location.uploads.first.avatar.path(:medium), :id => "img#{location.uploads.first.id}")
-						.caption
-						h4 = location.name.big
+						/.caption
+						/h4 = location.name.big
 
 	.headers
 		h1 Hvor leder du efter en Vandpibe Café?
 
-		h2 Vælge en af landene hvor du søger efter en Vandpibe Cafe.
+		//h2 Vælge en af landene hvor du søger efter en Vandpibe Cafe.
 
 		.country
-			- @countries.each do |country|
-				= link_to country.name, city_path(country.cities.first.name), :class => "btn"
+			= link_to image_tag('flag/danmark.png'), "/københavn"
+			= link_to image_tag('flag/tyskland.png'), "/berlin"
+			= link_to image_tag('flag/sverige.png'), "/malmø"
 
 	javascript:
 		$(function() {

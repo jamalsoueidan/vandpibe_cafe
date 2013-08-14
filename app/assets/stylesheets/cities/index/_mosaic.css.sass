@@ -22,29 +22,28 @@ section#mosaic
 			margin-top: 20px
 
 		@include media($desktop)
-			margin-top: 100px
+			margin-top: 120px
 
 		h1
-			background: #000
-			background: rgba(0,0,0,0.8)
+			//background: #000
+			//background: rgba(0,0,0,0.8)
 			padding: 20px
 			color: #fff
 			font-size: 1.7em
 			letter-spacing: 1px
 			font-weight: 600
 			text-shadow: 0 0 15px rgba(0,0,0,0.6),0 -1px 1px rgba(0,0,0,0.6)
-			margin-bottom: $gutter
+			margin-bottom: $gutter/2
 			text-align: center
 			@include media($landscape)
-				margin-bottom: $gutter/2
 				font-size: 1.6em
 			@include media($desktop)
 				font-weight: 700
-				font-size: 3em
+				font-size: 3.4em
 
 		h2
-			background: #000
-			background: rgba(0,0,0,0.8)
+			//background: #000
+			//background: rgba(0,0,0,0.8)
 			padding: 20px
 			text-align: center
 			color: #fff
@@ -54,23 +53,24 @@ section#mosaic
 			text-shadow: 0 0 15px rgba(0,0,0,0.7),0 -1px 1px rgba(0,0,0,0.7)
 			display: none
 			@include media($desktop)
-				font-size: 1.5em
+				font-size: 2em
+				font-weight: 600
 				margin-bottom: $gutter/2
 				display: block
 
 		.country
-			background: #000
-			background: rgba(0,0,0,0.7)
-			padding: 20px 0
+			//background: #000
+			//background: rgba(0,0,0,0.7)
 			text-align: center
 
 			a
 				font-weight: 600
+				font-size: 12px
 				text-transform: uppercase
 
 				@include media($desktop)
 					line-height: normal
-					font-size: 15px
+					font-size: 1.5em
 					padding: 0.6em 1.3em 
 			
 				&:first-child
@@ -84,11 +84,18 @@ section#mosaic
 
 					@include media($desktop, $landscape)
 						margin-left: $gutter/2
+
+				img
+					width: 80px
+
+					@include media($desktop, $landscape)
+						width: 150px
 			
 .mosaicflow__column
 	float: left
 	
 .mosaicflow__item
+	background-color: #000
 	.location
 		position: relative
 
@@ -96,6 +103,7 @@ section#mosaic
 			display: block
 			width: 100%
 			height: auto
+			padding: 0px 0px 5px 5px
 
 		h4	
 			position: absolute
@@ -121,4 +129,4 @@ section#mosaic
 			right: 0px
 			bottom: 0px
 			z-index: 1
-			opacity: 0.2
+			opacity: 0.5

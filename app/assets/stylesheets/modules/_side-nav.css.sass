@@ -1,21 +1,35 @@
 .side-nav
 	display: block
 	margin: 0
-	padding: 0.875em 0
+	padding: 0 0 0.875em 0
 	list-style-type: none
 	list-style-position: inside
 	li 
-		margin: 0 0 0.4375em 0
 		font-size: 0.875em
 
-		&.divider
-			border-top: 1px solid
-			height: 0
-			padding: 0
-			list-style: none
-			border-top-color: #e6e6e6
+		@include media($desktop)
+			margin: 0 0 0.4375em 0
+			
+		&:first-child
+			border-bottom: 1px solid
+			border-bottom-color: #e6e6e6
 
+			@include media($mobile, $landscape)
+				display: block
+				padding: 5px
 
 		&.active > a:first-child
 			color: #4d4d4d
 			font-weight: bold
+
+		a 
+			@include media($mobile)
+				display: block
+				padding: 5px
+				border-bottom: 1px solid
+				border-bottom-color: #e6e6e6
+			@include media($landscape)
+				display: block
+				padding: 5px
+				border-bottom: 1px solid
+				border-bottom-color: #e6e6e6
