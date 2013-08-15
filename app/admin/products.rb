@@ -37,4 +37,10 @@ ActiveAdmin.register Product do
       
     end
   end
+
+  controller do
+    def permitted_params
+      params.permit(:variant => [:title, :brand, :variant_id, :short_desc, :long_desc, :price, :stock])
+    end
+  end
 end
