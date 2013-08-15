@@ -25,18 +25,6 @@
 <%- end %>
 <%- end %>
 <url>
-	<loc>http://www.vandpibecafe.dk<%=questions_path%></loc>
-	<changefreq>daily</changefreq>
-	<priority>0.5</priority>
-</url>
-<%- @questions.each do |question| %>
-<url>
-	<loc>http://www.vandpibecafe.dk<%=question_path(question.id, question.title.to_url)%></loc>
-	<changefreq>daily</changefreq>
-	<priority>1</priority>
-</url>
-<%- end %>
-<url>
   <loc>http://www.vandpibecafe.dk/toplist</loc>
   <changefreq>monthly</changefreq>
   <priority>1</priority>

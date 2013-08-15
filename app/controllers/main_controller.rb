@@ -25,7 +25,9 @@ class MainController < ApplicationController
   
   def sitemap
     @cities = City.all
-    @questions = Question.all
+    #@questions = Question.all
+
+    render :layout => false
   end
   
   def auth
