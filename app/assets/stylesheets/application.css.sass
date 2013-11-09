@@ -19,7 +19,7 @@
 $column: 90px
 $gutter: 30px
 $grid-columns: 12
-$max-width: em(960)
+$max-width: em(1112)
 
 $mobile: new-breakpoint(max-width 480px)
 $landscape: new-breakpoint(orientation landscape max-width 640px)
@@ -28,6 +28,7 @@ $desktop: new-breakpoint(min-width 768px)
 @import "neat"
 
 body
+	background-color: #e9eaec
 	color: #222
 	font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif
 	font-weight: normal
@@ -105,6 +106,24 @@ a:link, a:visited
 
 	.columns
 		@include span-columns(12)
+
+	.col-8
+		margin-top: $gutter
+		@include media($mobile)
+			@include span-columns(12)
+
+		@include media($desktop)
+			@include span-columns(9)
+
+	.col-4
+		margin-top: $gutter
+
+		@include media($mobile)
+			@include span-columns(12)
+
+		@include media($desktop)
+			@include span-columns(3)
+
 
 #map img
 	max-width: none 

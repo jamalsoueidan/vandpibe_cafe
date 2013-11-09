@@ -1,10 +1,12 @@
 class CitiesController < ApplicationController
-  before_filter :set_cities
-
   after_filter :set_login_return_path, :only => [:index, :show]
 
   def index
-    @locations = Location.includes(:uploads).order('RAND()').limit(40)
+    @countries = Country.all
+    @country = @countries.first
+    @cities = @country.cities
+    @city = @cities.order("RAND()").first
+    @locations = @city.locations.includes(:uploads).order('RAND()')
   end
 
   def old_url
@@ -13,16 +15,13 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find_by_url(params[:name])
+    @country = @city.country
+    @countries = Country.all
+    @cities = @country.cities
     @locations = @city.locations.includes(:uploads).sort_by(params[:sort])
 
     if @city.nil?
       redirect_to root_path
     end
   end
-
-  private
-    def set_cities
-      #@countries = Country.all
-      #@cities = City.all
-    end
 end

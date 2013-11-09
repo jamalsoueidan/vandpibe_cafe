@@ -1,12 +1,8 @@
 #show-city
-	background-color: #f6f6f6
 	padding: 20px 0
 
 	.location-list
 		@include span-columns(12)
-
-		@include media($desktop)
-			@include span-columns(8)
 
 		ul#locations 
 			@include media($landscape)
@@ -24,8 +20,8 @@
 					@include omega(2n)
 
 				@include media($desktop)
-					@include span-columns(4)
-					@include omega(3n)
+					@include span-columns(3)
+					@include omega(4n)
 
 				.image
 					@include media($mobile)
@@ -48,9 +44,3 @@
 							font-weight: 300
 							margin-bottom: $gutter/1.5
 							line-height: 1em
-
-	.navigation
-		@include span-columns(12)
-
-		@include media($desktop, $landscape)
-			@include span-columns(4)

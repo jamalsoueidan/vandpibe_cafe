@@ -43,4 +43,10 @@ ActiveAdmin.register Location do
       
     end
   end
+
+  controller do
+    def location_params
+      #params.require(:location).permit(:avatar, :title, :uploadable_id, :uploadable_type)
+    end
+  end
 end

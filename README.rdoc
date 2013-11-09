@@ -1,34 +1,19 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
 * remove the lattide,longitude and combine them into one field
 * remove the color on the cities
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
 http://yconst.com/web/freetile/
+
+https://www.thunderclap.it/
+
+https://angel.co/mindsnacks
+http://bloggersdelight.dk/ (navigation bottom)
+http://readwrite.com/#awesm=~oi9kAGv4Znm4of (upper container)
+http://www.thefontain.com/#all (upper container)
+https://www.citysocializer.com/ (location boxes)
+
+https://github.com/necolas/css3-github-buttons
+
+GETTING TO YES - books

@@ -1,14 +1,4 @@
 GIT
-  remote: git://github.com/ernie/ransack.git
-  revision: 4078f4fd0ff8b48658e1b69fe8bce0c36933f19c
-  branch: rails-4
-  specs:
-    ransack (0.7.3)
-      actionpack
-      activerecord
-      polyamorous (~> 0.6.0)
-
-GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 54fb71c5415f7b1a7aa0cdde680ee882fa3b2d6f
   branch: rails4
@@ -193,6 +183,10 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
+    ransack (1.0.0)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      polyamorous (~> 0.6.0)
     rdoc (3.12.2)
       json (~> 1.4)
     responders (1.0.0.rc)
@@ -261,7 +255,7 @@ DEPENDENCIES
   paperclip (~> 3.0)
   quiet_assets
   rails (= 4.0.0)
-  ransack!
+  ransack
   sass-rails (~> 4.0.0)
   sdoc
   simple_form (~> 3.0.0.rc)

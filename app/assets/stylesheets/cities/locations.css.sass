@@ -4,6 +4,7 @@ li.location
 	@include box-shadow(0 0 5px #ddd)
 	@include box-sizing(border-box)
 	background: #fff
+	border-radius: 3px
 	
 	.link
 		position: absolute
@@ -14,21 +15,20 @@ li.location
 		z-index: 5
 
 	.image
-		padding: $gutter/3
-
+		border-radius: 3px
 		img
+			border-radius: 3px
 			-webkit-transition: opacity 0.15s linear
 			-moz-transition: opacity 0.15s linear
 			transition: opacity 0.15s linear
-			height: 120px
+			height: 200px
 			width: 100%
 			display: block
 
 
 	.details
-		background-color: #FFF
-		padding: 0px 10px 10px 10px
-
+		padding: 15px
+		
 		h3.name
 			margin: 0px 0px 4px 0px
 			padding: 0

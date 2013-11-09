@@ -1,0 +1,2 @@
+li id="country_#{country.id}" class="#{(@country.id == country.id ? 'active' : '' )}"
+        = link_to country.name.big, city_path(country.cities.first.name)

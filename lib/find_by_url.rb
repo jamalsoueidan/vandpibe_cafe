@@ -31,9 +31,13 @@ module FindByURL
   extend ActiveSupport::Concern
   
   module ClassMethods
-    def find_by_url(name)
+    def find_by_url(name, city_id=nil)
       name.downcase!
-      self.where("#{self.table_name}.name = ? OR #{self.table_name}.name = ?", name, name.utf8).first
+      models = self.where("#{self.table_name}.name = ? OR #{self.table_name}.name = ?", name, name.utf8)
+      if city_id
+        models = models.where(:city_id => city_id)
+      end
+      models.first
     end
   end
 end

@@ -1,27 +1,26 @@
 section#locations
-	@include box-shadow(inset 0 0 10px #000000)
-	background: url(asset-path("blue-pattern.png")) 0 0 repeat
+	.header
+		h3
+			color: #fff
+			text-align: center
+			margin: $gutter/2 0px $gutter 0px
 
-	.columns
-		padding: $gutter/2
-		
-		.header
-			h3
-				color: #fff
-				text-align: center
-				margin: $gutter/2 0px $gutter 0px
-
+	.col-8
 		ul#locations 
 			@include outer-container
 
 			li
+				background-color: #FFF
+
 				@include media($mobile)
 					margin-bottom: $gutter/3
 					@include span-columns(6)
 					@include omega(2n)
 
+
+
 				@include media($desktop)
 					margin-bottom: $gutter
-					@include span-columns(3)
-					@include omega(4n)
-					
+					@include span-columns(4)
+					@include omega(3n)
+	

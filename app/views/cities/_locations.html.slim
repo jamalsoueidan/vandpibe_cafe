@@ -1,8 +1,28 @@
 section#locations
 	.row
-		.columns
-			.header
-				h3 Vi har udvalgte nogle Vandpibe Caféer du måske vill besøge...
+		.col-8
+            - if @city.locations.nil? 
+                p Vandpibe Cafe i #{@city.name.big} mangler der, hvis du ved der ligger en vandpibe cafe i #{@city.name.big} så er du mere end velkommen til at fortælle os via #{link_to "Kontakt os", contact_path}
+            - else
+                ul id="locations"
+			 	   = render :partial => 'location', :collection => @locations, :as => :location
 
-			ul id="locations"
-				= render :partial => 'location', :collection => @locations, :as => :location
+        .col-4
+            .navigation
+                ul.side-nav
+                    li Filter på land:
+                    li.divider
+                    = render :partial => "country", :collection => @countries
+
+                ul.side-nav
+                    li Sortere efter:
+                    li.divider
+                    li class=(params[:sort].nil? ? 'active' : '')
+                        = link_to 'Alfabetisk', city_path(@city.name) 
+                    li class=(params[:sort] == 'stars' ? 'active' : '' )
+                        = link_to 'Stjerner', city_path(@city.name, :sort => 'stars') 
+
+                ul.side-nav
+                    li Vælge by:
+                    li.divider
+                    = render @cities

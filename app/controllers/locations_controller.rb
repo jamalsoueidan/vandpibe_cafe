@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
 
   def show
     @city = City.find_by_url(params[:city_name])
-    @location = @city.locations.include_all.unscoped.find_by_url(params[:name])
+    @location = @city.locations.include_all.unscoped.find_by_url(params[:name], @city.id)
     if @location.nil?
       redirect_to root_path
     end
