@@ -1,10 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Location < ActiveRecord::Base
   #attr_accessible :city_id, :name, :address, :post, :latitude, :longitude, :visible, :meta_title, :meta_description, :meta_keywords, :furniture_rating, :waterpipe_rating, :service_rating, :television, :music, :football, :openings_time, :description, :mood_rating
-
-  default_scope do
-    where(:visible => true)
-  end
   
   has_and_belongs_to_many :tobaccos
 

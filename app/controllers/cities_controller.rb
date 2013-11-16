@@ -6,7 +6,7 @@ class CitiesController < ApplicationController
     @country = @countries.first
     @cities = @country.cities
     @city = @cities.order("RAND()").first
-    @locations = @city.locations.includes(:uploads).order('RAND()')
+    @locations = @city.locations.where('locations.visible=1').includes(:uploads).order('RAND()')
   end
 
   def old_url
