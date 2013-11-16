@@ -45,8 +45,8 @@ ActiveAdmin.register Location do
   end
 
   controller do
-    def location_params
-      #params.require(:location).permit(:avatar, :title, :uploadable_id, :uploadable_type)
+    def permitted_params
+      params.permit(:location => [:city_id, :name, :address, :post, :latitude, :longitude, :visible, :music, :football, :television, :opening_time, :description, :rating])
     end
   end
 end
