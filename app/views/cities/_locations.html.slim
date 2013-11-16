@@ -1,7 +1,7 @@
 section#locations
 	.row
         h1
-            = @country.name + " > " + @city.name.big
+            @city.name.big
 		.col-8
             - if @city.locations.nil? 
                 p Vandpibe Cafe i #{@city.name.big} mangler der, hvis du ved der ligger en vandpibe cafe i #{@city.name.big} så er du mere end velkommen til at fortælle os via #{link_to "Kontakt os", contact_path}

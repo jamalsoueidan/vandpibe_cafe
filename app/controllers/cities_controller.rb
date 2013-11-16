@@ -18,7 +18,7 @@ class CitiesController < ApplicationController
     @country = @city.country
     @countries = Country.all
     @cities = @country.cities
-    @locations = @city.locations.where('locations.visible=1')includes(:uploads).sort_by(params[:sort])
+    @locations = @city.locations.where('locations.visible=1').includes(:uploads).sort_by(params[:sort])
 
     if @city.nil?
       redirect_to root_path
