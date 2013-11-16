@@ -30,6 +30,11 @@ class Location < ActiveRecord::Base
     end
   end
 
+  def rating
+    return 3.0 if self[:rating] == 0.0
+    self[:rating]
+  end
+
   belongs_to :city, :counter_cache => true
 
   RATING_KEYS = [:location_service, :location_waterpipe, :location_furniture, :location_mood]
