@@ -6,6 +6,6 @@ ActiveAdmin.register Tobacco do
 			f.input :brand
 			f.input :locations, :input_html => {:size => 40}
 		end
-		f.buttons
+		f.actions
 	end
 end

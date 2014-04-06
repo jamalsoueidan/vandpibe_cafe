@@ -8,7 +8,7 @@ ActiveAdmin.register Upload do
       f.input :uploadable_id, :as => :hidden, :input_html => {:value => params[:uploadable_id]}
       f.input :uploadable_type, :as => :hidden, :input_html => {:value => params[:uploadable_type]}     
     end
-    f.buttons
+    f.actions
   end
   
   member_action :create, :method => :post do
