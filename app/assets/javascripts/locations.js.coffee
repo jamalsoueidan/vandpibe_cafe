@@ -5,7 +5,7 @@
 jQuery ->
 	if $('.star') 
 		$('.star').raty({
-			path : '/assets/',
+			path : 'http://assets.vandpibecafe.dk/assets/',
 			size      : 24,
 			mouseover : (score, evt) ->
 				target_id = $(this).attr('data-id')

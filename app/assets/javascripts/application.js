@@ -21,7 +21,7 @@
 
 Google = {};
 
-$.fn.raty.defaults.path = '/assets/raty';
+$.fn.raty.defaults.path = 'http://assets.vandpibecafe.dk/assets/raty';
 $.fn.raty.defaults.readOnly = true
 $.fn.raty.defaults.halfShow = true
 $.fn.raty.defaults.number = 5
