@@ -98,6 +98,7 @@ class LocationsController < ApplicationController
             location.update_attribute(:rating, scoring)
           end
         end
+        Schedule.new.save
       end
     end
 
