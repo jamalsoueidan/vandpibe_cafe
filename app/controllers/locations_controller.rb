@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class LocationsController < ApplicationController
   before_filter :authorize, :only => [:destroy, :create, :write_review]
-  
+
   after_filter :set_login_return_path, :only => [:toplist, :show]
 
   def toplist
@@ -9,6 +9,7 @@ class LocationsController < ApplicationController
   end
 
   def show
+    update_ratings
     @city = City.find_by_url(params[:city_name])
     @location = @city.locations.include_all.unscoped.find_by_url(params[:name], @city.id)
     if @location.nil?
@@ -45,7 +46,7 @@ class LocationsController < ApplicationController
   def new_comment
     @location = Location.find(params[:id])
     @city = @location.city
-    
+
   end
 
   def create
@@ -74,6 +75,33 @@ class LocationsController < ApplicationController
   end
 
   private
+    def update_ratings
+      schedule = Schedule.where("created_at >= :since_yesterday", :since_yesterday => Time.now - 1.day).first
+      if schedule.nil?
+        Location.all.each do |location|
+          ratings = [0,0,0,0,0]
+          location.ratings.each do |rating|
+            rate = rating.rating_value.to_i
+            ratings[(rate-1)] += 1
+          end
+
+          left = 0.0
+          right = 0.0
+          ratings.each_index do |index|
+            multiply = index+1
+            left += ratings[index] * multiply
+            right += ratings[index]
+          end
+
+          if left > 0 && right > 0
+            scoring = Score.calculate(ratings)
+            location.update_attribute(:rating, scoring)
+          end
+        end
+        Schedule.new.save
+      end
+    end
+
     def comment_params
       params.require(:comment).permit(:body, :table_id)
     end

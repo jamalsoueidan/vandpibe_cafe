@@ -11,12 +11,10 @@ class Location < ActiveRecord::Base
 
   class << self
     def sort_by(name=nil)
-      query = select('locations.*, COALESCE(r.average, 0) as rating, COALESCE(r.count, 0) as count')
-      query = query.joins('LEFT JOIN (SELECT location_id, COUNT(location_id) as count, AVG(rating_value) as average FROM ratings GROUP BY location_id) r ON r.location_id=locations.id')
       if name.nil?
-        query.order('locations.name ASC')
+        self.order('locations.name ASC')
       else
-        query.order('rating DESC')
+        self.order('rating DESC')
       end
     end
   end
