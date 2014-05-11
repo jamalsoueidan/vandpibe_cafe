@@ -1,62 +1,49 @@
 $height: 110px
 
 #navigation
-	position: relative
 	z-index: 500
 	background-color: #fff
 	width: 100%
 	height: $height
 
-	ul 
-		overflow: hidden
+	ul.center, ul.right
+		position: absolute
 		margin: 0
 		padding: 0
+		overflow: hidden
+
+	ul.center
+		left: 40%
+		width: 30%
+
+		li.logo
+			height: $height
+			padding-top: 10px
+
+			img
+				height: 100%
+
+	ul.right
+		right: 0%
+		width: 20%
+
+	ul.left
+		width: 30%
 
 		li 
 			height: $height
-			line-height: 42px
+			line-height: 26px
 			float: left
-			width: 33%
-			background: url(asset-path('navigation_divider.png')) no-repeat
+			width: 20%
 			text-align: center
+			padding-top: 34px
 
-			@include media($landscape)
-				width: 20%
-
-			@include media($desktop)
-				width: 17%
-
-			span
-				color: #000
-				font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
-				
 			i
 				color: #000
 				display: block
-				font-size: 30px
 
-			&.logo
-				padding: 20px 15px 0
-				width: 40%
-				background: none
-				display: none
-
-				img
-					width: 160px
-
-				@include media($landscape)
-					display: inline
-					
-				@include media($desktop)
-					width: 24%
-					display: inline
-
-			&.login
-				width: 22%
-				display: none
-				
-				@include media($desktop)
-					display: inline
-
-			&.spot
-				padding-top: 26px
+			span
+				color: #000
+				font-size: 14px
+				font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
+			

@@ -1,13 +1,14 @@
 header id="navigation"
 	.row
-		ul
-			li.logo
-				a href="#{root_url}"
-					=image_tag('logo4.png', :alt => "VandpibeCafe.dk")
+		ul.left
 			li.spot
 				a href="#{root_url}"
 					i class="icon-home"
 					span Hjem
+			li.spot
+				a href="#{store_path}"
+					i class="icon-cart"
+					span Cafeer
 			li.spot
 				a href="#{store_path}"
 					i class="icon-cart"
@@ -16,6 +17,11 @@ header id="navigation"
 				a href="#{toplist_path}"
 					i class="icon-bars"
 					span Topliste
+		ul.center
+			li.logo
+				a href="#{root_url}"
+					=image_tag('logo4.png', :alt => "VandpibeCafe.dk")
+		ul.right
 			li#login.login
 
 javascript:
