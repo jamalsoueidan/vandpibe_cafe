@@ -6,15 +6,20 @@ $height: 110px
 	width: 100%
 	height: $height
 
+	.row
+		position: relative
+
 	ul.center, ul.right
 		position: absolute
 		margin: 0
 		padding: 0
 		overflow: hidden
+		top: 0
 
 	ul.center
-		left: 40%
-		width: 25%
+		left: 50%
+		width: 235px
+		margin-left: -117px
 
 		li.logo
 			height: $height
@@ -29,8 +34,9 @@ $height: 110px
 
 	ul.left
 		width: 30%
+		overflow: hidden
 
-		li 
+		li
 			height: $height
 			line-height: 26px
 			float: left
@@ -46,4 +52,4 @@ $height: 110px
 				color: #000
 				font-size: 11px
 				font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
-			
+
