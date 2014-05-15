@@ -1,12 +1,9 @@
-= content_for(:navigation, true)
-
-/= render 'place'
-
-/ = render 'mosaic'
-
-= render 'layouts/navigation'
+- content_for :subnavigation
+  header class="subnavigation"
+    .row
+      .center
+        = "Ok"
 
 = "Måndens cafe"
-
 
 = render 'users'

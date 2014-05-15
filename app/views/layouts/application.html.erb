@@ -16,10 +16,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
- 
-<% if !content_for?(:navigation) %>
-  <%= render 'layouts/navigation' %>
-<% end %>
+
+<%= render 'layouts/navigation' %>
+<%= yield :subnavigation %>
 
 <% if flash[:notice]%>
   <div class="flash">
