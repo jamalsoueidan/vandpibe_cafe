@@ -1,4 +1,4 @@
-$height: 110px
+$height: 130px
 
 #navigation
 	z-index: 500
@@ -9,24 +9,26 @@ $height: 110px
 	.row
 		position: relative
 
-	ul.center, ul.right
+	ul.left, ul.center, ul.right
 		position: absolute
 		margin: 0
 		padding: 0
 		overflow: hidden
-		top: 0
+		top: 15px
 
 	ul.center
+		top: 10px
 		left: 50%
 		width: 235px
 		margin-left: -117px
+		height: 110px
 
 		li.logo
 			height: $height
 			padding: 10px 0
 
 			img
-				height: 100%
+				width: 100%
 
 	ul.right
 		right: 0%
@@ -53,3 +55,8 @@ $height: 110px
 				font-size: 11px
 				font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
 
+.subnavigation
+	border-top: 1px solid #ccc
+	border-bottom: 1px solid #ccc
+	background-color: #FFF
+	padding: 16px 0
