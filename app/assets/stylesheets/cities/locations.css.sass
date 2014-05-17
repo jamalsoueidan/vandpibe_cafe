@@ -5,7 +5,7 @@ li.location
 	@include box-sizing(border-box)
 	background: #fff
 	border-radius: 3px
-	
+
 	.link
 		position: absolute
 		top: 0px
@@ -21,14 +21,14 @@ li.location
 			-webkit-transition: opacity 0.15s linear
 			-moz-transition: opacity 0.15s linear
 			transition: opacity 0.15s linear
-			height: 200px
+			height: 160px
 			width: 100%
 			display: block
 
 
 	.details
-		padding: 15px
-		
+		padding: 10px
+
 		h3.name
 			margin: 0px 0px 4px 0px
 			padding: 0
@@ -37,11 +37,19 @@ li.location
 			text-overflow: ellipsis
 
 		.description
-			height: 70px
+			height: 50px
 			color: #9f9f9f
 
 			@include media($mobile)
 				display: none
 
-		.city
-			color: #75796f
+		.options
+			border-top: 1px solid #ccc
+			padding-top: 10px
+			overflow: hidden
+			.city
+				color: #000
+				font-size: 12px
+				float: left
+			.rating
+				float: right
