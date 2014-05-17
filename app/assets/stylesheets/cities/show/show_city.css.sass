@@ -5,8 +5,6 @@
 		@include span-columns(12)
 
 		ul#locations
-			@include media($landscape)
-				@include outer-container
 			@include media($desktop)
 				@include outer-container
 
@@ -14,10 +12,6 @@
 				margin-bottom: $gutter/2
 				@include media($mobile)
 					@include outer-container
-
-				@include media($landscape)
-					@include span-columns(6)
-					@include omega(2n)
 
 				@include media($desktop)
 					@include span-columns(3)
