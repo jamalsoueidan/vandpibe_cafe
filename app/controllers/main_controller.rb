@@ -5,16 +5,16 @@ class MainController < ApplicationController
   end
 
   def get_json
-    city_id = params[:city_id].to_i
+    city_name = params[:city_name]
     location_id = params[:location_id].to_i
 
-    options = {:only => [:latitude, :longitude, :id, :description, :name], :include => {:city => {:only => [:name, :color, :latitude, :longitude], :include => {:country => {:only => [:color]}}}}}
+    options = {:only => [:latitude, :longitude, :id, :description, :name, :city, :country]}
 
     if location_id > 0
       render :json => Location.where(:id => location_id).to_json(options)
     else
-      if city_id > 0
-        render :json => City.find(city_id).locations.to_json(options)
+      unless city_name.nil?
+        render :json => Location.where(:city => city_name).to_json(options)
       else
         render :json => Location.all.to_json(options)
       end

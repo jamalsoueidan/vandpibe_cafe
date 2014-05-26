@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Location < ActiveRecord::Base
   #attr_accessible :city_id, :name, :address, :post, :latitude, :longitude, :visible, :meta_title, :meta_description, :meta_keywords, :furniture_rating, :waterpipe_rating, :service_rating, :television, :music, :football, :openings_time, :description, :mood_rating
-  
+
   has_and_belongs_to_many :tobaccos
 
   has_many :comments, :as => :commentable
@@ -32,8 +32,6 @@ class Location < ActiveRecord::Base
     return 3.0 if self[:rating] == 0.0
     self[:rating]
   end
-
-  belongs_to :city, :counter_cache => true
 
   RATING_KEYS = [:location_service, :location_waterpipe, :location_furniture, :location_mood]
 

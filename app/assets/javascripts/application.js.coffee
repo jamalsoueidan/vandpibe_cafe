@@ -9,7 +9,6 @@
 #= require bxslider
 #= require_directory ./modules
 
-Google = {}
 $.fn.raty.defaults.path = "http://assets.vandpibecafe.dk/assets/raty"
 $.fn.raty.defaults.readOnly = true
 $.fn.raty.defaults.halfShow = true
