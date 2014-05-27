@@ -1,43 +1,58 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="ie6" lang="da"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7" lang="da"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8" lang="da"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="da" itemscope itemtype="http://schema.org/Vandpibe">
- <!--<![endif]-->
-<head>
-	<meta charset="utf-8" />
-	<%= render '/layouts/header' %>
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Advent+Pro:500,700|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext">
-	<%= stylesheet_link_tag    "application", :media => "screen" %>
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBEmB9qG5E3HPSKQ_Veb0ErystIyagHXNQ&sensor=false"></script>
-	<%= javascript_include_tag "application" %>
-	<%= render '/layouts/google' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html class="no-js" lang="da" itemscope itemtype="http://schema.org/Vandpibe">
+    <head>
+    <%= render '/layouts/header' %>
 
-<%= render 'layouts/navigation' %>
-<%= yield :subnavigation %>
+    <%= javascript_include_tag "application" %>
 
-<% if flash[:notice]%>
-  <div class="flash">
-    <div class="row">
-      <div class="columns">
-        <%= flash[:notice]%>
+    <!-- If browser is internet explorer run HTML5 compatibility code -->
+    <!--[if IE]>
+        <script src="/assets/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <aside id="sidebarLeft" class="sidebarLeft">
+      <div class="scrollableArea">
+        <!-- Place whatever HTML you want in here -->
       </div>
-    </div>
-  </div>
-<% end %>
+    </aside>
 
-<div id="<%=params[:controller]%>">
-  <div class="<%=params[:action]%>">
-    <%= yield %>
-  </div>
-</div>
+    <section id="page" class="page">
+      <header class="topBar">
+        <a id="leftBurger" class="slideRight" href="">&#9776;</a>
+        <a id="rightBurger" class="slideLeft" href="">&#9776;</a>
+        <h1>Off.canvas</h1>
+      </header>
+      <div class="scrollableArea">
+        <%= render 'layouts/navigation' %>
+        <%= yield :subnavigation %>
 
-<%= render 'layouts/footer' %>
+        <% if flash[:notice]%>
+          <div class="flash">
+            <div class="row">
+              <div class="columns">
+                <%= flash[:notice]%>
+              </div>
+            </div>
+          </div>
+        <% end %>
 
-</body>
+        <div id="<%=params[:controller]%>">
+          <div class="<%=params[:action]%>">
+            <%= yield %>
+          </div>
+        </div>
+
+        <%= render 'layouts/footer' %>
+      </div>
+    </section>
+
+    <aside id="sidebarRight" class="sidebarRight">
+      <div class="scrollableArea">
+        <!-- Place whatever HTML you want in here -->
+      </div>
+    </aside>
+
+    <%= javascript_include_tag "bottom" %>
+  </body>
 </html>
-
