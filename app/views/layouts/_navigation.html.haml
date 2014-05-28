@@ -1,0 +1,32 @@
+%header#navigation
+	.row
+		%ul.left
+			%li.spot
+				%a(href="#{root_url}")
+					%i.icon-home
+					%span Hjem
+			%li.spot
+				%a(href="#{cities_path}")
+					%i.icon-cart
+					%span Cafeer
+			%li.spot
+				%a(href="#{store_path}")
+					%i.icon-cart
+					%span Køb
+			%li.spot
+				%a(href="#{toplist_path}")
+					%i.icon-bars
+					%span Topliste
+		%ul.center
+			%li.logo
+				%a(href="#{root_url}")
+					= image_tag('logo4.png', :alt => "VandpibeCafe.dk")
+		%ul.right
+			%li#login.login
+
+:javascript
+	$(function() {
+	  $.get('#{authjs_path}', function(data) {
+	    $('#login').html(data)
+	  });
+	})

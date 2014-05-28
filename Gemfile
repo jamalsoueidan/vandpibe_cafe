@@ -59,6 +59,7 @@ gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem 'aquarium'
 gem 'slim'
+gem 'haml', '~> 4.0.0'
 #gem 'exception_notification'
 
 gem 'neat'

@@ -1,0 +1,21 @@
+%section#page.page
+  %header.topBar
+    %a(id="leftBurger" class="slideRight" href="") &#9776;
+    %a(id="rightBurger" class="slideLeft" href="") &#9776;
+    %h1 VandpibeCafe.dk
+
+  .scrollableArea
+    = render 'layouts/navigation'
+    = yield :subnavigation
+
+    - if flash[:notice]
+      .flash
+        .row
+          .columns
+            = flash[:notice]
+
+    %div(id="<%=params[:controller]%>")
+      %div(class="<%=params[:action]%>")
+        = yield
+
+    = render 'layouts/footer'

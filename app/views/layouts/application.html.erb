@@ -1,57 +1,13 @@
 <!DOCTYPE html>
 <html class="no-js" lang="da" itemscope itemtype="http://schema.org/Vandpibe">
-    <head>
+  <head>
     <%= render '/layouts/header' %>
-
     <%= javascript_include_tag "application" %>
-
-    <!-- If browser is internet explorer run HTML5 compatibility code -->
-    <!--[if IE]>
-        <script src="/assets/html5.js"></script>
-    <![endif]-->
   </head>
   <body>
-    <aside id="sidebarLeft" class="sidebarLeft">
-      <div class="scrollableArea">
-        <!-- Place whatever HTML you want in here -->
-      </div>
-    </aside>
-
-    <section id="page" class="page">
-      <header class="topBar">
-        <a id="leftBurger" class="slideRight" href="">&#9776;</a>
-        <a id="rightBurger" class="slideLeft" href="">&#9776;</a>
-        <h1>Off.canvas</h1>
-      </header>
-      <div class="scrollableArea">
-        <%= render 'layouts/navigation' %>
-        <%= yield :subnavigation %>
-
-        <% if flash[:notice]%>
-          <div class="flash">
-            <div class="row">
-              <div class="columns">
-                <%= flash[:notice]%>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-        <div id="<%=params[:controller]%>">
-          <div class="<%=params[:action]%>">
-            <%= yield %>
-          </div>
-        </div>
-
-        <%= render 'layouts/footer' %>
-      </div>
-    </section>
-
-    <aside id="sidebarRight" class="sidebarRight">
-      <div class="scrollableArea">
-        <!-- Place whatever HTML you want in here -->
-      </div>
-    </aside>
+    <%= render :partial => 'layouts/sections/left_menu' %>
+    <%= render :partial => 'layouts/sections/page' %>
+    <%= render :partial => 'layouts/sections/right_menu' %>
 
     <%= javascript_include_tag "bottom" %>
   </body>
