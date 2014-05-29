@@ -1,9 +1,10 @@
+#= require modernizr
 #= require jquery
+#= require jquery.offcanvas
+#= require jquery.raty.min
 #= require jquery_ujs
 #= require jquery-ui-1.10.3.custom.min
 #= require jquery.dropdown.min
-#= require jquery.raty.min
-#= require jquery.scrolldepth.min
 #= require turbolinks
 #= require fancybox
 #= require bxslider
@@ -20,3 +21,7 @@ String::all_capitalize = ->
 
 String::capitalize = ->
   @charAt(0).toUpperCase() + @slice(1)
+
+jQuery(document).ready ($) ->
+  $("html").offcanvas hasSidebarRight: true
+  return

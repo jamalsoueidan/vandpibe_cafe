@@ -1,0 +1,8 @@
+- if @cities
+  %aside#sidebarRight.sidebarRight
+    .scrollableArea
+      %a(class="shutRight" href="") &#10006;
+
+      %ul.paddedLight
+        - @cities.each do |city|
+          %li= link_to city.city.titleize, city_path(city.city)

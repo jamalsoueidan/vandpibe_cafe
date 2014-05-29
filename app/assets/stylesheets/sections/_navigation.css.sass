@@ -6,17 +6,8 @@ $height: 130px
 	width: 100%
 	height: $height
 
-	.row
-		position: relative
-
-	ul.left, ul.center, ul.right
-		position: absolute
-		margin: 0
-		padding: 0
-		overflow: hidden
-		top: 15px
-
 	ul.center
+		position: absolute
 		top: 10px
 		left: 50%
 		width: 235px
@@ -31,10 +22,12 @@ $height: 130px
 				width: 100%
 
 	ul.right
-		right: 0%
-		width: 20%
+		float: right
+		width: 30%
+		overflow: hidden
 
 	ul.left
+		float: left
 		width: 30%
 		overflow: hidden
 
@@ -64,3 +57,4 @@ $height: 130px
 	.row
 		.center
 			text-align: center
+			line-height: 20px
