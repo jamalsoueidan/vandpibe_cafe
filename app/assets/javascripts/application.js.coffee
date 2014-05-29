@@ -2,12 +2,9 @@
 #= require jquery
 #= require jquery.offcanvas
 #= require jquery.raty.min
-#= require overthrow
-#= require hammer
-#= require jquery.hammer
 #= require jquery_ujs
+#= require jquery-ui-1.10.3.custom.min
 #= require jquery.dropdown.min
-#= require jquery.scrolldepth.min
 #= require turbolinks
 #= require fancybox
 #= require bxslider
