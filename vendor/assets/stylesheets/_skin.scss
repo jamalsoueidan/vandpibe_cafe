@@ -98,80 +98,82 @@ body {
 	background-size: 250px;
 }
 
-h1 {
-	font-family: 'Pacifico', Serif;
-	font-size:2.8em;
-	font-weight:300;
-	line-height:1.2em;
-	margin:0.5em 0;
-	color: $orange;
-	text-shadow: 0 0.03em 0.0625em rgba(0,0,0,0.15);
-}
-
-h2 {
-	font-family: 'Pacifico', Serif;
-	font-size:2.2em;
-	font-weight:300;
-	line-height:1.2em;
-	margin:0.4em 0;
-	color: $darkGrey;
-	text-shadow: 0 0.03em 0.0625em rgba(0,0,0,0.15);
-}
-
-h3 {
-	font-family: 'Lato', Serif;
-	font-size:1.6em;
-	font-weight:300;
-	line-height:1.2em;
-	margin:0.3em 0;
-	color: $orange;
-	text-shadow: 0 0.03em 0.0625em rgba(0,0,0,0.15);
-}
-
-h4 {
-	font-family: 'Lato', Serif;
-	font-size:1.4em;
-	font-weight:300;
-	line-height:1.2em;
-	margin:0.3em 0;
-	color: $darkGrey;
-	text-shadow: 0 0.03em 0.0625em rgba(0,0,0,0.15);
-}
-
-p {
-	font-size:1.4em;
-	font-weight:200;
-	line-height:1.5em;
-	margin:0.6em 0;
-
-	a:hover {
+aside.sidebarRight, header.topBar aside.sidebarLeft {
+	h1 {
+		font-family: 'Pacifico', Serif;
+		font-size:2.8em;
+		font-weight:300;
+		line-height:1.2em;
+		margin:0.5em 0;
 		color: $orange;
+		text-shadow: 0 0.03em 0.0625em rgba(0,0,0,0.15);
 	}
-}
 
-a {
-	color: inherit;
-}
+	h2 {
+		font-family: 'Pacifico', Serif;
+		font-size:2.2em;
+		font-weight:300;
+		line-height:1.2em;
+		margin:0.4em 0;
+		color: $darkGrey;
+		text-shadow: 0 0.03em 0.0625em rgba(0,0,0,0.15);
+	}
 
-hr {
-	float: left;
-	width: 100%;
-	height: 2px;
-	margin: 3em 0;
-	border-top: 0;
-	border-right: 0;
-	border-left: 0;
-	border-bottom: 2px dashed scale-lightness($orange, 90%);
-}
+	h3 {
+		font-family: 'Lato', Serif;
+		font-size:1.6em;
+		font-weight:300;
+		line-height:1.2em;
+		margin:0.3em 0;
+		color: $orange;
+		text-shadow: 0 0.03em 0.0625em rgba(0,0,0,0.15);
+	}
 
-code {
-	display: block;
-	margin: 2em 0;
-	padding: 1em;
-	@include box-sizing(border-box);
-	font-family: courier new;
-	background: scale-lightness($lightGrey, 50%);
-	border-radius: 0.25em;
+	h4 {
+		font-family: 'Lato', Serif;
+		font-size:1.4em;
+		font-weight:300;
+		line-height:1.2em;
+		margin:0.3em 0;
+		color: $darkGrey;
+		text-shadow: 0 0.03em 0.0625em rgba(0,0,0,0.15);
+	}
+
+	p {
+		font-size:1.4em;
+		font-weight:200;
+		line-height:1.5em;
+		margin:0.6em 0;
+
+		a:hover {
+			color: $orange;
+		}
+	}
+
+	a {
+		color: inherit;
+	}
+
+	hr {
+		float: left;
+		width: 100%;
+		height: 2px;
+		margin: 3em 0;
+		border-top: 0;
+		border-right: 0;
+		border-left: 0;
+		border-bottom: 2px dashed scale-lightness($orange, 90%);
+	}
+
+	code {
+		display: block;
+		margin: 2em 0;
+		padding: 1em;
+		@include box-sizing(border-box);
+		font-family: courier new;
+		background: scale-lightness($lightGrey, 50%);
+		border-radius: 0.25em;
+	}
 }
 
 .icon {

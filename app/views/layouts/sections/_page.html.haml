@@ -14,8 +14,8 @@
           .columns
             = flash[:notice]
 
-    %div(id="<%=params[:controller]%>")
-      %div(class="<%=params[:action]%>")
+    %div(id="#{params[:controller]}")
+      %div(class="#{params[:action]}")
         = yield
 
     = render 'layouts/footer'
