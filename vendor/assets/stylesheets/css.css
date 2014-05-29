@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Advent Pro';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Advent Pro Medium'), local('AdventPro-Medium'), url(http://themes.googleusercontent.com/static/fonts/adventpro/v2/7kBth2-rT8tP40RmMMXMLDQSy97IxtrDzQSSu7D0deE.woff) format('woff');
+}
+@font-face {
+  font-family: 'Advent Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Advent Pro Bold'), local('AdventPro-Bold'), url(http://themes.googleusercontent.com/static/fonts/adventpro/v2/M4I6QiICt-ey_wZTpR2gKydbhAemgRrz6naF4wAklHw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Noticia Text';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noticia Text'), local('NoticiaText-Regular'), url(http://themes.googleusercontent.com/static/fonts/noticiatext/v4/wdyV6x3eKpdeUPQ7BJ5uUOY5mlVXtdNkpsMpKkrDXP4.woff) format('woff');
+}
+@font-face {
+  font-family: 'Noticia Text';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noticia Text Bold'), local('NoticiaText-Bold'), url(http://themes.googleusercontent.com/static/fonts/noticiatext/v4/pEko-RqEtp45bE2P80AAKUIs04IdwfM8211RGOj6sr8.woff) format('woff');
+}
+@font-face {
+  font-family: 'Noticia Text';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Noticia Text Italic'), local('NoticiaText-Italic'), url(http://themes.googleusercontent.com/static/fonts/noticiatext/v4/dAuxVpkYE_Q_IwIm6elsKMCDUKfIFSGVV_H-ln9NBDw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Noticia Text';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Noticia Text Bold Italic'), local('NoticiaText-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/noticiatext/v4/-rQ7V8ARjf28_b7kRa0Jup8prASTbjQD-4Pbn4pC6Zg.woff) format('woff');
+}

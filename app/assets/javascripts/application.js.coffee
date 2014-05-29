@@ -2,6 +2,16 @@
 #= require jquery
 #= require jquery.offcanvas
 #= require jquery.raty.min
+#= require overthrow
+#= require hammer
+#= require jquery.hammer
+#= require jquery_ujs
+#= require jquery.dropdown.min
+#= require jquery.scrolldepth.min
+#= require turbolinks
+#= require fancybox
+#= require bxslider
+#= require_directory ./modules
 
 $.fn.raty.defaults.path = "http://assets.vandpibecafe.dk/assets/raty"
 $.fn.raty.defaults.readOnly = true

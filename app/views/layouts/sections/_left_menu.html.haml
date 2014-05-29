@@ -1,2 +1,25 @@
 %aside#sidebarLeft.sidebarLeft
   %div.scrollableArea
+    %a(class="shutLeft" href="") &#10006;
+    %div(class="you padded")
+      = link_to root_url do
+        = image_tag('logo4.png', :alt => "VandpibeCafe.dk")
+      %h2
+        = link_to "VandpibeCafe.dk", root_url
+    %ul.paddedLight
+      %li
+        = link_to root_url do
+          %span.fa.fa-home
+          Hjem
+      %li
+        = link_to cities_path do
+          %span.fa.fa-globe
+          Cafeer
+      %li
+        = link_to store_path do
+          %span.fa.fa-shopping-cart
+          Køb
+      %li
+        = link_to toplist_path do
+          %span.fa.fa-signal
+          Topliste
