@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 VandpibeCafe::Application.routes.draw do
-  root :to => 'main#index'
+  root :to => 'cities#index'
 
   ActiveAdmin.routes(self)
 
