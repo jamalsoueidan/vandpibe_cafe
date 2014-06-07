@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-VandpibeCafe::Application.config.secret_key_base = '47ca1314fec590923fcac80fad4993e505d30a9cbcdd39036ed5b1bde7bd206ff942c1f144252c93f84f8438f4f18d0397e9c399dc3fe6bfd43edf9574dfdd17'
+VandpibeCafe::Application.config.secret_key_base = 'e09ead0da6ffa9199fd99dbc0fdc8ec34bf76aa58c1449a7e379d6b9a818ee664eb9d8b9b8c2152957213f57cac2dff639b6706462c38350b0e9343e084709ef'

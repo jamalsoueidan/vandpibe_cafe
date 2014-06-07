@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -53,13 +53,13 @@ gem 'formtastic',          github: 'justinfrench/formtastic'
 
 gem 'will_paginate', '~> 3.0.0'
 gem 'omniauth-facebook'
-gem 'simple_form', "~> 3.0.0.rc"
+gem 'simple_form'
 gem 'country-select'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem 'aquarium'
 gem 'slim'
-gem 'haml', '~> 4.0.0'
+gem 'haml', '~> 4.0.3'
 #gem 'exception_notification'
 
 gem 'neat'
