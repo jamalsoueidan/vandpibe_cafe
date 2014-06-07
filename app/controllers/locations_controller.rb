@@ -10,8 +10,7 @@ class LocationsController < ApplicationController
 
   def show
     update_ratings
-    @city = City.find_by_url(params[:city_name])
-    @location = @city.locations.include_all.unscoped.find_by_url(params[:name], @city.id)
+    @location = Location.unscoped.find_by_url(params[:name], params[:city_name]).first
     if @location.nil?
       redirect_to root_path
     end
