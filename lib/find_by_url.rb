@@ -8,20 +8,32 @@ module ActiveSupport::Inflector
 
   alias_method_chain :titleize, :big
 end
+
 # -*- encoding : utf-8 -*-
 class String
-  def utf8!
-    replace(utf8)
+  def urls
+    [['aa', 'å'], ['oe', 'ø'], ['ae', 'æ'], ['+', ' ']]
   end
 
-  def utf8
+  def to_uri!
+    replace(to_url)
+  end
+
+  def to_para
     text = self
-    text.gsub!('aa', 'å')
-    text.gsub!('oe', 'ø')
-    text.gsub!('ae', 'æ')
-    text.gsub!('+', ' ')
-    text.gsub!('-', ' ')
     text.downcase!
+    urls.each do |u|
+      text.gsub!(u[1], u[0])
+    end
+    return text
+  end
+
+  def to_string
+    text = self
+    text.downcase!
+    urls.each do |u|
+      text.gsub!(u[0], u[1])
+    end
     return text
   end
 end
@@ -31,7 +43,7 @@ module FindByURL
 
   module ClassMethods
     def find_by_url(name, city)
-      return self.where("#{self.table_name}.name = ? OR #{self.table_name}.city = ?", name.utf8, city.utf8)
+      return self.where("#{self.table_name}.name = ? && #{self.table_name}.city = ?", name.titleize.downcase, city)
     end
   end
 end

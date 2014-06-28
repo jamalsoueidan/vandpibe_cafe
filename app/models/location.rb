@@ -9,6 +9,10 @@ class Location < ActiveRecord::Base
   has_many :references
   has_many :ratings
 
+  scope :by_country, -> country { where(country: country) }
+  scope :by_city, -> country { where(city: city) }
+  scope :visible, -> { where(visible: true) }
+
   class << self
     def sort_by(name=nil)
       if name.nil?
