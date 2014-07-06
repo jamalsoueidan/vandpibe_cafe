@@ -6,4 +6,12 @@ section#cities
       - @cities.each do |c|
         li = link_to c.city.titleize, city_path(c.city.downleize)
 
+section#locations.border-top
+  .row
+    h2 Seneste Vandpibe Cafeer der har åbnet dørene op.
+    .col-12
+      ul id="locations"
+        = render :partial => 'location', :collection => @locations, :as => :location
+
+
 = render 'users'

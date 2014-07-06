@@ -16,9 +16,11 @@ $desktop: new-breakpoint(min-width 769px)
 @import "neat"
 @import "jquery.offcanvas"
 
-body
-  background-color: #e9eaec
+body, .page .scrollableArea
+  background-color: #f6f6f6
   color: #222
+
+body
   font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif
   font-weight: normal
   font-style: normal
@@ -129,3 +131,10 @@ a:link, a:visited
     -webkit-box-shadow: none
     box-shadow: none
     left: 0px
+
+
+.border-top
+  border-top: 1px solid #ccc
+
+.border-bottom
+  border-bottom: 1px solid #ccc

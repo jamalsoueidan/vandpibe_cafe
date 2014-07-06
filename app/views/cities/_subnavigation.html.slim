@@ -7,4 +7,4 @@
           ul.dropdown-menu
             - @cities.each do |city|
               li class="#{( @city == city ? 'active' : '' )}"
-                = link_to city.city.titleize, city_path(city.city.parameterize)
+                = link_to city.city.titleize, city_path(city.city.downcase)

@@ -5,6 +5,10 @@ class CitiesController < ApplicationController
     redirect_to city_path(params[:city])
   end
 
+  def index
+    @locations = Location.visible.limit(4).includes(:uploads).order('ID desc')
+  end
+
   def show
     @locations = Location.visible.where('city=?', params[:name]).includes(:uploads).sort_by(params[:sort])
 

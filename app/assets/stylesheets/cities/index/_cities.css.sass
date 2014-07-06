@@ -15,9 +15,11 @@ section#cities
         font-size: 1.2em
         margin: 4px
         padding: 10px
-        background-color: #ccc
+        background-color: #fff
 
       @include media($desktop)
         float: left
+        @include box-shadow(0 0 5px #ddd)
+        @include box-sizing(border-box)
 
 
