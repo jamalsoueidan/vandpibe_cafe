@@ -1,11 +1,17 @@
-= content_for(:navigation, true)
+section#cities
+  .row
+    h1 Hvor leder du efter en Vandpibe Cafe?
 
-/= render 'place'
+    ul.cities
+      - @cities.each do |c|
+        li = link_to c.city.titleize, city_path(c.city.downleize)
 
-/ = render 'mosaic'
+section#locations.border-top
+  .row
+    h2 Seneste Vandpibe Cafeer der har åbnet dørene op.
+    .col-12
+      ul id="locations"
+        = render :partial => 'location', :collection => @locations, :as => :location
 
-= render 'layouts/navigation'
-
-= render 'locations'
 
 = render 'users'

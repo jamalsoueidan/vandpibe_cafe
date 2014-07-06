@@ -1,9 +1,9 @@
 .location-content
 	.location-header
-		h1 = @location.name.big
+		h1 = @location.name.titleize
 
-		h2 = @location.city.name.big
-		
+		h2 = @location.city.titleize
+
 		- unless @location.references.empty?
 			a class="btn" href="#{@location.references.first.link}" target="blank" Besøg hjemmeside
 

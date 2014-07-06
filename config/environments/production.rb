@@ -59,7 +59,7 @@ VandpibeCafe::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js]
+  config.assets.precompile += %w[admin/active_admin.css admin/active_admin.js bottom.js html5.js]
   config.assets.precompile += %w( .svg .eot .woff .ttf )
 
   # Ignore bad email addresses and do not raise email delivery errors.

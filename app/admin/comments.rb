@@ -1,6 +1,5 @@
 ActiveAdmin.register Comment do
-	menu :parent => "Countries"
-	index do      
+	index do
 		selectable_column
 		column :section do |comment|
 			div do

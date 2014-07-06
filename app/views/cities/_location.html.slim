@@ -1,20 +1,19 @@
 li class="location" id="location#{location.id}"
-	a href=(city_location_path(location.city.name, location.name.to_url)) class="link"
-	
+	a href=(city_location_path(location.city, location.name.to_url)) class="link"
+
 	.image = image_tag_unless(location.uploads)
-			
+
+	- if location.recommend?
+		.recommend= image_tag("recommend.png")
+
 	.details
-		h5.name = truncate(location.name.big, :length => 20)
+		h5.name = truncate(location.name.titleize, :length => 20)
 
 		p.description = description(location)
 
-		p.city
-			= image_tag("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|" + location.city.country.color, :style => "width:10px;height:14px;margin-right:5px;") + location.city.name.big
+		.options
+			.city
+				= image_tag("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|00BFFF", :style => "width:10px;height:14px;margin-right:5px;") + location.city.titleize
 
-		.rating
-			= raty('location', :score => location.rating)
-
-			//strong 
-			//	= 'Bedømmelser:'
-
-			//= location.count.to_s
+			.rating
+				= raty('location', :score => location.rating)
