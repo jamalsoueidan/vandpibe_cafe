@@ -7,7 +7,6 @@ ActiveAdmin.register Location do
       end
     end
     column :city
-    column :country
   end
 
   show do
@@ -41,7 +40,7 @@ ActiveAdmin.register Location do
 
   controller do
     def permitted_params
-      params.permit(:location => [:city_id, :name, :address, :post, :latitude, :longitude, :visible, :music, :football, :television, :opening_time, :description, :rating])
+      params.permit(:location => [:city, :country_code, :recommend, :name, :address, :post, :latitude, :longitude, :visible, :music, :football, :television, :opening_time, :description, :rating])
     end
   end
 end

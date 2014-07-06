@@ -8,7 +8,7 @@ class MainController < ApplicationController
     city_name = params[:city_name]
     location_id = params[:location_id].to_i
 
-    options = {:only => [:latitude, :longitude, :id, :description, :name, :city, :country]}
+    options = {:only => [:latitude, :longitude, :id, :description, :name, :city, :country_code]}
 
     if location_id > 0
       render :json => Location.where(:id => location_id).to_json(options)

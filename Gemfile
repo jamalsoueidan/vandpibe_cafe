@@ -54,7 +54,7 @@ gem 'formtastic',          github: 'justinfrench/formtastic'
 gem 'will_paginate', '~> 3.0.0'
 gem 'omniauth-facebook'
 gem 'simple_form', "~> 3.0.0.rc"
-gem 'country-select'
+gem 'country_select', github: 'stefanpenner/country_select'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem 'aquarium'

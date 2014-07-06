@@ -9,7 +9,7 @@ class Location < ActiveRecord::Base
   has_many :references
   has_many :ratings
 
-  scope :by_country, -> country { where(country: country) }
+  scope :by_country, -> country { where(country_code: country) }
   scope :by_city, -> country { where(city: city) }
   scope :visible, -> { where(visible: true) }
 
