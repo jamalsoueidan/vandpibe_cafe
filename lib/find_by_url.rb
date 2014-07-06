@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ActiveSupport::Inflector
   def titleize_with_big(word)
     word[0] = word[0].gsub('å', 'Å')
@@ -9,32 +10,14 @@ module ActiveSupport::Inflector
   alias_method_chain :titleize, :big
 end
 
-# -*- encoding : utf-8 -*-
 class String
-  def urls
-    [['aa', 'å'], ['oe', 'ø'], ['ae', 'æ'], ['+', ' ']]
-  end
-
-  def to_uri!
-    replace(to_url)
-  end
-
-  def to_para
-    text = self
-    text.downcase!
-    urls.each do |u|
-      text.gsub!(u[1], u[0])
-    end
-    return text
-  end
-
-  def to_string
-    text = self
-    text.downcase!
-    urls.each do |u|
-      text.gsub!(u[0], u[1])
-    end
-    return text
+  def downleize
+    word = self
+    word.downcase!
+    word[0] = word[0].gsub('Å', 'å')
+    word[0] = word[0].gsub('Ø', 'ø')
+    word[0] = word[0].gsub('Æ', 'æ')
+    return word
   end
 end
 

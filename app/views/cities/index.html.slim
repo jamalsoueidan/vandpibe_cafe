@@ -1,5 +1,9 @@
-= render 'subnavigation'
+section#cities
+  .row
+    h1 Hvor leder du efter en Vandpibe Cafe?
 
-= "Måndens cafe"
+    ul.cities
+      - @cities.each do |c|
+        li = link_to c.city.titleize, city_path(c.city.downleize)
 
 = render 'users'
