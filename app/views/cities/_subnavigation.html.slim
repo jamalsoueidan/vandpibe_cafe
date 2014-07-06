@@ -1,0 +1,10 @@
+- content_for :subnavigation
+  header class="subnavigation"
+    .row
+      .center
+        a(href="#" data-dropdown="#dropdown-1" data-horizontal-offset="20") Vælge by
+        #dropdown-1.dropdown.dropdown-tip
+          ul.dropdown-menu
+            - @cities.each do |city|
+              li class="#{( @city == city ? 'active' : '' )}"
+                = link_to city.city.titleize, city_path(city.city.downcase)

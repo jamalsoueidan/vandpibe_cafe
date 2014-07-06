@@ -1,18 +1,7 @@
 @import "fancybox"
 @import "bxslider"
-
-.bx-wrapper .bx-viewport
-	-moz-box-shadow: none
-	-webkit-box-shadow: none
-	box-shadow: none
-	left: 0px
-
-.bx-wrapper
-	margin: 0 auto 30px
-
 @import "compass"
 @import "compass/reset"
-
 @import "bourbon"
 @import "neat-helpers"
 
@@ -21,114 +10,131 @@ $gutter: 30px
 $grid-columns: 12
 $max-width: em(1112)
 
-$mobile: new-breakpoint(max-width 480px)
-$landscape: new-breakpoint(orientation landscape max-width 640px)
-$desktop: new-breakpoint(min-width 768px)
+$mobile: new-breakpoint(max-width 768px)
+$desktop: new-breakpoint(min-width 769px)
 
 @import "neat"
+@import "jquery.offcanvas"
+
+body, .page .scrollableArea
+  background-color: #f6f6f6
+  color: #222
 
 body
-	background-color: #e9eaec
-	color: #222
-	font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif
-	font-weight: normal
-	font-style: normal
-	line-height: 1
-	cursor: default
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif
+  font-weight: normal
+  font-style: normal
+  line-height: 1
+  cursor: default
 
-h1, h2, h3, h4, h5 
-	font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
-	font-weight: 400
-	letter-spacing: -1px
-	font-style: normal
-	text-rendering: optimizeLegibility
+h1, h2, h3, h4, h5
+  font-family: "OpenSans", "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif
+  font-weight: 400
+  letter-spacing: -1px
+  font-style: normal
+  text-rendering: optimizeLegibility
 
 h1
-	font-size: 1.5em
-	@include media($desktop)
-		font-size: 2.4em
+  font-size: 1.5em
+  @include media($desktop)
+    font-size: 2.4em
 
 h2
-	font-size: 1.4em
-	@include media($desktop)
-		font-size: 2em
+  font-size: 1.4em
+  @include media($desktop)
+    font-size: 2em
 
 h3
-	font-size: 1.3em
+  font-size: 1.3em
 
 h4
-	font-size: 1.2em
+  font-size: 1.2em
 
 h5
-	font-size: 1.1em
+  font-size: 1.1em
 
 p
-	font-weight: normal
-	font-size: 13px
-	line-height: 1.6
-	text-rendering: optimizeLegibility
+  font-weight: normal
+  font-size: 13px
+  line-height: 1.6
+  text-rendering: optimizeLegibility
 
 hr
-	border: solid #ddd
-	border-width: 1px 0 0
-	margin: 0
-	height: 0
+  border: solid #ddd
+  border-width: 1px 0 0
+  margin: 0
+  height: 0
 
 a
-	color: #2ba6cb
-	text-decoration: none
-	line-height: inherit
+  color: #2ba6cb
+  text-decoration: none
+  line-height: inherit
 
 .flash
-	.columns
-		background-color: #A4E7A0
-		padding: 8px
-	
-ul
-	font-size: 1em
-	line-height: 1.6
-	li
-		list-style: none
+  .columns
+    background-color: #A4E7A0
+    padding: 8px
 
-//@import "lib/*"
+ul
+  font-size: 1em
+  line-height: 1.6
+  li
+    list-style: none
+
+@import "jquery.dropdown"
 @import "modules/*"
 @import "sections/*"
 @import "store"
 @import "cities"
 @import "locations"
-
+@import "modifiers/*"
 
 a:link, a:visited
-	text-decoration: none
-	
+  text-decoration: none
+
 .row
-	@include outer-container
+  @include outer-container
 
-	.columns
-		@include span-columns(12)
+  .columns
+    @include span-columns(12)
 
-	.col-8
-		margin-top: $gutter/2
-		@include media($mobile)
-			@include span-columns(12)
+  .col-8
+    margin-top: $gutter/2
+    @include media($mobile)
+      @include span-columns(12)
 
-		@include media($desktop)
-			@include span-columns(9)
+    @include media($desktop)
+      @include span-columns(9)
 
-	.col-4
-		margin-top: $gutter
+  .col-4
+    margin-top: $gutter
 
-		@include media($mobile)
-			@include span-columns(12)
+    @include media($mobile)
+      @include span-columns(12)
 
-		@include media($desktop)
-			@include span-columns(3)
+    @include media($desktop)
+      @include span-columns(3)
 
 
 #map img
-	max-width: none 
-	height: auto  
+  max-width: none
+  height: auto
 
-.bx-wrapper .bx-controls-direction a
-	z-index: 1
-	
+.bx-wrapper
+  margin: 0 auto 30px
+
+  .bx-controls-direction a
+    z-index: 1
+
+  .bx-viewport
+    -moz-box-shadow: none
+    -webkit-box-shadow: none
+    box-shadow: none
+    left: 0px
+
+
+.border-top
+  border-top: 1px solid #ccc
+
+.border-bottom
+  border-bottom: 1px solid #ccc

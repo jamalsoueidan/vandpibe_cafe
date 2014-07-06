@@ -1,6 +1,6 @@
-= content_for(:title, @location.name.big + " Vandpibe Cafe")
-= content_for(:meta_title, @location.name.big + " Vandpibe Cafe") 
-= content_for(:meta_description, @location.name.big + " Vandpibe Cafe ligger i " + @location.city.name.big + ". Alt hvad du vil vide om Cafeen, kan du læse på vandpibecafe.dk")
+= content_for(:title, @location.name.titleize + " Vandpibe Cafe")
+= content_for(:meta_title, @location.name.titleize + " Vandpibe Cafe")
+= content_for(:meta_description, @location.name.titleize + " Vandpibe Cafe ligger i " + @location.city.titleize + ". Alt hvad du vil vide om Cafeen, kan du læse på vandpibecafe.dk")
 
 section#location
 	.row

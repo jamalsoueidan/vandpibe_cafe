@@ -1,6 +1,5 @@
-ActiveAdmin.register Location do  
-  menu :parent => "Countries"
-  index do       
+ActiveAdmin.register Location do
+  index do
     column :id
     column :name do |location|
       div do
@@ -8,27 +7,22 @@ ActiveAdmin.register Location do
       end
     end
     column :city
-    column :country do |location|
-      div do
-        link_to location.city.country.name, admin_country_path(location.city.country)
-      end
-    end
   end
-  
+
   show do
     attributes_table do
       row :id
       row :name
       row :visible
     end
-    
+
     panel "List of images" do
-      
+
       if location.uploads.empty?
         strong { raw 'No image added!<br /><br />'}
       else
-        table_for location.uploads do 
-          column :avatar do |upload| 
+        table_for location.uploads do
+          column :avatar do |upload|
             image_tag upload.avatar.url(:thumb)
           end
           column :remove do |upload|
@@ -36,17 +30,17 @@ ActiveAdmin.register Location do
           end
         end
       end
-      
+
       div do
         render "footer"
       end
-      
+
     end
   end
 
   controller do
     def permitted_params
-      params.permit(:location => [:city_id, :name, :address, :post, :latitude, :longitude, :visible, :music, :football, :television, :opening_time, :description, :rating])
+      params.permit(:location => [:city, :country_code, :recommend, :name, :address, :post, :latitude, :longitude, :visible, :music, :football, :television, :opening_time, :description, :rating])
     end
   end
 end

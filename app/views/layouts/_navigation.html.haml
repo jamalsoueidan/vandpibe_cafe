@@ -1,0 +1,32 @@
+%header#navigation
+  .row
+    %ul.left
+      %li.spot
+        %a(href="#{root_url}")
+          %i.fa.fa-home
+          %span Forsiden
+      %li.spot
+        %a(href="#{cities_path}")
+          %i.fa.fa-globe
+          %span Cafeer
+      %li.spot
+        %a(href="#{toplist_path}")
+          %i.fa.fa-signal
+          %span Toplisten
+      %li.spot
+        %a(href="http://www.vandpibesalg.dk" target="_blank")
+          %i.fa.fa-shopping-cart
+          %span Køb Vandpibe
+    %ul.center
+      %li.logo
+        %a(href="#{root_url}")
+          = image_tag('logo4.png', :alt => "VandpibeCafe.dk")
+    %ul.right
+      %li#login.login
+
+:javascript
+  $(function() {
+    $.get('#{authjs_path}', function(data) {
+      $('#login').html(data)
+    });
+  })

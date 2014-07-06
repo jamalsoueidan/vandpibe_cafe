@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 VandpibeCafe::Application.routes.draw do
   root :to => 'cities#index'
-  
+
   ActiveAdmin.routes(self)
 
   get '/auth-js' => 'main#auth_js', :as => 'authjs'
@@ -35,10 +35,10 @@ VandpibeCafe::Application.routes.draw do
   end
 
   get '/get_json' => "main#get_json"
-  
+
   resources :questions, :only => [:index, :create]
   get '/by/:city' => 'cities#old_url'
-
+  get '/cafeer' => 'cities#index', :as => 'cities'
   get '/:name' => "cities#show", :as => 'city'
   get '/:city_name/:name' => "locations#show", :as => 'city_location'
   get '/:city_name/:name/skriv_anmeldelse' => "locations#write_review", :as => 'city_location_write_review'

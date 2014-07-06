@@ -1,0 +1,25 @@
+section#cities
+  margin-bottom: 40px
+  h1
+    margin: $gutter
+    font-weight: bold
+    text-align: center
+    font-size: 2em
+
+
+  ul.cities
+    overflow: hidden
+    li
+      a
+        display: block
+        font-size: 1.2em
+        margin: 4px
+        padding: 10px
+        background-color: #fff
+
+      @include media($desktop)
+        float: left
+        @include box-shadow(0 0 5px #ddd)
+        @include box-sizing(border-box)
+
+
