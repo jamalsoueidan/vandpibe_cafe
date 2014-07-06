@@ -1,10 +1,10 @@
-namespace :amazon do  
-  
-  task :upload_assets => [:environment, :connect] do 
+namespace :amazon do
+
+  task :upload_assets => [:environment, :connect] do
     list(File.join(Rails.root, 'public', 'assets'))
   end
-  
-  def list(path)  
+
+  def list(path)
     return unless path.index('/.') == nil
     Dir.foreach(path) do |file|
       fullpath = File.join(path, file)
@@ -15,21 +15,28 @@ namespace :amazon do
       end
     end
   end
-  
+
   task :connect do
     config = YAML.load(File.read("#{Rails.root}/config/s3.yml"))
     AWS.config(config[Rails.env])
-    
+
     s3 = AWS::S3.new
     $bucket = s3.buckets[config[Rails.env]['bucket']]
   end
-  
+
   def upload(options = {})
-    p options[:key]
-    o = $bucket.objects[options[:key]]
-    o.write(:file => options[:path], :acl => :public_read)
+    file_options = { :file => options[:path], :acl => :public_read }
+    extension = File.extname(options[:path])
+    if extension == ".css"
+      file_options[:content_encoding] = "text/css"
+    end
+
+    if extension != ".psd"
+      o = $bucket.objects[options[:key]]
+      o.write(file_options)
+    end
   end
-  
+
   task :backup_database => [:environment, :connect] do
     config = YAML.load(File.read("#{Rails.root}/config/database.yml"))
     environment = config[Rails.env]
@@ -40,7 +47,7 @@ namespace :amazon do
     command = ["mysqldump -u #{environment['username']}"]
     command << "--password=#{environment['password']}" unless environment['password'].nil?
     command << "#{environment['database']} > " + path
-    
+
     system command.join(' ')
 
     upload({:key => 'database_backup/' + filename, :path => path})
