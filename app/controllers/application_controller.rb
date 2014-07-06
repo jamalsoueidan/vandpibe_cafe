@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?, :is_owner?, :current_path
 
+  before_filter :set_cities
+
+  def set_cities
+    @cities = Location.select(:city).visible.by_country('danmark').group(:city)
+  end
+
   def current_path
     request.path
   end
