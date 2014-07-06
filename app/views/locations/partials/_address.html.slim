@@ -6,8 +6,10 @@
 		address
 			= @location.address
 			br
+			= @location.city.titleize
+			= " "
 			= @location.post
 			br
-			= @location.country_code
+			= @location.country_code.titleize
 
-		a class="btn gray" href="http://maps.google.com?q=#{@location.address},#{@location.post}" target="_blank" Vis på kort
+		a class="btn gray" href="http://maps.google.com?q=#{@location.address},#{@location.city}+#{@location.post}" target="_blank" Vis på kort
