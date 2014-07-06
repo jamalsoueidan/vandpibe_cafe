@@ -3,6 +3,9 @@ li class="location" id="location#{location.id}"
 
 	.image = image_tag_unless(location.uploads)
 
+	- if location.recommend?
+		.recommend= image_tag("recommend.png")
+
 	.details
 		h5.name = truncate(location.name.titleize, :length => 20)
 
